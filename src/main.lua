@@ -30,10 +30,16 @@ local function on_ready()
 
     import "ready.lua"
     import "sjson.lua"
+
+    -- Hermes Boons
     import "hermes/speedDamage.lua"
     import "hermes/moveSpeed.lua"
     -- import "hermes/dashHeal.lua" -- Not adding yet.
     import "hermes/bonusDash.lua"
+
+    -- Artemis Boons
+    import "artemis/artemisGeneral.lua"
+    import "artemis/critAttack.lua"
 end
 
 local function on_reload()
