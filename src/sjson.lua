@@ -2,9 +2,16 @@
 ---@diagnostic disable: lowercase-global
 zanncdwbl_BoonAdditions.TraitTextFile = rom.path.combine(rom.paths.Content, "Game/Text/en/TraitText.en.sjson")
 zanncdwbl_BoonAdditions.GUIAnimationsFile = rom.path.combine(rom.paths.Content, "Game/Animations/GUIAnimations.sjson")
+zanncdwbl_BoonAdditions.FxFile = rom.path.combine(rom.paths.Content, "Game/Animations/Fx.sjson")
 
 zanncdwbl_BoonAdditions.Order = {"Id", "InheritFrom", "DisplayName", "Description"}
 zanncdwbl_BoonAdditions.IconOrder = {"Name", "InheritFrom", "FilePath"}
+
+-- Artemis Icon File Orders
+zanncdwbl_BoonAdditions.FxMainOrder = {"Name", "InheritFrom", "NumFrames", "FilePath", "OffsetZ", "Scale",
+                                       "ColorFromOwner", "AngleFromOwner"}
+zanncdwbl_BoonAdditions.FxChildOrder = {"Name", "InheritFrom", "ChildAnimation"}
+zanncdwbl_BoonAdditions.FxBoonDropOrder = {"Name", "InheritFrom", "ChildAnimation", "CreateAnimations", "Color"}
 
 -- Insert for Icons
 sjson.hook(zanncdwbl_BoonAdditions.GUIAnimationsFile, function(data)
@@ -16,6 +23,9 @@ sjson.hook(zanncdwbl_BoonAdditions.GUIAnimationsFile, function(data)
 
     -- Artemis Boons
     table.insert(data.Animations, zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisWeaponBoon)
+
+    -- Artemis Icon Spin
+    table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonInfoSymbolArtemisIcon)
 end)
 
 -- Insert for BoonText
@@ -32,4 +42,13 @@ sjson.hook(zanncdwbl_BoonAdditions.TraitTextFile, function(data)
 
     -- Artemis Boons
 
+end)
+
+-- Insert for Fx, Just mainly Artemis
+sjson.hook(zanncdwbl_BoonAdditions.FxFile, function(data)
+    -- Everything is just for Artemis Icon and Drops
+    table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonDropArtemisPreview)
+    table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonDropArtemisUpgradedPreview)
+    table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonDropArtemis)
+    table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonDropA_Artemis)
 end)

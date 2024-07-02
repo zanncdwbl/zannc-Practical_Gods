@@ -5,6 +5,7 @@ game.TraitData.ArtemisWeaponBoon = {
     InheritFrom = {"BaseTrait", "LegacyTrait", "EarthBoon"},
     Name = "ArtemisWeaponBoon",
     Icon = "Boon_Artemis_ArtemisWeaponBoon",
+    Slot = "Melee",
     TraitOrderingValueCache = -1,
     BlockStacking = false, -- Not needed, but incase a mod comes along and fucks around
 

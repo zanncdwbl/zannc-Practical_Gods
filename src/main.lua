@@ -38,6 +38,7 @@ local function on_ready()
     import "hermes/bonusDash.lua"
 
     -- Artemis Boons
+    import "artemis/artemisSJSON.lua"
     import "artemis/artemisGeneral.lua"
     import "artemis/critAttack.lua"
 end
