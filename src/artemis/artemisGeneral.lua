@@ -64,7 +64,6 @@ game.LootData.ArtemisUpgrade = {
 
     SuperSacrificeCombatText = "SuperSacrifice_CombatText_AphroditeUpgrade",
     AlwaysShowDefaultUseText = true,
-    UpgradeSelectedSound = "/SFX/AphroditeBoonChoice",
     Consumables = {},
     LastRewardEligible = true,
     SurfaceShopText = "AphroditeUpgrade_Store",
@@ -74,8 +73,6 @@ game.LootData.ArtemisUpgrade = {
     --     HasAny = {"PoseidonUpgrade", "DemeterUpgrade"},
     --     Path = {"GameState", "UseRecord"}
     -- }},
-
-    EchoLastRewardId = "EchoLastRewardBoon_AphroditeUpgrade",
 
     BanUnpickedBoonsEligible = true,
     ManualRecordUse = true,
@@ -116,7 +113,7 @@ game.LootData.ArtemisUpgrade = {
     Speaker = "NPC_Artemis_01",
     OverlayAnim = "ArtemisOverlay",
 
-    Icon = "BoonSymbolArtemisIcon",
+    Icon = "BoonSymbolArtemis",
     BoonInfoIcon = "BoonInfoSymbolArtemisIcon",
     SurfaceShopIcon = "BoonInfoSymbolArtemisIcon",
     MenuTitle = "UpgradeChoiceMenu_Artemis", -- in ScreenText.en line 199 for some reason
@@ -125,12 +122,14 @@ game.LootData.ArtemisUpgrade = {
     WrathPortrait = "Portrait_Artemis_Wrath_01",
 
     SpawnSound = "/SFX/ArtemisBoonArrow",
+    UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
     PortraitEnterSound = "/EmptyCue",
     BoxAnimation = "DialogueSpeechBubble",
     FlavorTextIds = {"ArtemisUpgrade_FlavorText01", "ArtemisUpgrade_FlavorText02", "ArtemisUpgrade_FlavorText03"},
 
     DoorIcon = "BoonDropArtemisPreview",
     DoorUpgradedIcon = "BoonDropArtemisUpgradedPreview",
+    EchoLastRewardId = "EchoLastRewardBoon_Artemis", -- This might need to have Upgrade at the end
 
     PriorityUpgrades = {"ArtemisWeaponBoon"},
     WeaponUpgrades = {"ArtemisWeaponBoon"},
