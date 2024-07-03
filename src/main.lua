@@ -38,9 +38,12 @@ local function on_ready()
     import "hermes/bonusDash.lua"
 
     -- Artemis Boons
-    import "artemis/artemisSJSON.lua"
-    import "artemis/artemisGeneral.lua"
+    import "artemis/artemisSJSONIcons.lua"
+    import "artemis/artemisLootData.lua"
+
     import "artemis/critAttack.lua"
+    -- import "artemis/critAttackSJSON.lua"
+
 end
 
 local function on_reload()

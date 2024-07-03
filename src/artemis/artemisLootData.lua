@@ -69,10 +69,13 @@ game.LootData.ArtemisUpgrade = {
     SurfaceShopText = "AphroditeUpgrade_Store",
     UsePromptOffsetY = 48,
 
-    -- GameStateRequirements = {{
-    --     HasAny = {"PoseidonUpgrade", "DemeterUpgrade"},
-    --     Path = {"GameState", "UseRecord"}
-    -- }},
+    GameStateRequirements = {{
+        -- HasAny = {"PoseidonUpgrade", "DemeterUpgrade"},
+        -- Path = {"GameState", "UseRecord"}
+    }},
+    ActivateRequirements = {
+        -- None
+    },
 
     BanUnpickedBoonsEligible = true,
     ManualRecordUse = true,
@@ -94,6 +97,7 @@ game.LootData.ArtemisUpgrade = {
     UsePromptOffsetX = 80,
     BlockedLootInteractionText = "UseLootLocked",
     UseTextTalkAndGift = "UseLootAndGift",
+    BoonInfoTitleText = "Codex_BoonInfo_Artemis",
 
     -- Done Stuff 
     Name = "ArtemisUpgrade",
@@ -134,7 +138,7 @@ game.LootData.ArtemisUpgrade = {
     PriorityUpgrades = {"ArtemisWeaponBoon"},
     WeaponUpgrades = {"ArtemisWeaponBoon"},
     Traits = {"SupportingFireBoon", "CritBonusBoon", "DashOmegaBuffBoon", "HighHealthCritBoon", "InsideCastCritBoon",
-              "OmegaCastVolleyBoon", "TimedCritVulnerabilityBoon", "ArtemisWeaponBoon"},
+              "OmegaCastVolleyBoon", "TimedCritVulnerabilityBoon"},
     TraitIndex = {
         ArtemisWeaponBoon = true,
         SupportingFireBoon = true,
@@ -146,3 +150,11 @@ game.LootData.ArtemisUpgrade = {
         TimedCritVulnerabilityBoon = true
     }
 }
+
+-- Adding Boons to Default Artemis
+table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisWeaponBoon")
+
+-- Adding Traits to TraitData Table, and adding her as core
+table.insert(game.LinkedTraitData.WeaponTraits, "ArtemisWeaponBoon")
+table.insert(game.LinkedTraitData.SpecialTraits, "ArtemisWeaponBoon")
+game.LinkedTraitData.ArtemisCoreTraits = {"ArtemisWeaponBoon"}

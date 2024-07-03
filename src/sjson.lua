@@ -14,10 +14,10 @@ zanncdwbl_BoonAdditions.FxChildOrder = {"Name", "InheritFrom", "ChildAnimation"}
 zanncdwbl_BoonAdditions.FxBoonDropOrder = {"Name", "InheritFrom", "ChildAnimation", "CreateAnimations", "Color"}
 zanncdwbl_BoonAdditions.FxBoonDrop = {"Name", "InheritFrom", "FilePath", "OffsetZ", "Scale"}
 
-zanncdwbl_BoonAdditions.GUISymbol = {"Name", "InheritFrom", "ChildAnimation", "Scale", "CreateAnimations", "Color"}
-zanncdwbl_BoonAdditions.GUIBackingB = {"Name", "InheritFrom", "ChildAnimation", "Scale", "Color"}
+-- zanncdwbl_BoonAdditions.GUIFlameGlow = {"Name", "InheritFrom", "Color"}
+-- zanncdwbl_BoonAdditions.GUISymbol = {"Name", "InheritFrom", "ChildAnimation", "Scale", "CreateAnimations", "Color"}
+-- zanncdwbl_BoonAdditions.GUIBackingB = {"Name", "InheritFrom", "ChildAnimation", "Scale", "Color"}
 -- zanncdwbl_BoonAdditions.GUIBackingC = {"Name", "InheritFrom", "ChildAnimation", "Color"}
-zanncdwbl_BoonAdditions.GUIFlameGlow = {"Name", "InheritFrom", "Color"}
 -- zanncdwbl_BoonAdditions.GUIIcon = {"Name", "InheritFrom", "EndFrame", "StartFrame", "FilePath"}
 
 -- Insert for Icons
@@ -33,15 +33,6 @@ sjson.hook(zanncdwbl_BoonAdditions.GUIAnimationsFile, function(data)
 
     -- Artemis Icon
     table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonInfoSymbolArtemisIcon)
-
-    table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolGlow_Artemis)
-    table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolFlare_Artemis)
-    table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolArtemis)
-
-    table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonBackingB_Artemis)
-    -- Game already has these 2
-    -- table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonBackingC_Artemis) 
-    -- table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolArtemisIcon)
 end)
 
 -- Insert for BoonText
@@ -57,7 +48,8 @@ sjson.hook(zanncdwbl_BoonAdditions.TraitTextFile, function(data)
     table.insert(data.Texts, zanncdwbl_BoonAdditions.BonusDashBoon_Text)
 
     -- Artemis Boons
-
+    table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon)
+    table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text)
 end)
 
 -- Insert for Fx, Just mainly Artemis
