@@ -68,8 +68,7 @@ zanncdwbl_BoonAdditions.SpeedDamageBoon_Text = sjson.to_object({
 }, zanncdwbl_BoonAdditions.Order)
 
 -- Just so the boon isn't useless, have some movespeed upgrade lol, directly in TraitData.lua
-game.TraitRequirements = {
-    SpeedDamageBoon = {
-        OneOf = {"MoveSpeedTrait", "FastClearDodgeBonusKeepsake"}
-    }
+local SpeedDamageBoonRequirements = {
+    OneOf = {"MoveSpeedTrait", "FastClearDodgeBonusKeepsake"}
 }
+game.TraitRequirements["SpeedDamageBoon"] = SpeedDamageBoonRequirements

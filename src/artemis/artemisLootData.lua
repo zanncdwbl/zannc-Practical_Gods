@@ -69,14 +69,6 @@ game.LootData.ArtemisUpgrade = {
     SurfaceShopText = "AphroditeUpgrade_Store",
     UsePromptOffsetY = 48,
 
-    GameStateRequirements = {{
-        -- HasAny = {"PoseidonUpgrade", "DemeterUpgrade"},
-        -- Path = {"GameState", "UseRecord"}
-    }},
-    ActivateRequirements = {
-        -- None
-    },
-
     BanUnpickedBoonsEligible = true,
     ManualRecordUse = true,
     CanReceiveGift = true,
@@ -96,8 +88,9 @@ game.LootData.ArtemisUpgrade = {
     LootRejectedText = "Player_GodDispleased_AphroditeUpgrade",
     UsePromptOffsetX = 80,
     BlockedLootInteractionText = "UseLootLocked",
-    UseTextTalkAndGift = "UseLootAndGift",
-    BoonInfoTitleText = "Codex_BoonInfo_Artemis",
+    -- Might need these? check later
+    -- UseTextTalkAndGift = "UseLootAndGift",
+    -- BoonInfoTitleText = "Codex_BoonInfo_Artemis",
 
     -- Done Stuff 
     Name = "ArtemisUpgrade",
@@ -106,6 +99,11 @@ game.LootData.ArtemisUpgrade = {
     Weight = 10,
     GodLoot = true,
     DestroyOnPickup = true,
+
+    GameStateRequirements = {{
+        -- HasAny = {"PoseidonUpgrade", "DemeterUpgrade"},
+        -- Path = {"GameState", "UseRecord"}
+    }},
 
     SubtitleColor = Color.AphroditeVoice,
     Color = {210, 255, 100, 255}, -- Random Colour
@@ -158,3 +156,25 @@ table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisW
 table.insert(game.LinkedTraitData.WeaponTraits, "ArtemisWeaponBoon")
 table.insert(game.LinkedTraitData.SpecialTraits, "ArtemisWeaponBoon")
 game.LinkedTraitData.ArtemisCoreTraits = {"ArtemisWeaponBoon"}
+
+-- CodexData.lua
+-- ArtemisUpgrade =
+-- {
+-- 	-- NoRequirements = true,
+-- 	Entries =
+-- 	{
+-- 		{
+-- 			UnlockGameStateRequirements =
+-- 			{
+-- 				{
+-- 					Path = { "GameState", "UseRecord", "ArtemisUpgrade" },
+-- 					Comparison = ">=",
+-- 					Value = 2,
+-- 				},
+-- 			},
+-- 			Text = "CodexData_Artemis_01",
+-- 		},
+-- 	},
+-- 	Image = "Codex_Portrait_Artemis",
+-- 	BoonInfoEnemyName = "NPC_Artemis_Field_01",
+-- },

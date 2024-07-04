@@ -7,7 +7,7 @@ game.TraitData.ArtemisWeaponBoon = {
     BoonInfoTitle = "ArtemisWeaponBoon",
     Icon = "Boon_Artemis_ArtemisWeaponBoon",
     Slot = "Melee",
-    TraitOrderingValueCache = -1,
+    TraitOrderingValueCache = 50,
     BlockStacking = false,
     RarityLevels = {
         Common = {
@@ -36,6 +36,33 @@ game.TraitData.ArtemisWeaponBoon = {
             }
         },
         ValidWeapons = WeaponSets.HeroPrimaryWeapons,
+
+        ValidWeaponsLookup = {
+            WeaponDagger2 = true,
+            WeaponDagger5 = true,
+            WeaponTorch = true,
+            WeaponLob = true,
+            WeaponAxe = true,
+            WeaponStaffDash = true,
+            WeaponStaffSwing5 = true,
+            WeaponAxe2 = true,
+            WeaponLobChargedPulse = true,
+            WeaponAxe3 = true,
+            WeaponLobPulse = true,
+            WeaponDagger = true,
+            WeaponStaffSwing2 = true,
+            WeaponDaggerDash = true,
+            WeaponAxeDash = true,
+            WeaponDaggerDouble = true,
+            WeaponDaggerMultiStab = true,
+            WeaponStaffSwing3 = true,
+            WeaponStaffSwing = true,
+            WeaponAxeSpin = true
+        },
+
+        -- or
+        -- ValidWeaponsLookup = WeaponSets.HeroPrimaryWeapons,
+
         ReportValues = {
             ReportedValidWeaponMultiplier = "ValidWeaponMultiplier"
         }
