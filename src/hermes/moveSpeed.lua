@@ -1,11 +1,10 @@
 -- File is to create the Hermes Greater Haste Boon
 -- LootData_Hermes, TraitData_Hermes
--- Insert into hermes trait table
-table.insert(game.LootData.HermesUpgrade.Traits, "MoveSpeedBoon")
-
+--
 -- Creating the boon functions itself
 game.TraitData.MoveSpeedBoon = {
-    InheritFrom = {"BaseTrait", "LegacyTrait", "AirBoon"},
+    InheritFrom = {"BaseTrait", "AirBoon"},
+    Elements = {"Air"}, -- Need to add this even if you inherit
     Name = "MoveSpeedBoon",
     Icon = "Boon_Hermes_MoveSpeedBoon",
     TraitOrderingValueCache = -1,
@@ -66,3 +65,10 @@ zanncdwbl_BoonAdditions.MoveSpeedBoon_Text = sjson.to_object({
     DisplayName = "{!Icons.Bullet}{#PropertyFormat}Move Speed:",
     Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:F}"
 }, zanncdwbl_BoonAdditions.Order)
+
+-- Insert into hermes trait table
+table.insert(game.LootData.HermesUpgrade.Traits, "MoveSpeedBoon")
+game.LootData.HermesUpgrade.TraitIndex["MoveSpeedBoon"] = true
+-- Insert TraitIndex into BoonInfo or else it won't show up in codex since BoonInfo gets populated before traits are added by mods
+-- Just adds the boon to the codex - aka the (Hidden) "TraitIndex"
+game.ScreenData.BoonInfo.TraitDictionary.HermesUpgrade["MoveSpeedBoon"] = true

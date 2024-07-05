@@ -1,11 +1,10 @@
 -- File is to create the Hermes Rush Delivery Boon
 -- LootData_Hermes, TraitData_Hermes
--- Insert into hermes trait table
-table.insert(game.LootData.HermesUpgrade.Traits, "SpeedDamageBoon")
-
+--
 -- Creating the boon functions itself
 game.TraitData.SpeedDamageBoon = {
-    InheritFrom = {"BaseTrait", "LegacyTrait", "AirBoon"},
+    InheritFrom = {"BaseTrait", "FireBoon"},
+    Elements = {"Fire"}, -- Need to add this even if you inherit
     Name = "SpeedDamageBoon",
     Icon = "Boon_Hermes_SpeedDamageBoon",
     TraitOrderingValueCache = -1,
@@ -67,8 +66,19 @@ zanncdwbl_BoonAdditions.SpeedDamageBoon_Text = sjson.to_object({
     Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipBonus:F}"
 }, zanncdwbl_BoonAdditions.Order)
 
+-- Insert into hermes trait table
+table.insert(game.LootData.HermesUpgrade.Traits, "SpeedDamageBoon")
+game.LootData.HermesUpgrade.TraitIndex["SpeedDamageBoon"] = true
+-- Insert TraitIndex into BoonInfo or else it won't show up in codex since BoonInfo gets populated before traits are added by mods
+-- Just adds the boon to the codex - aka the (Hidden) "TraitIndex"
+game.ScreenData.BoonInfo.TraitDictionary.HermesUpgrade["SpeedDamageBoon"] = true
+
 -- Just so the boon isn't useless, have some movespeed upgrade lol, directly in TraitData.lua
 local SpeedDamageBoonRequirements = {
-    OneOf = {"MoveSpeedTrait", "FastClearDodgeBonusKeepsake"}
+    -- cannot use this, cause it will cry about the keepsake, so I'll leave it for now, probaably need to do something with HiddenTrait, which is commented out.
+    -- OneOf = {"MoveSpeedBoon", "FastClearDodgeBonusKeepsake"}
+    OneOf = {"MoveSpeedBoon"}
 }
+-- This adds the requirement
 game.TraitRequirements["SpeedDamageBoon"] = SpeedDamageBoonRequirements
+game.ScreenData.BoonInfo.TraitRequirementsDictionary["SpeedDamageBoon"] = SpeedDamageBoonRequirements

@@ -6,6 +6,7 @@ table.insert(game.LootData.HermesUpgrade.Traits, "RushRallyBoon")
 -- Creating the boon functions itself
 game.TraitData.RushRallyBoon = {
     InheritFrom = {"BaseTrait", "AirBoon"},
+    Elements = {"Air"}, -- Need to add this even if you inherit
     Name = "RushRallyBoon",
     Icon = "Boon_Hermes_RushRallyBoon",
     TraitOrderingValueCache = -1,
