@@ -72,9 +72,9 @@ zanncdwbl_BoonAdditions.BoonDropArtemisPreview = sjson.to_object({
     Name = "BoonDropArtemisPreview",
     InheritFrom = "BoonDropRoomRewardIconPreviewBase",
     NumFrames = 1,
-    FilePath = rom.path.combine(_PLUGIN.guid, "Items\\Loot\\Boon\\ArtemisIconSpin\\ArtemisIconSpin0015"),
+    FilePath = rom.path.combine(_PLUGIN.guid, "Items\\Loot\\Boon\\ArtemisIconSpin\\ArtemisIconSpin00151"),
     OffsetZ = 0,
-    Scale = 1.0,
+    Scale = 0.8,
     ColorFromOwner = "Maintain",
     AngleFromOwner = "Ignore"
 }, zanncdwbl_BoonAdditions.FxMainOrder)

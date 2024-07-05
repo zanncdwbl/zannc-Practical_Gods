@@ -1,5 +1,6 @@
 -- Creating Artemis in LootData, allows for natural spawns etc
 game.LootData.ArtemisUpgrade = {
+    -- Check all of these, unique or always static?
     SelectionSound = "/SFX/Menu Sounds/GeneralWhooshMENU",
     UseTextTalkAndSpecial = "UseLootAndSpecial",
 
@@ -18,8 +19,8 @@ game.LootData.ArtemisUpgrade = {
     LootRejectionAnimation = "BoonDissipateA_Zeus",
 
     -- Might need these? check later
-    -- UseTextTalkAndGift = "UseLootAndGift",
-    -- BoonInfoTitleText = "Codex_BoonInfo_Artemis",
+    UseTextTalkAndGift = "UseLootAndGift",
+    BoonInfoTitleText = "Codex_BoonInfo_Artemis",
 
     -- Done Stuff 
     Name = "ArtemisUpgrade",
@@ -94,7 +95,29 @@ game.LootData.ArtemisUpgrade = {
         TimedCritVulnerabilityBoon = true,
         -- New Boons
         ArtemisWeaponBoon = true
+    },
+
+    -- On First Spawn
+    OnSpawnVoiceLines = {
+        BreakIfPlayed = true,
+        RandomRemaining = true,
+        PlayOnceFromTableThisRun = true,
+        PreLineWait = 0.85,
+        SuccessiveChanceToPlay = 0.25,
+        GameStateRequirements = {
+            NamedRequirements = {"OlympianOnSpawnVoiceLinesAllowed"}
+        },
+
+        {
+            Cue = "/VO/Melinoe_1472",
+            Text = "It's her."
+        }
+    },
+
+    UpgradeMenuOpenVoiceLines = {
+        [1] = GlobalVoiceLines.HeraclesBoonReactionVoiceLines
     }
+
 }
 
 -- adding LootData Artemis to Codex, uses same as other artemis just without the enemy name

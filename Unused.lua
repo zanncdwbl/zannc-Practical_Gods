@@ -75,3 +75,69 @@ table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonBackingB_Artemis)
 -- Game already has these 2
 table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonBackingC_Artemis)
 table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolArtemisIcon)
+
+-- Artemis Dialogue Stuff
+-- InteractTextLineSets = {
+--     -- ArtemisFirstMeeting = {
+--     --     PlayOnce = true,
+--     --     GameStateRequirements = {{}},
+--     --     {
+--     --         Cue = "/VO/Melinoe_0630",
+--     --         UsePlayerSource = true,
+--     --         PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
+--     --         PreLineThreadedFunctionArgs = {
+--     --             Emote = "None",
+--     --             Portrait = "Portrait_Mel_Intense_01",
+--     --             WaitTime = 4.9,
+--     --             PowerWordPresentation = true,
+--     --             PowerWordWaitTime = 6.35
+--     --         },
+--     --         -- PostLineAnim = "MelinoeInteractEquip", PostLineAnimTarget = "Hero",
+--     --         PostLineFunctionName = "BoonInteractPresentation",
+--     --         BoxAnimation = "DialogueSpeechBubble",
+--     --         BoxExitAnimation = "DialogueSpeechBubbleOut",
+--     --         NarrativeContextArt = "DialogueBackground_Erebus",
+--     --         PostLineRemoveContextArt = true,
+--     --         TextColor = Color.DialogueText,
+--     --         Text = "Just a spell, it's just another spell. Ten words.... {#Emph}In the name of Hades! Olympus, I accept this message!"
+--     --     },
+--     --     {
+--     --         Cue = "/VO/Apollo_0088",
+--     --         PortraitExitWait = 1.25,
+--     --         NarrativeContextArt = "DialogueBackground_Olympus",
+--     --         PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
+--     --         Text = "Greetings from Olympus and well met, there, sunshine! Look, we can't get to the Titan, but if you truly mean to stop him, then the least I can do is light your way down."
+--     --     }
+--     -- },
+--     ArtemisFirstMeeting = {
+--         PlayOnce = true,
+--         GameStateRequirements = {{}},
+--         {
+--             Cue = "/VO/Artemis_0167",
+--             PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
+--             PostLineFunctionName = "BoonInteractPresentation",
+--             BoxAnimation = "DialogueSpeechBubble",
+--             BoxExitAnimation = "DialogueSpeechBubbleOut",
+--             NarrativeContextArt = "DialogueBackground_Erebus",
+--             PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
+--             PostLineRemoveContextArt = true,
+--             TextColor = Color.DialogueText,
+--             Text = "It's been too long, Sister. Look at you, on your great hunt! Not ideal circumstances but you've finally begun. Know that the family has your back, surprised as they are about this."
+--         },
+--         {
+--             Cue = "/VO/Melinoe_1179",
+--             UsePlayerSource = true,
+--             Portrait = "Portrait_Mel_Pleased_01",
+--             PreLineAnim = "MelTalkExplaining01",
+--             PreLineAnimTarget = "Hero",
+--             PostLineAnim = "MelinoeIdleWeaponless",
+--             PostLineAnimTarget = "Hero",
+--             Text = "No shortage lately of surprises on Olympus or below. It's good to see you, Artemis. But, I must be off. Time's against us, and all that."
+--         },
+--         {
+--             Cue = "/VO/Artemis_0168",
+--             PortraitExitWait = 1.25,
+--             Text = "{#Emph}Time{#Prev}'s an old fool too busy besieging the mountain of the gods to sense the threat headed his way. Go get him."
+--         }
+--     }
+-- }

@@ -74,5 +74,4 @@ end)
 sjson.hook(zanncdwbl_BoonAdditions.MacroTextFile, function(data)
     table.insert(data.Texts, zanncdwbl_BoonAdditions.Player_GodDispleased_ArtemisUpgrade)
     table.insert(data.Texts, zanncdwbl_BoonAdditions.SuperSacrifice_CombatText_ArtemisUpgrade)
-
 end)
