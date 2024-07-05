@@ -2,10 +2,12 @@
 ---@diagnostic disable: lowercase-global
 zanncdwbl_BoonAdditions.TraitTextFile = rom.path.combine(rom.paths.Content, "Game/Text/en/TraitText.en.sjson")
 zanncdwbl_BoonAdditions.GUIAnimationsFile = rom.path.combine(rom.paths.Content, "Game/Animations/GUIAnimations.sjson")
+zanncdwbl_BoonAdditions.MacroTextFile = rom.path.combine(rom.paths.Content, "Game/Text/en/MacroText.sjson")
 zanncdwbl_BoonAdditions.FxFile = rom.path.combine(rom.paths.Content, "Game/Animations/Fx.sjson")
 
 zanncdwbl_BoonAdditions.Order = {"Id", "InheritFrom", "DisplayName", "Description"}
 zanncdwbl_BoonAdditions.IconOrder = {"Name", "InheritFrom", "FilePath"}
+zanncdwbl_BoonAdditions.MacroOrder = {"Id", "DisplayName"}
 
 -- Artemis Icon File Orders
 zanncdwbl_BoonAdditions.FxMainOrder = {"Name", "InheritFrom", "NumFrames", "FilePath", "OffsetZ", "Scale",
@@ -50,6 +52,9 @@ sjson.hook(zanncdwbl_BoonAdditions.TraitTextFile, function(data)
     -- Artemis Boons
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon)
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text)
+
+    -- Artemis Store Text
+    table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisUpgrade_Store)
 end)
 
 -- Insert for Fx, Just mainly Artemis
@@ -63,4 +68,11 @@ sjson.hook(zanncdwbl_BoonAdditions.FxFile, function(data)
 
     table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonDropArtemisPreview)
     table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonDropArtemisUpgradedPreview)
+end)
+
+-- Insert for MacroTextFile
+sjson.hook(zanncdwbl_BoonAdditions.MacroTextFile, function(data)
+    table.insert(data.Texts, zanncdwbl_BoonAdditions.Player_GodDispleased_ArtemisUpgrade)
+    table.insert(data.Texts, zanncdwbl_BoonAdditions.SuperSacrifice_CombatText_ArtemisUpgrade)
+
 end)

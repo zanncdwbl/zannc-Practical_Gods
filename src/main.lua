@@ -38,8 +38,8 @@ local function on_ready()
     import "hermes/bonusDash.lua"
 
     -- Artemis Boons
-    import "artemis/artemisSJSONIcons.lua"
     import "artemis/artemisLootData.lua"
+    import "artemis/artemisSJSONIcons.lua"
 
     import "artemis/critAttack.lua"
     -- import "artemis/critAttackSJSON.lua"

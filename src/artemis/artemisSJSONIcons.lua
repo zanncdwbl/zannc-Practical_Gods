@@ -84,3 +84,22 @@ zanncdwbl_BoonAdditions.BoonDropArtemisUpgradedPreview = sjson.to_object({
     InheritFrom = "BoonDropArtemisPreview",
     ChildAnimation = "BoonUpgradedPreviewSparkles"
 }, zanncdwbl_BoonAdditions.FxChildOrder)
+
+-- TraitText for store
+zanncdwbl_BoonAdditions.ArtemisUpgrade_Store = sjson.to_object({
+    Id = "ArtemisUpgrade_Store",
+    InheritFrom = nil,
+    DisplayName = "Boon of Artemis",
+    Description = "Receive a {$Keywords.GodBoon} of {#BoldFormat}Artemis{#Prev}."
+}, zanncdwbl_BoonAdditions.Order)
+
+-- MacroText for displeased
+zanncdwbl_BoonAdditions.Player_GodDispleased_ArtemisUpgrade = sjson.to_object({
+    Id = "Player_GodDispleased_ArtemisUpgrade",
+    DisplayName = "Artemis Grew Displeased!"
+}, zanncdwbl_BoonAdditions.MacroOrder)
+
+zanncdwbl_BoonAdditions.SuperSacrifice_CombatText_ArtemisUpgrade = sjson.to_object({
+    Id = "SuperSacrifice_CombatText_ArtemisUpgrade",
+    DisplayName = "{#CombatTextHighlightFormat}Boons of Artemis {#Prev}{#UpgradeFormat}+{$TempTextData.Amount}{#Prev}{!Icons.PomLevel}!"
+}, zanncdwbl_BoonAdditions.MacroOrder)

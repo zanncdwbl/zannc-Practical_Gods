@@ -1,8 +1,10 @@
 -- File is to create the Artemis Deadly Strike Boon
 -- TraitData_Artemis
+--
 -- Creating the boon functions itself
 game.TraitData.ArtemisWeaponBoon = {
-    InheritFrom = {"BaseTrait", "LegacyTrait", "EarthBoon"},
+    InheritFrom = {"BaseTrait", "EarthBoon"},
+    Elements = {"Earth"}, -- Need to add this even if you inherit
     Name = "ArtemisWeaponBoon",
     BoonInfoTitle = "ArtemisWeaponBoon",
     Icon = "Boon_Artemis_ArtemisWeaponBoon",
@@ -414,3 +416,15 @@ zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text = sjson.to_object({
     DisplayName = "{!Icons.Bullet}{#PropertyFormat}Attack Damage:",
     Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:F}"
 }, zanncdwbl_BoonAdditions.Order)
+
+-- Adding Boons to Default Artemis
+table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisWeaponBoon")
+
+-- Insert TraitIndex into BoonInfo or else it won't show up in codex since BoonInfo gets populated before traits are added by mods
+-- Just adds the boon to the codex - aka the (Hidden) "TraitIndex"
+game.ScreenData.BoonInfo.TraitDictionary.NPC_Artemis_Field_01["ArtemisWeaponBoon"] = true
+
+-- Adding Traits to TraitData Table, and adding her as core, aka weapon, special, cast, etc
+table.insert(game.LinkedTraitData.WeaponTraits, "ArtemisWeaponBoon")
+table.insert(game.LinkedTraitData.SpecialTraits, "ArtemisWeaponBoon")
+table.insert(game.LinkedTraitData.ArtemisCoreTraits, "ArtemisWeaponBoon")
