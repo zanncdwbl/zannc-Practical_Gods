@@ -32,6 +32,8 @@ sjson.hook(zanncdwbl_BoonAdditions.GUIAnimationsFile, function(data)
 
     -- Artemis Boons
     table.insert(data.Animations, zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisWeaponBoon)
+    table.insert(data.Animations, zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisSpecialBoon)
+    table.insert(data.Animations, zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisCriticalBoon)
 
     -- Artemis Icon
     table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonInfoSymbolArtemisIcon)
@@ -52,6 +54,10 @@ sjson.hook(zanncdwbl_BoonAdditions.TraitTextFile, function(data)
     -- Artemis Boons
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon)
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text)
+    table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisSpecialBoon)
+    table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisSpecialBoon_Text)
+    table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisCriticalBoon)
+    table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisCriticalBoon_Text)
 
     -- Artemis Store Text
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisUpgrade_Store)
