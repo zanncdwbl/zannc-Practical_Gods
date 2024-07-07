@@ -85,7 +85,7 @@ game.TraitData.ArtemisSpecialBoon = {
 zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisSpecialBoon = sjson.to_object({
     Name = "Boon_Artemis_ArtemisSpecialBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Deadly_Flourish")
+    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Deadly_Flourish")
 }, zanncdwbl_BoonAdditions.IconOrder)
 
 -- Boons Description/Display

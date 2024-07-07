@@ -2,7 +2,7 @@
 zanncdwbl_BoonAdditions.BoonInfoSymbolArtemisIcon = sjson.to_object({
     Name = "BoonInfoSymbolArtemisIcon",
     InheritFrom = "BoonInfoSymbolBase",
-    FilePath = rom.path.combine(_PLUGIN.guid, "Items\\Loot\\Boon\\ArtemisIconSpin\\ArtemisIconSpin0015")
+    FilePath = rom.path.combine(_PLUGIN.guid, "Loot\\ArtemisIconSpin\\ArtemisIconSpin0015")
 }, zanncdwbl_BoonAdditions.IconOrder)
 
 -- Fx.sjson
@@ -63,7 +63,7 @@ zanncdwbl_BoonAdditions.BoonDropC_Artemis = sjson.to_object({
 zanncdwbl_BoonAdditions.BoonDropArtemisIcon = sjson.to_object({
     Name = "BoonDropArtemisIcon",
     InheritFrom = "BoonDropIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "Items\\Loot\\Boon\\ArtemisIconSpin\\ArtemisIconSpin"),
+    FilePath = rom.path.combine(_PLUGIN.guid, "Loot\\ArtemisIconSpin\\ArtemisIconSpin"),
     OffsetZ = -45.0,
     Scale = 0.80
 }, zanncdwbl_BoonAdditions.FxBoonDrop)
@@ -72,7 +72,7 @@ zanncdwbl_BoonAdditions.BoonDropArtemisPreview = sjson.to_object({
     Name = "BoonDropArtemisPreview",
     InheritFrom = "BoonDropRoomRewardIconPreviewBase",
     NumFrames = 1,
-    FilePath = rom.path.combine(_PLUGIN.guid, "Items\\Loot\\Boon\\ArtemisIconSpin\\ArtemisIconSpin00151"),
+    FilePath = rom.path.combine(_PLUGIN.guid, "Loot\\ArtemisIconSpin\\ArtemisIconSpin00151"),
     OffsetZ = 0,
     Scale = 0.8,
     ColorFromOwner = "Maintain",

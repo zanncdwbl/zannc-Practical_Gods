@@ -9,7 +9,7 @@ game.TraitData.BonusDashBoon.Icon = "Boon_Hermes_BonusDashBoon"
 zanncdwbl_BoonAdditions.Boon_Hermes_BonusDashBoon = sjson.to_object({
     Name = "Boon_Hermes_BonusDashBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Greatest_Reflex")
+    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Greatest_Reflex")
 }, zanncdwbl_BoonAdditions.IconOrder)
 
 -- Boons Description/Display

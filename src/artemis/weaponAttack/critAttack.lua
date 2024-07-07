@@ -99,7 +99,7 @@ game.TraitData.ArtemisWeaponBoon = {
 zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisWeaponBoon = sjson.to_object({
     Name = "Boon_Artemis_ArtemisWeaponBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Deadly_Strike")
+    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Deadly_Strike")
 }, zanncdwbl_BoonAdditions.IconOrder)
 
 -- Boons Description/Display

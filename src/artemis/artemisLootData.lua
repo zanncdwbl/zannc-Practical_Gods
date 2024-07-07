@@ -24,7 +24,7 @@ game.LootData.ArtemisUpgrade = {
 
     -- Done Stuff 
     Name = "ArtemisUpgrade",
-    OffersElementalTrait = {"Air", "Water"},
+    OffersElementalTrait = {"Air", "Water", "Earth"},
     InheritFrom = {"BaseLoot", "BaseSoundPackage"},
 
     Gender = "Female",
@@ -79,23 +79,12 @@ game.LootData.ArtemisUpgrade = {
     DoorUpgradedIcon = "BoonDropArtemisUpgradedPreview",
     EchoLastRewardId = "EchoLastRewardBoon_Artemis", -- This might need to have Upgrade at the end
 
-    PriorityUpgrades = {"ArtemisWeaponBoon"},
-    WeaponUpgrades = {"ArtemisWeaponBoon"},
+    PriorityUpgrades = {"ArtemisWeaponBoon", "ArtemisSpecialBoon"},
+    WeaponUpgrades = {"ArtemisWeaponBoon", "ArtemisSpecialBoon"},
     Traits = {"SupportingFireBoon", "CritBonusBoon", "DashOmegaBuffBoon", "HighHealthCritBoon", "InsideCastCritBoon",
-              "OmegaCastVolleyBoon", "TimedCritVulnerabilityBoon"},
+              "OmegaCastVolleyBoon", "TimedCritVulnerabilityBoon", "ArtemisCriticalBoon"},
 
-    -- Dunno if I need this here, since i'm adding it later anyway
-    TraitIndex = {
-        SupportingFireBoon = true,
-        CritBonusBoon = true,
-        DashOmegaBuffBoon = true,
-        HighHealthCritBoon = true,
-        InsideCastCritBoon = true,
-        OmegaCastVolleyBoon = true,
-        TimedCritVulnerabilityBoon = true,
-        -- New Boons
-        ArtemisWeaponBoon = true
-    },
+    TraitIndex = {},
 
     -- On First Spawn
     OnSpawnVoiceLines = {
@@ -137,7 +126,7 @@ game.CodexData.OlympianGods.Entries.ArtemisUpgrade = {
 game.LinkedTraitData.ArtemisCoreTraits = {}
 
 -- Need to add to boon info manually since this table is populated way before I do any inserts, plus it doesn't exist even if I have traitindex up in loot
-game.ScreenData.BoonInfo.TraitDictionary.ArtemisUpgrade = {
+local ArtemisTraitDictionary = {
     SupportingFireBoon = true,
     CritBonusBoon = true,
     DashOmegaBuffBoon = true,
@@ -146,8 +135,13 @@ game.ScreenData.BoonInfo.TraitDictionary.ArtemisUpgrade = {
     OmegaCastVolleyBoon = true,
     TimedCritVulnerabilityBoon = true,
     -- New Boons
-    ArtemisWeaponBoon = true
+    ArtemisWeaponBoon = true,
+    ArtemisSpecialBoon = true,
+    ArtemisCriticalBoon = true
 }
+
+game.ScreenData.BoonInfo.TraitDictionary.ArtemisUpgrade = ArtemisTraitDictionary
+game.LootData.ArtemisUpgrade.TraitIndex = ArtemisTraitDictionary
 
 -- This is to add Artemis to RunProgress in LootData so she can spawn as a boon room
 local requirementName = {"MaxHealthDrop", "MaxManaDrop", "RoomMoneyDrop", "StackUpgrade", "Devotion"}
