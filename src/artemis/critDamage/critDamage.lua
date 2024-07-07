@@ -29,6 +29,12 @@ game.TraitData.ArtemisCriticalBoon = {
         CritDamageBonus = {
             BaseValue = 1.15,
             SourceIsMultiplier = true,
+            -- Scaling thing with pom
+            AbsoluteStackValues = {
+                [1] = 1.20,
+                [2] = 1.15,
+                [3] = 1.10
+            },
             ChangeType = "Multiply"
         },
         ReportValues = {
@@ -79,39 +85,15 @@ table.insert(game.LinkedTraitData.WeaponTraits, "ArtemisCriticalBoon")
 table.insert(game.LinkedTraitData.SpecialTraits, "ArtemisCriticalBoon")
 table.insert(game.LinkedTraitData.ArtemisCoreTraits, "ArtemisCriticalBoon")
 
-modutil.mod.Path.Wrap("Damage", function(base, victim, triggerArgs)
-    if not triggerArgs.PureDamage then
-        local attacker = triggerArgs.AttackerTable
-        local sourceProjectileData = nil
-        local sourceEffectData = nil
-        local sourceWeaponData = GetWeaponData(attacker, triggerArgs.SourceWeapon)
-        if triggerArgs.SourceProjectile ~= nil then
-            sourceProjectileData = ProjectileData[triggerArgs.SourceProjectile]
-        end
-        if triggerArgs.EffectName ~= nil then
-            sourceEffectData = EffectData[triggerArgs.EffectName]
-        end
-        local baseDamage = triggerArgs.DamageAmount + CalculateBaseDamageAdditions(attacker, victim, triggerArgs)
-        local multipliers = CalculateDamageMultipliers(attacker, victim, sourceWeaponData, triggerArgs)
-        local additive = CalculateDamageAdditions(attacker, victim, sourceWeaponData, triggerArgs)
-        local critChance = CalculateCritChance(attacker, victim, sourceWeaponData, triggerArgs)
-        triggerArgs.IsCrit = RandomChance(critChance)
-        triggerArgs.DamageAmount = round(baseDamage * multipliers) + additive
+-- Multiply crit damage by x boon amount
+modutil.mod.Path.Wrap("DamageEnemy", function(base, victim, triggerArgs)
+    local attacker = triggerArgs.AttackerTable
 
-        -- Base Code
-        -- if triggerArgs.IsCrit then
-        --     triggerArgs.DamageAmount = triggerArgs.DamageAmount * 3
-        -- end
-
-        if triggerArgs.IsCrit then
-            local critMultiplier = 3
-            for _, modifierData in pairs(attacker.OutgoingDamageModifiers) do
-                if modifierData.CritDamageBonus then -- If the boon is active, then multiply 3 x whatever the mult is
-                    critMultiplier = critMultiplier * modifierData.CritDamageBonus
-                end
+    if triggerArgs.IsCrit then
+        for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
+            if modifierData.CritDamageBonus then
+                triggerArgs.DamageAmount = triggerArgs.DamageAmount * modifierData.CritDamageBonus
             end
-
-            triggerArgs.DamageAmount = round(baseDamage * multipliers * critMultiplier) + additive
         end
     end
     base(victim, triggerArgs)

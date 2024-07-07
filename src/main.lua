@@ -44,6 +44,7 @@ local function on_ready()
     import "artemis/weaponAttack/critAttack.lua"
     import "artemis/weaponSpecial/critSpecial.lua"
     import "artemis/critDamage/critDamage.lua"
+    import "artemis/armourDamage/armourDamage.lua"
 
     -- import "artemis/weaponAttack/critAttackSJSON.lua"
     -- import "artemis/weaponSpecial/critSpecialSJSON.lua"
