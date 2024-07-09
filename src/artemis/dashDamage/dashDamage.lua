@@ -1,0 +1,63 @@
+-- ArtemisRushTrait =
+-- {
+-- 	InheritFrom = { "ShopTier1Trait" },
+-- 	RequiredFalseTraits = { "GunLoadedGrenadeTrait" },
+-- 	God = "Artemis",
+-- 	Icon = "Boon_Artemis_03",
+-- 	Slot = "Rush",
+-- 	RarityLevels =
+-- 	{
+-- 		Common =
+-- 		{
+-- 			Multiplier = 1.00,
+-- 		},
+-- 		Rare =
+-- 		{
+-- 			Multiplier = 1.20,
+-- 		},
+-- 		Epic =
+-- 		{
+-- 			Multiplier = 1.40,
+-- 		},
+-- 		Heroic =
+-- 		{
+-- 			Multiplier = 1.60,
+-- 		}
+-- 	},
+-- 	AddOutgoingDamageModifiers =
+-- 	{
+-- 		ValidWeaponMultiplier = {
+-- 			BaseValue = 1.5,
+-- 			SourceIsMultiplier = true,
+-- 			IdenticalMultiplier =
+-- 			{
+-- 				Value = -0.8,
+-- 			},
+-- 		},
+-- 		ValidWeapons = WeaponSets.HeroDashWeapons,
+-- 		ExcludeLinked = true,
+-- 		ExtractValues =
+-- 		{
+-- 			{
+-- 				Key = "ValidWeaponMultiplier",
+-- 				ExtractAs = "TooltipDamageBonus",
+-- 				Format = "PercentDelta",
+-- 			},
+-- 		}
+-- 	},
+-- 	PropertyChanges =
+-- 	{
+-- 		{
+-- 			WeaponNames = WeaponSets.HeroRushWeapons,
+-- 			WeaponProperty = "FireFx",
+-- 			ChangeValue = "BlinkTrailVerticalB-Artemis",
+-- 			ChangeType = "Absolute",
+-- 		},
+-- 		{
+-- 			WeaponNames = WeaponSets.HeroRushWeapons,
+-- 			WeaponProperty = "FireGraphic",
+-- 			ChangeValue = "ZagreusDashNoCollide_Artemis",
+-- 			ChangeType = "Absolute",
+-- 		},
+-- 	},
+-- },

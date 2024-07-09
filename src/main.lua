@@ -45,14 +45,15 @@ local function on_ready()
     import "artemis/weaponSpecial/critSpecial.lua"
     import "artemis/critDamage/critDamage.lua"
     import "artemis/armourDamage/armourDamage.lua"
+    -- import "artemis/dashDamage/dashDamage.lua"
 
     -- import "artemis/weaponAttack/critAttackSJSON.lua"
     -- import "artemis/weaponSpecial/critSpecialSJSON.lua"
-
 end
 
 local function on_reload()
     import_as_fallback(rom.game)
+    import "reload.lua"
 end
 
 local loader = reload.auto_single()

@@ -48,7 +48,7 @@ game.TraitData.SpeedDamageBoon = {
 zanncdwbl_BoonAdditions.Boon_Hermes_SpeedDamageBoon = sjson.to_object({
     Name = "Boon_Hermes_SpeedDamageBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Rush_Delivery")
+    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Rush_Delivery")
 }, zanncdwbl_BoonAdditions.IconOrder)
 
 -- Boons Description/Display

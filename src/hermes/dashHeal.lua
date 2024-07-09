@@ -72,7 +72,7 @@ game.TraitData.RushRallyBoon = {
 zanncdwbl_BoonAdditions.Boon_Hermes_RushRallyBoon = sjson.to_object({
     Name = "Boon_Hermes_RushRallyBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Quick_Recovery")
+    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Quick_Recovery")
 }, zanncdwbl_BoonAdditions.IconOrder)
 
 -- Boons Description/Display

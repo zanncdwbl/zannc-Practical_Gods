@@ -10,6 +10,7 @@ game.TraitData.ArtemisWeaponBoon = {
     Icon = "Boon_Artemis_ArtemisWeaponBoon",
     Slot = "Melee",
     TraitOrderingValueCache = 50,
+    Cost = 30,
     BlockStacking = false,
     RarityLevels = {
         Common = {
@@ -37,7 +38,11 @@ game.TraitData.ArtemisWeaponBoon = {
                 [3] = 1.10
             }
         },
-        ValidWeapons = WeaponSets.HeroPrimaryWeapons,
+        -- IDK why I have to do this
+        ValidWeapons = {"WeaponDagger2", "WeaponDagger5", "WeaponTorch", "WeaponLob", "WeaponAxe", "WeaponStaffDash",
+                        "WeaponStaffSwing5", "WeaponAxe2", "WeaponLobChargedPulse", "WeaponAxe3", "WeaponLobPulse",
+                        "WeaponDagger", "WeaponStaffSwing2", "WeaponDaggerDash", "WeaponAxeDash", "WeaponDaggerDouble",
+                        "WeaponDaggerMultiStab", "WeaponStaffSwing3", "WeaponStaffSwing", "WeaponAxeSpin"},
 
         -- Don't really know if I need this, but it varies between melee/special etc
         ValidWeaponsLookup = {
@@ -73,23 +78,27 @@ game.TraitData.ArtemisWeaponBoon = {
         Chance = {
             BaseValue = 0.15,
             SourceIsMultiplier = false,
-            IgnoreRarity = true
+            IgnoreRarity = true,
+            -- Have to get super awesome wicked so that the crit doesn't upgrade with poms
+            AbsoluteStackValues = {
+                [1] = 0
+            }
         },
         ReportValues = {
             ExtractCritChance = "Chance"
         }
     },
 
-    StatLines = {"AttackBonusStatDisplay1"},
+    StatLines = {"AttackDamageStatDisplay1"},
 
     ExtractValues = {{
+        Key = "ReportedValidWeaponMultiplier",
+        ExtractAs = "TooltipDamageBonus",
+        Format = "PercentDelta"
+    }, {
         Key = "ExtractCritChance",
         ExtractAs = "TooltipCritChance",
         Format = "Percent"
-    }, {
-        Key = "ReportedValidWeaponMultiplier",
-        ExtractAs = "TooltipDamage",
-        Format = "PercentDelta"
     }}
 
     -- Add property changes here
@@ -99,7 +108,7 @@ game.TraitData.ArtemisWeaponBoon = {
 zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisWeaponBoon = sjson.to_object({
     Name = "Boon_Artemis_ArtemisWeaponBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Deadly_Strike")
+    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Deadly_Strike")
 }, zanncdwbl_BoonAdditions.IconOrder)
 
 -- Boons Description/Display
@@ -107,14 +116,7 @@ zanncdwbl_BoonAdditions.ArtemisWeaponBoon = sjson.to_object({
     Id = "ArtemisWeaponBoon",
     InheritFrom = "BaseBoonMultiline",
     DisplayName = "Deadly Strike",
-    Description = "Your {$Keywords.Attack} is stronger, with {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage."
-}, zanncdwbl_BoonAdditions.Order)
-
-zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text = sjson.to_object({
-    Id = "AttackBonusStatDisplay1",
-    InheritFrom = "BaseStatLine",
-    DisplayName = "{!Icons.Bullet}{#PropertyFormat}Attack Damage:",
-    Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:F}"
+    Description = "Your {$Keywords.Attack} is stronger, with a {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage."
 }, zanncdwbl_BoonAdditions.Order)
 
 -- Adding Boons to Default Artemis
@@ -126,5 +128,4 @@ game.ScreenData.BoonInfo.TraitDictionary.NPC_Artemis_Field_01["ArtemisWeaponBoon
 
 -- Adding Traits to TraitData Table, and adding her as core, aka weapon, special, cast, etc
 table.insert(game.LinkedTraitData.WeaponTraits, "ArtemisWeaponBoon")
-table.insert(game.LinkedTraitData.SpecialTraits, "ArtemisWeaponBoon")
 table.insert(game.LinkedTraitData.ArtemisCoreTraits, "ArtemisWeaponBoon")

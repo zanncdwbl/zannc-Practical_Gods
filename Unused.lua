@@ -1,3 +1,9 @@
+zanncdwbl_BoonAdditions.GUIFlameGlow = {"Name", "InheritFrom", "Color"}
+zanncdwbl_BoonAdditions.GUISymbol = {"Name", "InheritFrom", "ChildAnimation", "Scale", "CreateAnimations", "Color"}
+zanncdwbl_BoonAdditions.GUIBackingB = {"Name", "InheritFrom", "ChildAnimation", "Scale", "Color"}
+zanncdwbl_BoonAdditions.GUIBackingC = {"Name", "InheritFrom", "ChildAnimation", "Color"}
+zanncdwbl_BoonAdditions.GUIIcon = {"Name", "InheritFrom", "EndFrame", "StartFrame", "FilePath"}
+--
 -- GUiAnimations.sjson
 zanncdwbl_BoonAdditions.BoonSymbolGlow_Artemis = sjson.to_object({
     Name = "BoonSymbolGlow_Artemis",
@@ -75,6 +81,24 @@ table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonBackingB_Artemis)
 -- Game already has these 2
 table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonBackingC_Artemis)
 table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolArtemisIcon)
+
+-- Stat Line Stuff - TraitTextFile 
+table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text)
+table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisSpecialBoon_Text)
+
+zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text = sjson.to_object({
+    Id = "AttackBonusStatDisplay1",
+    InheritFrom = "BaseStatLine",
+    DisplayName = "{!Icons.Bullet}{#PropertyFormat}Attack Damage:",
+    Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:F}"
+}, zanncdwbl_BoonAdditions.Order)
+
+zanncdwbl_BoonAdditions.ArtemisSpecialBoon_Text = sjson.to_object({
+    Id = "SpecialBonusStatDisplay1",
+    InheritFrom = "BaseStatLine",
+    DisplayName = "{!Icons.Bullet}{#PropertyFormat}Special Damage:",
+    Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:F}"
+}, zanncdwbl_BoonAdditions.Order)
 
 -- Artemis Dialogue Stuff
 -- InteractTextLineSets = {

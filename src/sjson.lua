@@ -16,12 +16,6 @@ zanncdwbl_BoonAdditions.FxChildOrder = {"Name", "InheritFrom", "ChildAnimation"}
 zanncdwbl_BoonAdditions.FxBoonDropOrder = {"Name", "InheritFrom", "ChildAnimation", "CreateAnimations", "Color"}
 zanncdwbl_BoonAdditions.FxBoonDrop = {"Name", "InheritFrom", "FilePath", "OffsetZ", "Scale"}
 
--- zanncdwbl_BoonAdditions.GUIFlameGlow = {"Name", "InheritFrom", "Color"}
--- zanncdwbl_BoonAdditions.GUISymbol = {"Name", "InheritFrom", "ChildAnimation", "Scale", "CreateAnimations", "Color"}
--- zanncdwbl_BoonAdditions.GUIBackingB = {"Name", "InheritFrom", "ChildAnimation", "Scale", "Color"}
--- zanncdwbl_BoonAdditions.GUIBackingC = {"Name", "InheritFrom", "ChildAnimation", "Color"}
--- zanncdwbl_BoonAdditions.GUIIcon = {"Name", "InheritFrom", "EndFrame", "StartFrame", "FilePath"}
-
 -- Insert for Icons
 sjson.hook(zanncdwbl_BoonAdditions.GUIAnimationsFile, function(data)
     -- Hermes Boons
@@ -54,9 +48,7 @@ sjson.hook(zanncdwbl_BoonAdditions.TraitTextFile, function(data)
 
     -- Artemis Boons
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon)
-    table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text)
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisSpecialBoon)
-    table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisSpecialBoon_Text)
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisCriticalBoon)
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisCriticalBoon_Text)
     table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisArmourBoon)

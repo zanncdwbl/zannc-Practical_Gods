@@ -48,7 +48,7 @@ game.TraitData.MoveSpeedBoon = {
 zanncdwbl_BoonAdditions.Boon_Hermes_MoveSpeedBoon = sjson.to_object({
     Name = "Boon_Hermes_MoveSpeedBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Greater_Haste")
+    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Greater_Haste")
 }, zanncdwbl_BoonAdditions.IconOrder)
 
 -- Boons Description/Display
