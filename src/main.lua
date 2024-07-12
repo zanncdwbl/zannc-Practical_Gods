@@ -1,5 +1,5 @@
 ---@meta _
-zanncdwbl_BoonAdditions = zanncdwbl_BoonAdditions or {}
+zanncdwbl_Practical_Gods = zanncdwbl_Practical_Gods or {}
 
 ---@diagnostic disable-next-line: undefined-global
 local mods = rom.mods
@@ -53,7 +53,7 @@ end
 
 local function on_reload()
     import_as_fallback(rom.game)
-    import "reload.lua"
+    -- import "reload.lua"
 end
 
 local loader = reload.auto_single()

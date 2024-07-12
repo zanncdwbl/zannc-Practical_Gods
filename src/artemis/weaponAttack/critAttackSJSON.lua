@@ -297,7 +297,7 @@
 --     ChangeType = "Absolute",
 --     ExcludeLinked = true
 -- }}
-zanncdwbl_BoonAdditions.AxeSwipe1_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipe1_Artemis = sjson.to_object({
     Name = "AxeSwipe1_Artemis",
     InheritFrom = "AxeSwipe1",
     ClearCreateAnimations = true,
@@ -324,9 +324,9 @@ zanncdwbl_BoonAdditions.AxeSwipe1_Artemis = sjson.to_object({
     }, {
         Name = "AxeSwipeLight_Artemis"
     }}
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeSwipe2_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipe2_Artemis = sjson.to_object({
     Name = "AxeSwipe2_Artemis",
     InheritFrom = "AxeSwipe2",
     ClearCreateAnimations = true,
@@ -354,9 +354,9 @@ zanncdwbl_BoonAdditions.AxeSwipe2_Artemis = sjson.to_object({
     }, {
         Name = "AxeSwipe1ArtemisFxFlip"
     }}
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeNova_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeNova_Artemis = sjson.to_object({
     Name = "AxeNova_Artemis",
     InheritFrom = "AxeNova",
     StartRed = 1.0,
@@ -384,9 +384,9 @@ zanncdwbl_BoonAdditions.AxeNova_Artemis = sjson.to_object({
     }, {
         Name = "AxeNovaArtemisCircle"
     }}
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeSwipeUpper_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipeUpper_Artemis = sjson.to_object({
     Name = "AxeSwipeUpper_Artemis",
     InheritFrom = "AxeSwipeUpper",
     ClearCreateAnimations = true,
@@ -412,9 +412,9 @@ zanncdwbl_BoonAdditions.AxeSwipeUpper_Artemis = sjson.to_object({
     }, {
         Name = "AxeSwipeUpper_ArtemisFx"
     }}
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeSwipe2Spin_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipe2Spin_Artemis = sjson.to_object({
     Name = "AxeSwipe2Spin_Artemis",
     InheritFrom = "AxeSwipe1_Artemis",
     LocationZFromOwner = "Take",
@@ -455,9 +455,9 @@ zanncdwbl_BoonAdditions.AxeSwipe2Spin_Artemis = sjson.to_object({
     }, {
         Name = "AxeSwipe2SpinDisplacement"
     }}
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeSwipe1ArtemisFx = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipe1ArtemisFx = sjson.to_object({
     Name = "AxeSwipe1ArtemisFx",
     FilePath = "Fx\\Artemis\\ArtemisSwipe\\ArtemisSwipe", -- ADD
     NumFrames = 23,
@@ -480,24 +480,24 @@ zanncdwbl_BoonAdditions.AxeSwipe1ArtemisFx = sjson.to_object({
     EaseOut = 1.00,
     StartScale = 1.0,
     EndScale = 1.05
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeSwipe1ArtemisFxDisplace = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipe1ArtemisFxDisplace = sjson.to_object({
     Name = "AxeSwipe1ArtemisFxDisplace",
     InheritFrom = "AxeSwipe1ArtemisFx",
     GroupName = "FX_Displacement",
     Scale = 3,
     PlaySpeed = 45,
     Alpha = 0.25
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeSwipe1ArtemisFxDisplaceFlip = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipe1ArtemisFxDisplaceFlip = sjson.to_object({
     Name = "AxeSwipe1ArtemisFxDisplaceFlip",
     InheritFrom = "AxeSwipe1ArtemisFxDisplace",
     FlipVertical = true
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeSwipeArtemisParticle = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipeArtemisParticle = sjson.to_object({
     Name = "AxeSwipeArtemisParticle",
     FilePath = "Fx\\Artemis\\ArtemisAxeHeartParticle\\ArtemisAxeHeartParticle", -- ADD
     RandomPlaySpeedMin = 45,
@@ -525,9 +525,9 @@ zanncdwbl_BoonAdditions.AxeSwipeArtemisParticle = sjson.to_object({
     VisualFxIntervalMin = 0.01,
     VisualFxIntervalMax = 0.1,
     VisualFxUse3DAngle = true
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeSwipe1Spectral_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipe1Spectral_Artemis = sjson.to_object({
     Name = "AxeSwipe1Spectral_Artemis",
     InheritFrom = "AxeSwipe1Spectral",
     Scale = 3.0,
@@ -537,9 +537,9 @@ zanncdwbl_BoonAdditions.AxeSwipe1Spectral_Artemis = sjson.to_object({
     Green = 1,
     Blue = 0.5,
     Saturation = -0.3
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.AxeSwipeLight_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.AxeSwipeLight_Artemis = sjson.to_object({
     Name = "AxeSwipeLight_Artemis",
     InheritFrom = "AxeSwipeLight",
     StartRed = 1.0,
@@ -551,5 +551,5 @@ zanncdwbl_BoonAdditions.AxeSwipeLight_Artemis = sjson.to_object({
     Duration = 0.25,
     Scale = 3.5,
     RotationSpeed = 360
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 

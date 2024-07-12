@@ -1,6 +1,6 @@
 {
     "namespace": "zannc",
-    "name": "BoonAdditions",
+    "name": "Practical_Gods",
     "description": "",
     "version_number": "0.1.0",
     "dependencies": [
@@ -12,5 +12,5 @@
         "SGG_Modding-ENVY-1.0.1"
     ],
     "website_url": "",
-    "FullName": "zannc-BoonAdditions"
+    "FullName": "zannc-Practical_Gods"
 }

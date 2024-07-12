@@ -105,19 +105,19 @@ game.TraitData.ArtemisWeaponBoon = {
 }
 
 -- Icon Data
-zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisWeaponBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisWeaponBoon = sjson.to_object({
     Name = "Boon_Artemis_ArtemisWeaponBoon",
     InheritFrom = "BoonIcon",
     FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Deadly_Strike")
-}, zanncdwbl_BoonAdditions.IconOrder)
+}, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
-zanncdwbl_BoonAdditions.ArtemisWeaponBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.ArtemisWeaponBoon = sjson.to_object({
     Id = "ArtemisWeaponBoon",
     InheritFrom = "BaseBoonMultiline",
     DisplayName = "Deadly Strike",
     Description = "Your {$Keywords.Attack} is stronger, with a {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage."
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
 -- Adding Boons to Default Artemis
 table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisWeaponBoon")

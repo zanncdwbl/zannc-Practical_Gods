@@ -49,26 +49,26 @@ game.TraitData.ArtemisArmourBoon = {
 }
 
 -- Icon Data
-zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisArmourBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisArmourBoon = sjson.to_object({
     Name = "Boon_Artemis_ArtemisArmourBoon",
     InheritFrom = "BoonIcon",
     FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Hide_Breaker")
-}, zanncdwbl_BoonAdditions.IconOrder)
+}, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
-zanncdwbl_BoonAdditions.ArtemisArmourBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.ArtemisArmourBoon = sjson.to_object({
     Id = "ArtemisArmourBoon",
     InheritFrom = "BaseBoonMultiline",
     DisplayName = "Hide Breaker",
     Description = "Your {$Keywords.Crit} effects deal even more damage to {$Keywords.Armor}."
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.ArtemisArmourBoon_Text = sjson.to_object({
+zanncdwbl_Practical_Gods.ArtemisArmourBoon_Text = sjson.to_object({
     Id = "ArmourDamageStatDisplay1",
     InheritFrom = "BaseStatLine",
     DisplayName = "{!Icons.Bullet}{#PropertyFormat}Bonus vs Armour:",
     Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}"
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
 -- Adding Boons to Default Artemis
 table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisArmourBoon")

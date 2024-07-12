@@ -87,19 +87,19 @@ game.TraitData.ArtemisSpecialBoon = {
 }
 
 -- Icon Data
-zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisSpecialBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisSpecialBoon = sjson.to_object({
     Name = "Boon_Artemis_ArtemisSpecialBoon",
     InheritFrom = "BoonIcon",
     FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Deadly_Flourish")
-}, zanncdwbl_BoonAdditions.IconOrder)
+}, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
-zanncdwbl_BoonAdditions.ArtemisSpecialBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.ArtemisSpecialBoon = sjson.to_object({
     Id = "ArtemisSpecialBoon",
     InheritFrom = "BaseBoonMultiline",
     DisplayName = "Deadly Flourish",
     Description = "Your {$Keywords.Special} is stronger, with a {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage."
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
 -- Adding Boons to Default Artemis
 table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisSpecialBoon")

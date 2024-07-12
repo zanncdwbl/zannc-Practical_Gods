@@ -69,23 +69,23 @@ game.TraitData.RushRallyBoon = {
 }
 
 -- Icon Data
-zanncdwbl_BoonAdditions.Boon_Hermes_RushRallyBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.Boon_Hermes_RushRallyBoon = sjson.to_object({
     Name = "Boon_Hermes_RushRallyBoon",
     InheritFrom = "BoonIcon",
     FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Quick_Recovery")
-}, zanncdwbl_BoonAdditions.IconOrder)
+}, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
-zanncdwbl_BoonAdditions.RushRallyBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.RushRallyBoon = sjson.to_object({
     Id = "RushRallyBoon",
     InheritFrom = "BaseBoonMultiline",
     DisplayName = "Quick Recovery",
     Description = "After taking damage, quickly {$Keywords.Dash} to recover some {!Icons.Health_Small_Tooltip} you just lost."
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.RushRallyBoon_Text = sjson.to_object({
+zanncdwbl_Practical_Gods.RushRallyBoon_Text = sjson.to_object({
     Id = "BonusSpeedStatDisplay1",
     InheritFrom = "BaseStatLine",
     DisplayName = "{!Icons.Bullet}{#PropertyFormat}Life Recovered:",
     Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipHeal:F} {#Prev}{#ItalicFormat}of damage taken"
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)

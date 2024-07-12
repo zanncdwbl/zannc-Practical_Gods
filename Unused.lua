@@ -1,11 +1,11 @@
-zanncdwbl_BoonAdditions.GUIFlameGlow = {"Name", "InheritFrom", "Color"}
-zanncdwbl_BoonAdditions.GUISymbol = {"Name", "InheritFrom", "ChildAnimation", "Scale", "CreateAnimations", "Color"}
-zanncdwbl_BoonAdditions.GUIBackingB = {"Name", "InheritFrom", "ChildAnimation", "Scale", "Color"}
-zanncdwbl_BoonAdditions.GUIBackingC = {"Name", "InheritFrom", "ChildAnimation", "Color"}
-zanncdwbl_BoonAdditions.GUIIcon = {"Name", "InheritFrom", "EndFrame", "StartFrame", "FilePath"}
+zanncdwbl_Practical_Gods.GUIFlameGlow = {"Name", "InheritFrom", "Color"}
+zanncdwbl_Practical_Gods.GUISymbol = {"Name", "InheritFrom", "ChildAnimation", "Scale", "CreateAnimations", "Color"}
+zanncdwbl_Practical_Gods.GUIBackingB = {"Name", "InheritFrom", "ChildAnimation", "Scale", "Color"}
+zanncdwbl_Practical_Gods.GUIBackingC = {"Name", "InheritFrom", "ChildAnimation", "Color"}
+zanncdwbl_Practical_Gods.GUIIcon = {"Name", "InheritFrom", "EndFrame", "StartFrame", "FilePath"}
 --
 -- GUiAnimations.sjson
-zanncdwbl_BoonAdditions.BoonSymbolGlow_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.BoonSymbolGlow_Artemis = sjson.to_object({
     Name = "BoonSymbolGlow_Artemis",
     InheritFrom = "BoonSymbolGlow",
     Color = {
@@ -13,9 +13,9 @@ zanncdwbl_BoonAdditions.BoonSymbolGlow_Artemis = sjson.to_object({
         Green = 0.329,
         Blue = 0.173
     }
-}, zanncdwbl_BoonAdditions.GUIFlameGlow)
+}, zanncdwbl_Practical_Gods.GUIFlameGlow)
 
-zanncdwbl_BoonAdditions.BoonSymbolFlare_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.BoonSymbolFlare_Artemis = sjson.to_object({
     Name = "BoonSymbolFlare_Artemis",
     InheritFrom = "BoonSymbolFlare",
     Color = {
@@ -23,9 +23,9 @@ zanncdwbl_BoonAdditions.BoonSymbolFlare_Artemis = sjson.to_object({
         Green = 0.235,
         Blue = 0.000
     }
-}, zanncdwbl_BoonAdditions.GUIFlameGlow)
+}, zanncdwbl_Practical_Gods.GUIFlameGlow)
 
-zanncdwbl_BoonAdditions.BoonSymbolArtemis = sjson.to_object({
+zanncdwbl_Practical_Gods.BoonSymbolArtemis = sjson.to_object({
     Name = "BoonSymbolArtemis",
     InheritFrom = "BoonBackingA",
     ChildAnimation = "BoonBackingB_Artemis",
@@ -40,9 +40,9 @@ zanncdwbl_BoonAdditions.BoonSymbolArtemis = sjson.to_object({
         Green = 0.800,
         Blue = 0.000
     }
-}, zanncdwbl_BoonAdditions.GUISymbol)
+}, zanncdwbl_Practical_Gods.GUISymbol)
 
-zanncdwbl_BoonAdditions.BoonBackingB_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.BoonBackingB_Artemis = sjson.to_object({
     Name = "BoonBackingB_Artemis",
     InheritFrom = "BoonBackingB",
     ChildAnimation = "BoonBackingC_Artemis",
@@ -52,9 +52,9 @@ zanncdwbl_BoonAdditions.BoonBackingB_Artemis = sjson.to_object({
         Green = 0.953,
         Blue = 0.631
     }
-}, zanncdwbl_BoonAdditions.GUIBackingB)
+}, zanncdwbl_Practical_Gods.GUIBackingB)
 
-zanncdwbl_BoonAdditions.BoonBackingC_Artemis = sjson.to_object({
+zanncdwbl_Practical_Gods.BoonBackingC_Artemis = sjson.to_object({
     Name = "BoonBackingC_Artemis",
     InheritFrom = "BoonBackingC",
     ChildAnimation = "BoonSymbolArtemisIcon",
@@ -63,42 +63,42 @@ zanncdwbl_BoonAdditions.BoonBackingC_Artemis = sjson.to_object({
         Green = 0.392,
         Blue = 0.749
     }
-}, zanncdwbl_BoonAdditions.GUIBackingC)
+}, zanncdwbl_Practical_Gods.GUIBackingC)
 
-zanncdwbl_BoonAdditions.BoonSymbolArtemisIcon = sjson.to_object({
+zanncdwbl_Practical_Gods.BoonSymbolArtemisIcon = sjson.to_object({
     Name = "BoonSymbolArtemisIcon",
     InheritFrom = "BoonSymbolBase",
     EndFrame = 1,
     StartFrame = 1,
     FilePath = "GUI\\Screens\\BoonSelectSymbols\\Artemis2"
-}, zanncdwbl_BoonAdditions.GUIIcon)
+}, zanncdwbl_Practical_Gods.GUIIcon)
 
 -- GUI Hook
-table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolGlow_Artemis)
-table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolFlare_Artemis)
-table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolArtemis)
-table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonBackingB_Artemis)
+table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonSymbolGlow_Artemis)
+table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonSymbolFlare_Artemis)
+table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonSymbolArtemis)
+table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonBackingB_Artemis)
 -- Game already has these 2
-table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonBackingC_Artemis)
-table.insert(data.Animations, zanncdwbl_BoonAdditions.BoonSymbolArtemisIcon)
+table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonBackingC_Artemis)
+table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonSymbolArtemisIcon)
 
 -- Stat Line Stuff - TraitTextFile 
-table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text)
-table.insert(data.Texts, zanncdwbl_BoonAdditions.ArtemisSpecialBoon_Text)
+table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisWeaponBoon_Text)
+table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisSpecialBoon_Text)
 
-zanncdwbl_BoonAdditions.ArtemisWeaponBoon_Text = sjson.to_object({
+zanncdwbl_Practical_Gods.ArtemisWeaponBoon_Text = sjson.to_object({
     Id = "AttackBonusStatDisplay1",
     InheritFrom = "BaseStatLine",
     DisplayName = "{!Icons.Bullet}{#PropertyFormat}Attack Damage:",
     Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:F}"
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.ArtemisSpecialBoon_Text = sjson.to_object({
+zanncdwbl_Practical_Gods.ArtemisSpecialBoon_Text = sjson.to_object({
     Id = "SpecialBonusStatDisplay1",
     InheritFrom = "BaseStatLine",
     DisplayName = "{!Icons.Bullet}{#PropertyFormat}Special Damage:",
     Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:F}"
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
 -- Artemis Dialogue Stuff
 -- InteractTextLineSets = {
