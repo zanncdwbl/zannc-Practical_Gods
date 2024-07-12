@@ -1,31 +1,43 @@
 -- Creating Artemis in LootData, allows for natural spawns etc
 game.LootData.ArtemisUpgrade = {
     -- Check all of these, unique or always static?
-    SelectionSound = "/SFX/Menu Sounds/GeneralWhooshMENU",
-    UseTextTalkAndSpecial = "UseLootAndSpecial",
 
-    TextLinesIgnoreQuests = true,
-    UseText = "UseLoot",
-    NameplateSpeakerNameColor = {24, 24, 24, 255},
-    UseTextTalkGiftAndSpecial = "UseLootGiftAndSpecial",
-    NarrativeContextArtFlippable = false,
-    NarrativeContextArt = "DialogueBackground_Olympus",
     NarrativeTextColor = {32, 32, 30, 255},
     NameplateDescriptionColor = {145, 45, 90, 255},
+    NameplateSpeakerNameColor = {24, 24, 24, 255},
+
+    -- Recheck Colours
+    ColorGrade = "ZeusLightning", -- Same for others?
+    LootRejectionAnimation = "BoonDissipateA_Zeus", -- Same for others?
+
+    -- Done, but these might not be needed, or exist anywhere, so check these
+    AlwaysShowDefaultUseText = true,
+    LastRewardEligible = true,
+    BanUnpickedBoonsEligible = true,
+    ManualRecordUse = true,
+    CanReceiveGift = true,
+    TextLinesIgnoreQuests = true,
+
+    -- Should be static
+    BoxAnimation = "DialogueSpeechBubble",
     BoxExitAnimation = "DialogueSpeechBubbleLightOut",
+    SelectionSound = "/SFX/Menu Sounds/GeneralWhooshMENU",
     BlockedLootInteractionText = "UseLootLocked",
-
-    ColorGrade = "ZeusLightning",
-    LootRejectionAnimation = "BoonDissipateA_Zeus",
-
-    -- Might need these? check later
     UseTextTalkAndGift = "UseLootAndGift",
-    BoonInfoTitleText = "Codex_BoonInfo_Artemis",
+    UseTextTalkAndSpecial = "UseLootAndSpecial",
+    UseTextTalkGiftAndSpecial = "UseLootGiftAndSpecial",
+    UseText = "UseLoot",
 
-    -- Done Stuff 
+    NarrativeContextArtFlippable = false,
+    NarrativeContextArt = "DialogueBackground_Olympus",
+
+    -- Done Stuff
     Name = "ArtemisUpgrade",
     OffersElementalTrait = {"Air", "Water", "Earth"},
     InheritFrom = {"BaseLoot", "BaseSoundPackage"},
+    Color = {91, 255, 100, 255},
+    LightingColor = {0.24, 0.71, 0.12, 1},
+    LootColor = {58, 255, 42, 255},
 
     Gender = "Female",
     OnUsedFunctionName = "UseLoot",
@@ -33,19 +45,10 @@ game.LootData.ArtemisUpgrade = {
     GodLoot = true,
     DestroyOnPickup = true,
 
-    GameStateRequirements = {{
-        -- HasAny = {"PoseidonUpgrade", "DemeterUpgrade"},
-        -- Path = {"GameState", "UseRecord"}
-    }},
-    Consumables = {},
-
     SubtitleColor = Color.AphroditeVoice,
-    Color = {210, 255, 100, 255}, -- Random Colour
-    LightingColor = {210, 255, 97, 255},
-    LootColor = {110, 255, 0, 255},
 
     SpeakerName = "Artemis",
-    SurfaceShopText = "ArtemisUpgrade_Store",
+    SurfaceShopText = "ArtemisUpgrade_Store", -- Should be done, check in shop
     Portrait = "Portrait_Artemis_Default_01",
     Speaker = "NPC_Artemis_01",
     OverlayAnim = "ArtemisOverlay",
@@ -53,17 +56,15 @@ game.LootData.ArtemisUpgrade = {
     UsePromptOffsetY = 48,
     AnimOffsetZ = 80,
 
-    -- These might not be needed, or exist anywhere
-    AlwaysShowDefaultUseText = true,
-    LastRewardEligible = true,
-    BanUnpickedBoonsEligible = true,
-    ManualRecordUse = true,
-    CanReceiveGift = true,
-
     Icon = "BoonSymbolArtemis",
     BoonInfoIcon = "BoonInfoSymbolArtemisIcon",
     SurfaceShopIcon = "BoonInfoSymbolArtemisIcon",
+    DoorIcon = "BoonDropArtemisPreview",
+    DoorUpgradedIcon = "BoonDropArtemisUpgradedPreview",
+    EchoLastRewardId = "EchoLastRewardBoon_ArtemisUpgrade", -- This might not need to have Upgrade at the end
+
     MenuTitle = "UpgradeChoiceMenu_Artemis", -- in ScreenText.en line 199 for some reason
+    BoonInfoTitleText = "UpgradeChoiceMenu_Artemis", -- Display name in codex
     ConfirmSound = "/SFX/Menu Sounds/GodBoonChoiceConfirm",
     LootRejectedText = "Player_GodDispleased_ArtemisUpgrade",
     SuperSacrificeCombatText = "SuperSacrifice_CombatText_ArtemisUpgrade",
@@ -71,21 +72,23 @@ game.LootData.ArtemisUpgrade = {
 
     SpawnSound = "/SFX/ArtemisBoonArrow",
     UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
-    PortraitEnterSound = "/EmptyCue",
-    BoxAnimation = "DialogueSpeechBubble",
+    PortraitEnterSound = "/EmptyCue", -- PortraitEnterSound: /SFX/ApolloBoonHarpPoof
     FlavorTextIds = {"ArtemisUpgrade_FlavorText01", "ArtemisUpgrade_FlavorText02", "ArtemisUpgrade_FlavorText03"},
-
-    DoorIcon = "BoonDropArtemisPreview",
-    DoorUpgradedIcon = "BoonDropArtemisUpgradedPreview",
-    EchoLastRewardId = "EchoLastRewardBoon_Artemis", -- This might need to have Upgrade at the end
 
     PriorityUpgrades = {"ArtemisWeaponBoon", "ArtemisSpecialBoon"},
     WeaponUpgrades = {"ArtemisWeaponBoon", "ArtemisSpecialBoon"},
     Traits = {"SupportingFireBoon", "CritBonusBoon", "DashOmegaBuffBoon", "HighHealthCritBoon", "InsideCastCritBoon",
-              "OmegaCastVolleyBoon", "TimedCritVulnerabilityBoon", "ArtemisCriticalBoon"},
+              "OmegaCastVolleyBoon", "TimedCritVulnerabilityBoon", "ArtemisCriticalBoon", "ArtemisArmourBoon"},
 
     TraitIndex = {},
+    GameStateRequirements = {{
+        -- HasAny = {"PoseidonUpgrade", "DemeterUpgrade"},
+        -- Path = {"GameState", "UseRecord"}
+    }},
+    Consumables = {},
 
+    InteractTextLineSets = {},
+    FirstSpawnVoiceLines = {},
     -- On First Spawn
     OnSpawnVoiceLines = {
         BreakIfPlayed = true,
@@ -100,27 +103,78 @@ game.LootData.ArtemisUpgrade = {
         {
             Cue = "/VO/Melinoe_1472",
             Text = "It's her."
+        },
+        {
+            Cue = "/VO/Melinoe_1477",
+            Text = "She's back."
+        },
+        {
+            Cue = "/VO/ArtemisKeepsake_0214",
+            Text = "Hey Sister."
         }
     },
 
-    UpgradeMenuOpenVoiceLines = {
-        [1] = GlobalVoiceLines.HeraclesBoonReactionVoiceLines
-    }
+    UpgradeMenuOpenVoiceLines = game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.UpgradeMenuOpenVoiceLines,
 
+    RejectionTextLines = {},
+    MakeUpTextLines = {},
+    DeathTauntVoiceLines = {},
+    BoughtTextLines = {},
+    GiftGivenVoiceLines = {},
+    SwapUpgradePickedVoiceLines = {},
+    RarityUpgradeVoiceLines = {},
+    GiftTextLineSets = {},
+    BlindBoxOpenedVoiceLines = {},
+    RejectionVoiceLines = {}
 }
 
--- adding LootData Artemis to Codex, uses same as other artemis just without the enemy name
-game.CodexData.OlympianGods.Entries.ArtemisUpgrade = {
+-- Adding Icons to default artemis, cause why does she not already have it?
+game.EnemyData.NPC_Artemis_Field_01.DoorIcon = "BoonDropArtemisPreview"
+
+-- Dirty code, don't like it, couldn't find a better way
+-- makes it so if you pick up an artemis boon, it will still count toward codex aka her field version
+modutil.mod.Path.Wrap("CheckCodexUnlock", function(base, chapterName, entryName, args)
+    local GodArtemis = game.GameState.UseRecord.ArtemisUpgrade or 0
+    local NPCArtemis = game.GameState.UseRecord.NPC_Artemis_Field_01 or 0
+
+    local MaxArtemis = math.max(GodArtemis, NPCArtemis)
+
+    game.GameState.UseRecord.ArtemisUpgrade = MaxArtemis
+    game.GameState.UseRecord.NPC_Artemis_Field_01 = MaxArtemis
+
+    base(chapterName, entryName, args)
+end)
+
+-- Change Artemis Codex to not have requirements 
+game.CodexData.OlympianGods.Entries.NPC_Artemis_01 = {
+    -- NoRequirements = true,
     Entries = {{
         UnlockGameStateRequirements = {{
-            Path = {"GameState", "UseRecord", "ArtemisUpgrade"},
+            Path = {"GameState", "UseRecord", "NPC_Artemis_Field_01"},
             Comparison = ">=",
             Value = 2
         }},
         Text = "CodexData_Artemis_01"
     }},
-    Image = "Codex_Portrait_Artemis"
+    Image = "Codex_Portrait_Artemis",
+    BoonInfoEnemyName = "NPC_Artemis_Field_01"
 }
+-- Just creates a new entry based on original, just so it doesnt crash when you open from boon select
+-- game.CodexData.OlympianGods.Entries.ArtemisUpgrade = game.CodexData.OlympianGods.Entries.NPC_Artemis_01
+
+-- Super Magical Code by Jowday, this way you dont have to do the method above, and doesn't give weird codex unlock popup
+modutil.mod.Path.Wrap("AttemptOpenUpgradeChoiceBoonInfo", function(base, screen, button)
+    if screen.Source.Name == "ArtemisUpgrade" then
+        local newScreen = {
+            Source = {
+                Name = "NPC_Artemis_Field_01"
+            }
+        }
+        base(newScreen, button)
+    else
+        base(screen, button)
+    end
+end)
 
 -- Core Traits, aka Weapon Attack, Special, Cast etc
 game.LinkedTraitData.ArtemisCoreTraits = {}
@@ -137,11 +191,25 @@ local ArtemisTraitDictionary = {
     -- New Boons
     ArtemisWeaponBoon = true,
     ArtemisSpecialBoon = true,
-    ArtemisCriticalBoon = true
+    ArtemisCriticalBoon = true,
+    ArtemisArmourBoon = true
 }
 
 game.ScreenData.BoonInfo.TraitDictionary.ArtemisUpgrade = ArtemisTraitDictionary
 game.LootData.ArtemisUpgrade.TraitIndex = ArtemisTraitDictionary
+
+-- Artemis Boon requirements, don't want to get crit dmg upgrades without crit damage, directly in TraitData.lua
+local ArmourDamageBoonRequirements = {
+    -- cannot use this, cause it will cry about the keepsake, so I'll leave it for now, probaably need to do something with HiddenTrait, which is commented out.
+    -- OneOf = {"MoveSpeedBoon", "FastClearDodgeBonusKeepsake"}
+    OneOf = {"ArtemisWeaponBoon", "ArtemisSpecialBoon", "CritBonusBoon"}
+}
+-- This adds the requirement
+game.TraitRequirements["ArtemisCriticalBoon"] = ArmourDamageBoonRequirements
+game.TraitRequirements["ArtemisArmourBoon"] = ArmourDamageBoonRequirements
+
+game.ScreenData.BoonInfo.TraitRequirementsDictionary["ArtemisCriticalBoon"] = ArmourDamageBoonRequirements
+game.ScreenData.BoonInfo.TraitRequirementsDictionary["ArtemisArmourBoon"] = ArmourDamageBoonRequirements
 
 -- This is to add Artemis to RunProgress in LootData so she can spawn as a boon room
 local requirementName = {"MaxHealthDrop", "MaxManaDrop", "RoomMoneyDrop", "StackUpgrade", "Devotion"}

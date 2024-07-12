@@ -45,26 +45,26 @@ game.TraitData.MoveSpeedBoon = {
 }
 
 -- Icon Data
-zanncdwbl_BoonAdditions.Boon_Hermes_MoveSpeedBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.Boon_Hermes_MoveSpeedBoon = sjson.to_object({
     Name = "Boon_Hermes_MoveSpeedBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Greater_Haste")
-}, zanncdwbl_BoonAdditions.IconOrder)
+    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Greater_Haste")
+}, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
-zanncdwbl_BoonAdditions.MoveSpeedBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.MoveSpeedBoon = sjson.to_object({
     Id = "MoveSpeedBoon",
     InheritFrom = "BaseBoonMultiline",
     DisplayName = "Greater Haste",
     Description = "You move faster."
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.MoveSpeedBoon_Text = sjson.to_object({
+zanncdwbl_Practical_Gods.MoveSpeedBoon_Text = sjson.to_object({
     Id = "BonusSpeedStatDisplay1",
     InheritFrom = "BaseStatLine",
     DisplayName = "{!Icons.Bullet}{#PropertyFormat}Move Speed:",
     Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:F}"
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
 -- Insert into hermes trait table
 table.insert(game.LootData.HermesUpgrade.Traits, "MoveSpeedBoon")

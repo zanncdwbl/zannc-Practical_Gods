@@ -10,6 +10,7 @@ game.TraitData.ArtemisSpecialBoon = {
     Icon = "Boon_Artemis_ArtemisSpecialBoon",
     Slot = "Secondary",
     TraitOrderingValueCache = 50,
+    Cost = 30,
     BlockStacking = false,
     RarityLevels = {
         Common = {
@@ -59,49 +60,46 @@ game.TraitData.ArtemisSpecialBoon = {
         Chance = {
             BaseValue = 0.20,
             SourceIsMultiplier = false,
-            IgnoreRarity = true
+            IgnoreRarity = true,
+            -- Have to get super awesome wicked so that the crit doesn't upgrade with poms
+            AbsoluteStackValues = {
+                [1] = 0
+            }
         },
         ReportValues = {
             ExtractCritChance = "Chance"
         }
     },
 
-    StatLines = {"SpecialBonusStatDisplay1"},
+    StatLines = {"SpecialDamageStatDisplay1"},
 
     ExtractValues = {{
+        Key = "ReportedValidWeaponMultiplier",
+        ExtractAs = "TooltipDamageBonus",
+        Format = "PercentDelta"
+    }, {
         Key = "ExtractCritChance",
         ExtractAs = "TooltipCritChance",
         Format = "Percent"
-    }, {
-        Key = "ReportedValidWeaponMultiplier",
-        ExtractAs = "TooltipDamage",
-        Format = "PercentDelta"
     }}
 
     -- Add property changes here
 }
 
 -- Icon Data
-zanncdwbl_BoonAdditions.Boon_Artemis_ArtemisSpecialBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisSpecialBoon = sjson.to_object({
     Name = "Boon_Artemis_ArtemisSpecialBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Deadly_Flourish")
-}, zanncdwbl_BoonAdditions.IconOrder)
+    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Deadly_Flourish")
+}, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
-zanncdwbl_BoonAdditions.ArtemisSpecialBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.ArtemisSpecialBoon = sjson.to_object({
     Id = "ArtemisSpecialBoon",
     InheritFrom = "BaseBoonMultiline",
     DisplayName = "Deadly Flourish",
-    Description = "Your {$Keywords.Special} is stronger, with {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage."
-}, zanncdwbl_BoonAdditions.Order)
-
-zanncdwbl_BoonAdditions.ArtemisSpecialBoon_Text = sjson.to_object({
-    Id = "SpecialBonusStatDisplay1",
-    InheritFrom = "BaseStatLine",
-    DisplayName = "{!Icons.Bullet}{#PropertyFormat}Special Damage:",
-    Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:F}"
-}, zanncdwbl_BoonAdditions.Order)
+    Description = "Your {$Keywords.Special} is stronger, with a {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage."
+}, zanncdwbl_Practical_Gods.Order)
 
 -- Adding Boons to Default Artemis
 table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisSpecialBoon")
@@ -111,6 +109,5 @@ table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisS
 game.ScreenData.BoonInfo.TraitDictionary.NPC_Artemis_Field_01["ArtemisSpecialBoon"] = true
 
 -- Adding Traits to TraitData Table, and adding her as core, aka weapon, special, cast, etc
-table.insert(game.LinkedTraitData.WeaponTraits, "ArtemisSpecialBoon")
 table.insert(game.LinkedTraitData.SpecialTraits, "ArtemisSpecialBoon")
 table.insert(game.LinkedTraitData.ArtemisCoreTraits, "ArtemisSpecialBoon")

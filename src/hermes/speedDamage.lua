@@ -45,26 +45,26 @@ game.TraitData.SpeedDamageBoon = {
 }
 
 -- Icon Data
-zanncdwbl_BoonAdditions.Boon_Hermes_SpeedDamageBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.Boon_Hermes_SpeedDamageBoon = sjson.to_object({
     Name = "Boon_Hermes_SpeedDamageBoon",
     InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "BoonIcons\\Rush_Delivery")
-}, zanncdwbl_BoonAdditions.IconOrder)
+    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Rush_Delivery")
+}, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
-zanncdwbl_BoonAdditions.SpeedDamageBoon = sjson.to_object({
+zanncdwbl_Practical_Gods.SpeedDamageBoon = sjson.to_object({
     Id = "SpeedDamageBoon",
     InheritFrom = "BaseBoonMultiline",
     DisplayName = "Rush Delivery",
     Description = "You deal bonus damage based on any bonus move speed."
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_BoonAdditions.SpeedDamageBoon_Text = sjson.to_object({
+zanncdwbl_Practical_Gods.SpeedDamageBoon_Text = sjson.to_object({
     Id = "SpeedDamageStatDisplay1",
     InheritFrom = "BaseStatLine",
     DisplayName = "{!Icons.Bullet}{#PropertyFormat}Bonus Damage From Bonus Speed:",
     Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipBonus:F}"
-}, zanncdwbl_BoonAdditions.Order)
+}, zanncdwbl_Practical_Gods.Order)
 
 -- Insert into hermes trait table
 table.insert(game.LootData.HermesUpgrade.Traits, "SpeedDamageBoon")
