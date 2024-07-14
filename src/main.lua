@@ -34,7 +34,7 @@ local function on_ready()
     -- Hermes Boons
     import "hermes/speedDamage.lua"
     import "hermes/moveSpeed.lua"
-    -- import "hermes/dashHeal.lua" -- Not adding yet.
+    import "hermes/dashHeal.lua"
     import "hermes/bonusDash.lua"
 
     -- Artemis Boons

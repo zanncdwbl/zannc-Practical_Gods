@@ -21,7 +21,7 @@ sjson.hook(zanncdwbl_Practical_Gods.GUIAnimationsFile, function(data)
     -- Hermes Boons
     table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Hermes_SpeedDamageBoon)
     table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Hermes_MoveSpeedBoon)
-    -- table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Hermes_RushRallyBoon) -- Not adding yet.
+    table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Hermes_RushRallyBoon)
     table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Hermes_BonusDashBoon)
 
     -- Artemis Boons
@@ -41,8 +41,8 @@ sjson.hook(zanncdwbl_Practical_Gods.TraitTextFile, function(data)
     table.insert(data.Texts, zanncdwbl_Practical_Gods.SpeedDamageBoon_Text)
     table.insert(data.Texts, zanncdwbl_Practical_Gods.MoveSpeedBoon)
     table.insert(data.Texts, zanncdwbl_Practical_Gods.MoveSpeedBoon_Text)
-    -- table.insert(data.Texts, zanncdwbl_Practical_Gods.RushRallyBoon) -- Not adding yet.
-    -- table.insert(data.Texts, zanncdwbl_Practical_Gods.RushRallyBoon_Text) -- Not adding yet.
+    table.insert(data.Texts, zanncdwbl_Practical_Gods.RushRallyBoon)
+    table.insert(data.Texts, zanncdwbl_Practical_Gods.RushRallyBoon_Text)
     table.insert(data.Texts, zanncdwbl_Practical_Gods.BonusDashBoon)
     table.insert(data.Texts, zanncdwbl_Practical_Gods.BonusDashBoon_Text)
 
