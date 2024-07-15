@@ -3,47 +3,47 @@
 --
 -- Creating the boon functions itself
 game.TraitData.ArtemisDashBoon = {
-    InheritFrom = {"BaseTrait", "EarthBoon"},
-    Elements = {"Earth"}, -- Need to add this even if you inherit
-    Name = "ArtemisDashBoon",
-    BoonInfoTitle = "ArtemisDashBoon",
-    -- Icon = "Boon_Artemis_ArtemisDashBoon",
-    TraitOrderingValueCache = 50,
-    BlockStacking = false,
-    RarityLevels = {
-        Common = {
-            Multiplier = 1.0
-        },
-        Rare = {
-            Multiplier = 1.2
-        },
-        Epic = {
-            Multiplier = 1.4
-        },
-        Heroic = {
-            Multiplier = 1.6
-        }
-    },
+	InheritFrom = { "BaseTrait", "EarthBoon" },
+	Elements = { "Earth" }, -- Need to add this even if you inherit
+	Name = "ArtemisDashBoon",
+	BoonInfoTitle = "ArtemisDashBoon",
+	-- Icon = "Boon_Artemis_ArtemisDashBoon",
+	TraitOrderingValueCache = 50,
+	BlockStacking = false,
+	RarityLevels = {
+		Common = {
+			Multiplier = 1.0,
+		},
+		Rare = {
+			Multiplier = 1.2,
+		},
+		Epic = {
+			Multiplier = 1.4,
+		},
+		Heroic = {
+			Multiplier = 1.6,
+		},
+	},
 
-    AddOutgoingDamageModifiers = {
-        ValidWeaponMultiplier = {
-            BaseValue = 1.5,
-            SourceIsMultiplier = true,
-            IdenticalMultiplier = {
-                Value = -0.8
-            },
-            ValidWeapons = WeaponSets.HeroDashWeapons,
-            ExcludeLinked = true
-        }
-    }
+	AddOutgoingDamageModifiers = {
+		ValidWeaponMultiplier = {
+			BaseValue = 1.5,
+			SourceIsMultiplier = true,
+			IdenticalMultiplier = {
+				Value = -0.8,
+			},
+			ValidWeapons = WeaponSets.HeroDashWeapons,
+			ExcludeLinked = true,
+		},
+	},
 
-    -- StatLines = {"ArmourDamageStatDisplay1"},
+	-- StatLines = {"ArmourDamageStatDisplay1"},
 
-    -- ExtractValues = {{
-    --     Key = "CriticalHealthBufferMultiplier",
-    --     ExtractAs = "TooltipDamageBonus",
-    --     Format = "PercentDelta"
-    -- }}
+	-- ExtractValues = {{
+	--     Key = "CriticalHealthBufferMultiplier",
+	--     ExtractAs = "TooltipDamageBonus",
+	--     Format = "PercentDelta"
+	-- }}
 }
 
 -- Icon Data

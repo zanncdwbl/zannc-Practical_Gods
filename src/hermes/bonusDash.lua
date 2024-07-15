@@ -7,24 +7,24 @@ game.TraitData.BonusDashBoon.Icon = "Boon_Hermes_BonusDashBoon"
 
 -- Icon Data -- Game uses Boon 1
 zanncdwbl_Practical_Gods.Boon_Hermes_BonusDashBoon = sjson.to_object({
-    Name = "Boon_Hermes_BonusDashBoon",
-    InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Greatest_Reflex")
+	Name = "Boon_Hermes_BonusDashBoon",
+	InheritFrom = "BoonIcon",
+	FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Greatest_Reflex"),
 }, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
 zanncdwbl_Practical_Gods.BonusDashBoon = sjson.to_object({
-    Id = "BonusDashBoon",
-    InheritFrom = "BaseBoonMultiline",
-    DisplayName = "Greatest Reflex",
-    Description = "You can {$Keywords.Dash} more times in a row."
+	Id = "BonusDashBoon",
+	InheritFrom = "BaseBoonMultiline",
+	DisplayName = "Greatest Reflex",
+	Description = "You can {$Keywords.Dash} more times in a row.",
 }, zanncdwbl_Practical_Gods.Order)
 
 zanncdwbl_Practical_Gods.BonusDashBoon_Text = sjson.to_object({
-    Id = "BonusDashStatDisplay1",
-    InheritFrom = "BaseStatLine",
-    DisplayName = "{!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Dash} Charges:",
-    Description = "{#UpgradeFormat}+{$TooltipData.ExtractData.TooltipSprintBonus}"
+	Id = "BonusDashStatDisplay1",
+	InheritFrom = "BaseStatLine",
+	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Dash} Charges:",
+	Description = "{#UpgradeFormat}+{$TooltipData.ExtractData.TooltipSprintBonus}",
 }, zanncdwbl_Practical_Gods.Order)
 
 -- Insert into hermes trait table

@@ -3,120 +3,138 @@
 --
 -- Creating the boon functions itself
 game.TraitData.ArtemisWeaponBoon = {
-    InheritFrom = {"BaseTrait", "EarthBoon"},
-    Elements = {"Earth"}, -- Need to add this even if you inherit
-    Name = "ArtemisWeaponBoon",
-    BoonInfoTitle = "ArtemisWeaponBoon",
-    Icon = "Boon_Artemis_ArtemisWeaponBoon",
-    Slot = "Melee",
-    TraitOrderingValueCache = 50,
-    Cost = 30,
-    BlockStacking = false,
-    RarityLevels = {
-        Common = {
-            Multiplier = 1.00
-        },
-        Rare = {
-            Multiplier = 1.50
-        },
-        Epic = {
-            Multiplier = 2.00
-        },
-        Heroic = {
-            Multiplier = 2.50
-        }
-    },
+	InheritFrom = { "BaseTrait", "EarthBoon" },
+	Elements = { "Earth" }, -- Need to add this even if you inherit
+	Name = "ArtemisWeaponBoon",
+	BoonInfoTitle = "ArtemisWeaponBoon",
+	Icon = "Boon_Artemis_ArtemisWeaponBoon",
+	Slot = "Melee",
+	TraitOrderingValueCache = 50,
+	Cost = 30,
+	BlockStacking = false,
+	RarityLevels = {
+		Common = {
+			Multiplier = 1.00,
+		},
+		Rare = {
+			Multiplier = 1.50,
+		},
+		Epic = {
+			Multiplier = 2.00,
+		},
+		Heroic = {
+			Multiplier = 2.50,
+		},
+	},
 
-    AddOutgoingDamageModifiers = {
-        ValidWeaponMultiplier = {
-            BaseValue = 1.2,
-            SourceIsMultiplier = true,
-            -- Scaling thing with poms
-            AbsoluteStackValues = {
-                [1] = 1.20,
-                [2] = 1.15,
-                [3] = 1.10
-            }
-        },
-        -- IDK why I have to do this
-        ValidWeapons = {"WeaponDagger2", "WeaponDagger5", "WeaponTorch", "WeaponLob", "WeaponAxe", "WeaponStaffDash",
-                        "WeaponStaffSwing5", "WeaponAxe2", "WeaponLobChargedPulse", "WeaponAxe3", "WeaponLobPulse",
-                        "WeaponDagger", "WeaponStaffSwing2", "WeaponDaggerDash", "WeaponAxeDash", "WeaponDaggerDouble",
-                        "WeaponDaggerMultiStab", "WeaponStaffSwing3", "WeaponStaffSwing", "WeaponAxeSpin"},
+	AddOutgoingDamageModifiers = {
+		ValidWeaponMultiplier = {
+			BaseValue = 1.2,
+			SourceIsMultiplier = true,
+			-- Scaling thing with poms
+			AbsoluteStackValues = {
+				[1] = 1.20,
+				[2] = 1.15,
+				[3] = 1.10,
+			},
+		},
+		-- IDK why I have to do this
+		ValidWeapons = {
+			"WeaponDagger2",
+			"WeaponDagger5",
+			"WeaponTorch",
+			"WeaponLob",
+			"WeaponAxe",
+			"WeaponStaffDash",
+			"WeaponStaffSwing5",
+			"WeaponAxe2",
+			"WeaponLobChargedPulse",
+			"WeaponAxe3",
+			"WeaponLobPulse",
+			"WeaponDagger",
+			"WeaponStaffSwing2",
+			"WeaponDaggerDash",
+			"WeaponAxeDash",
+			"WeaponDaggerDouble",
+			"WeaponDaggerMultiStab",
+			"WeaponStaffSwing3",
+			"WeaponStaffSwing",
+			"WeaponAxeSpin",
+		},
 
-        -- Don't really know if I need this, but it varies between melee/special etc
-        ValidWeaponsLookup = {
-            WeaponDagger2 = true,
-            WeaponDagger5 = true,
-            WeaponTorch = true,
-            WeaponLob = true,
-            WeaponAxe = true,
-            WeaponStaffDash = true,
-            WeaponStaffSwing5 = true,
-            WeaponAxe2 = true,
-            WeaponLobChargedPulse = true,
-            WeaponAxe3 = true,
-            WeaponLobPulse = true,
-            WeaponDagger = true,
-            WeaponStaffSwing2 = true,
-            WeaponDaggerDash = true,
-            WeaponAxeDash = true,
-            WeaponDaggerDouble = true,
-            WeaponDaggerMultiStab = true,
-            WeaponStaffSwing3 = true,
-            WeaponStaffSwing = true,
-            WeaponAxeSpin = true
-        },
+		-- Don't really know if I need this, but it varies between melee/special etc
+		ValidWeaponsLookup = {
+			WeaponDagger2 = true,
+			WeaponDagger5 = true,
+			WeaponTorch = true,
+			WeaponLob = true,
+			WeaponAxe = true,
+			WeaponStaffDash = true,
+			WeaponStaffSwing5 = true,
+			WeaponAxe2 = true,
+			WeaponLobChargedPulse = true,
+			WeaponAxe3 = true,
+			WeaponLobPulse = true,
+			WeaponDagger = true,
+			WeaponStaffSwing2 = true,
+			WeaponDaggerDash = true,
+			WeaponAxeDash = true,
+			WeaponDaggerDouble = true,
+			WeaponDaggerMultiStab = true,
+			WeaponStaffSwing3 = true,
+			WeaponStaffSwing = true,
+			WeaponAxeSpin = true,
+		},
 
-        ReportValues = {
-            ReportedValidWeaponMultiplier = "ValidWeaponMultiplier"
-        }
-    },
+		ReportValues = {
+			ReportedValidWeaponMultiplier = "ValidWeaponMultiplier",
+		},
+	},
 
-    AddOutgoingCritModifiers = {
-        ValidWeapons = WeaponSets.HeroPrimaryWeapons,
-        Chance = {
-            BaseValue = 0.15,
-            SourceIsMultiplier = false,
-            IgnoreRarity = true,
-            -- Have to get super awesome wicked so that the crit doesn't upgrade with poms
-            AbsoluteStackValues = {
-                [1] = 0
-            }
-        },
-        ReportValues = {
-            ExtractCritChance = "Chance"
-        }
-    },
+	AddOutgoingCritModifiers = {
+		ValidWeapons = WeaponSets.HeroPrimaryWeapons,
+		Chance = {
+			BaseValue = 0.15,
+			SourceIsMultiplier = false,
+			IgnoreRarity = true,
+			-- Have to get super awesome wicked so that the crit doesn't upgrade with poms
+			AbsoluteStackValues = {
+				[1] = 0,
+			},
+		},
+		ReportValues = {
+			ExtractCritChance = "Chance",
+		},
+	},
 
-    StatLines = {"AttackDamageStatDisplay1"},
+	StatLines = { "AttackDamageStatDisplay1" },
 
-    ExtractValues = {{
-        Key = "ReportedValidWeaponMultiplier",
-        ExtractAs = "TooltipDamageBonus",
-        Format = "PercentDelta"
-    }, {
-        Key = "ExtractCritChance",
-        ExtractAs = "TooltipCritChance",
-        Format = "Percent"
-    }}
+	ExtractValues = { {
+		Key = "ReportedValidWeaponMultiplier",
+		ExtractAs = "TooltipDamageBonus",
+		Format = "PercentDelta",
+	}, {
+		Key = "ExtractCritChance",
+		ExtractAs = "TooltipCritChance",
+		Format = "Percent",
+	} },
 
-    -- Add property changes here
+	-- Add property changes here
 }
 
 -- Icon Data
 zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisWeaponBoon = sjson.to_object({
-    Name = "Boon_Artemis_ArtemisWeaponBoon",
-    InheritFrom = "BoonIcon",
-    FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Deadly_Strike")
+	Name = "Boon_Artemis_ArtemisWeaponBoon",
+	InheritFrom = "BoonIcon",
+	FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Deadly_Strike"),
 }, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
 zanncdwbl_Practical_Gods.ArtemisWeaponBoon = sjson.to_object({
-    Id = "ArtemisWeaponBoon",
-    InheritFrom = "BaseBoonMultiline",
-    DisplayName = "Deadly Strike",
-    Description = "Your {$Keywords.Attack} is stronger, with a {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage."
+	Id = "ArtemisWeaponBoon",
+	InheritFrom = "BaseBoonMultiline",
+	DisplayName = "Deadly Strike",
+	Description = "Your {$Keywords.Attack} is stronger, with a {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage.",
 }, zanncdwbl_Practical_Gods.Order)
 
 -- Adding Boons to Default Artemis

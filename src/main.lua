@@ -26,38 +26,38 @@ modutil = mods["SGG_Modding-ModUtil"]
 reload = mods["SGG_Modding-ReLoad"]
 
 local function on_ready()
-    import_as_fallback(rom.game)
+	import_as_fallback(rom.game)
 
-    import "ready.lua"
-    import "sjson.lua"
+	import("ready.lua")
+	import("sjson.lua")
 
-    -- Hermes Boons
-    import "hermes/speedDamage.lua"
-    import "hermes/moveSpeed.lua"
-    import "hermes/dashHeal.lua"
-    import "hermes/bonusDash.lua"
+	-- Hermes Boons
+	import("hermes/speedDamage.lua")
+	import("hermes/moveSpeed.lua")
+	import("hermes/dashHeal.lua")
+	import("hermes/bonusDash.lua")
 
-    -- Artemis Boons
-    import "artemis/artemisLootData.lua"
-    import "artemis/artemisSJSONIcons.lua"
+	-- Artemis Boons
+	import("artemis/artemisLootData.lua")
+	import("artemis/artemisSJSONIcons.lua")
 
-    import "artemis/weaponAttack/critAttack.lua"
-    import "artemis/weaponSpecial/critSpecial.lua"
-    import "artemis/critDamage/critDamage.lua"
-    import "artemis/armourDamage/armourDamage.lua"
-    -- import "artemis/dashDamage/dashDamage.lua"
+	import("artemis/weaponAttack/critAttack.lua")
+	import("artemis/weaponSpecial/critSpecial.lua")
+	import("artemis/critDamage/critDamage.lua")
+	import("artemis/armourDamage/armourDamage.lua")
+	-- import "artemis/dashDamage/dashDamage.lua"
 
-    -- import "artemis/weaponAttack/critAttackSJSON.lua"
-    -- import "artemis/weaponSpecial/critSpecialSJSON.lua"
+	-- import "artemis/weaponAttack/critAttackSJSON.lua"
+	-- import "artemis/weaponSpecial/critSpecialSJSON.lua"
 end
 
 local function on_reload()
-    import_as_fallback(rom.game)
-    -- import "reload.lua"
+	import_as_fallback(rom.game)
+	import("reload.lua")
 end
 
 local loader = reload.auto_single()
 
 modutil.once_loaded.game(function()
-    loader.load(on_ready, on_reload)
+	loader.load(on_ready, on_reload)
 end)
