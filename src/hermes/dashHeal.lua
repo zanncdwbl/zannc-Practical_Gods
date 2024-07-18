@@ -15,9 +15,6 @@ game.HeroData.RallyHealth = {
 	State = "Idle", -- Data variable
 }
 
--- Insert into hermes trait table
-table.insert(game.LootData.HermesUpgrade.Traits, "RushRallyBoon")
-
 -- Creating the boon functions itself
 game.TraitData.RushRallyBoon = {
 	InheritFrom = { "BaseTrait", "AirBoon" },
