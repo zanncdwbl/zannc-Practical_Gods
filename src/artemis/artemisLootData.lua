@@ -17,19 +17,12 @@ modutil.mod.Path.Wrap("GetProcessedValue", function(base, valueToRamp, args)
 			end
 		end
 
-		if valueToRamp.NoScaling then
+		if valueToRamp.NoScaling == true then
 			return ProcessValue(value, valueToRamp)
 		end
 	end
 	return base(valueToRamp, args)
 end)
-
-zanncdwbl_Practical_Gods.CritChanceStatLine = sjson.to_object({
-	Id = "CritChanceStatDisplay1",
-	InheritFrom = "BaseStatLine",
-	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Crit Chance:",
-	Description = "{#UpgradeFormat}{$TooltipData.StatDisplay2}",
-}, zanncdwbl_Practical_Gods.Order)
 
 -- Creating Artemis in LootData, allows for natural spawns etc
 game.LootData.ArtemisUpgrade = {

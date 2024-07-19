@@ -56,6 +56,8 @@ local function on_ready()
 
 	-- import "artemis/weaponAttack/critAttackSJSON.lua"
 	-- import "artemis/weaponSpecial/critSpecialSJSON.lua"
+
+	import("artemis/artemisCritScaling.lua")
 end
 
 local function on_reload()

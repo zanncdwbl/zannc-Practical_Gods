@@ -5,6 +5,8 @@
 game.TraitData.ArtemisWeaponBoon = {
 	InheritFrom = { "BaseTrait", "EarthBoon" },
 	Elements = { "Earth" }, -- Need to add this even if you inherit
+	Name = "ArtemisWeaponBoon",
+	BoonInfoTitle = "ArtemisWeaponBoon",
 	Icon = "Boon_Artemis_ArtemisWeaponBoon",
 	Slot = "Melee",
 	TraitOrderingValueCache = 50,
@@ -96,17 +98,14 @@ game.TraitData.ArtemisWeaponBoon = {
 			SourceIsMultiplier = false,
 			IgnoreRarity = true,
 
-			-- NoScaling = true, -- Custom Value, refer to Wrap in ArtemisLootData.lua
-
-			-- Have to get super awesome wicked so that the crit doesn't upgrade with poms
-			-- AbsoluteStackValues = {
-			-- 	[1] = 0,
-			-- },
+			NoScaling = true, -- Custom Value, refer to Wrap in ArtemisLootData.lua
 		},
 		ReportValues = {
 			ExtractCritChance = "Chance",
 		},
 	},
+
+	StatLines = { "AttackDamageStatDisplay1" },
 
 	ExtractValues = { {
 		Key = "ReportedValidWeaponMultiplier",
@@ -120,40 +119,6 @@ game.TraitData.ArtemisWeaponBoon = {
 
 	-- Add property changes here
 }
-
-if config.ArtemisAttackCritScale then
-	--Setting to nil
-	game.TraitData.ArtemisWeaponBoon.Name = nil
-	game.TraitData.ArtemisWeaponBoon.BoonInfoTitle = nil
-	game.TraitData.ArtemisWeaponBoon.StatLines = nil
-	--Inserting
-	game.TraitData.ArtemisWeaponBoon.Name = "ArtemisWeaponBoonScaling"
-	game.TraitData.ArtemisWeaponBoon.BoonInfoTitle = "ArtemisWeaponBoonScaling"
-	game.TraitData.ArtemisWeaponBoon.StatLines = { "AttackDamageStatDisplay1", "CritChanceStatDisplay1" }
-else
-	--Setting to nil
-	game.TraitData.ArtemisWeaponBoon.Name = nil
-	game.TraitData.ArtemisWeaponBoon.BoonInfoTitle = nil
-	game.TraitData.ArtemisWeaponBoon.StatLines = nil
-	--Inserting
-	game.TraitData.ArtemisWeaponBoon.Name = "ArtemisWeaponBoon"
-	game.TraitData.ArtemisWeaponBoon.BoonInfoTitle = "ArtemisWeaponBoon"
-	game.TraitData.ArtemisWeaponBoon.StatLines = { "AttackDamageStatDisplay1" }
-end
-
-local function printtable(tbl, indent)
-	indent = indent or 0
-	local formatting = string.rep("  ", indent)
-	for k, v in pairs(tbl) do
-		if type(v) == "table" then
-			print(formatting .. k .. ":")
-			printtable(v, indent + 1)
-		else
-			print(formatting .. k .. ": " .. tostring(v))
-		end
-	end
-end
-printtable(game.TraitData.ArtemisWeaponBoon)
 
 -- Icon Data
 zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisWeaponBoon = sjson.to_object({
@@ -170,12 +135,12 @@ zanncdwbl_Practical_Gods.ArtemisWeaponBoon = sjson.to_object({
 	Description = "Your {$Keywords.Attack} is stronger, with a {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage.",
 }, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_Practical_Gods.ArtemisWeaponBoonScaling = sjson.to_object({
-	Id = "ArtemisWeaponBoonScaling",
-	InheritFrom = "BaseBoonMultiline",
-	DisplayName = "Deadly Strike",
-	Description = "Your {$Keywords.Attack} is stronger, with a chance to deal {$Keywords.Crit} damage.",
-}, zanncdwbl_Practical_Gods.Order)
+-- zanncdwbl_Practical_Gods.ArtemisWeaponBoonScaling = sjson.to_object({
+-- 	Id = "ArtemisWeaponBoonScaling",
+-- 	InheritFrom = "BaseBoonMultiline",
+-- 	DisplayName = "Deadly Strike",
+-- 	Description = "Your {$Keywords.Attack} is stronger, with a chance to deal {$Keywords.Crit} damage.",
+-- }, zanncdwbl_Practical_Gods.Order)
 
 -- Adding Boons to Default Artemis
 table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisWeaponBoon")

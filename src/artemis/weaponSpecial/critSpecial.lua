@@ -63,11 +63,6 @@ game.TraitData.ArtemisSpecialBoon = {
 			IgnoreRarity = true,
 
 			NoScaling = true, -- Custom Value, refer to Wrap in ArtemisLootData.lua
-
-			-- Have to get super awesome wicked so that the crit doesn't upgrade with poms
-			-- AbsoluteStackValues = {
-			-- 	[1] = 0,
-			-- },
 		},
 		ReportValues = {
 			ExtractCritChance = "Chance",

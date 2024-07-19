@@ -48,7 +48,7 @@ sjson.hook(zanncdwbl_Practical_Gods.TraitTextFile, function(data)
 	-- Artemis Boons
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.CritChanceStatLine) -- CritChance Stat Line
 
-	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisWeaponBoon) -- No Scaling
+	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisWeaponBoon)
 	-- table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisWeaponBoonScaling) -- Crit Scaling
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisSpecialBoon)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisCriticalBoon)
