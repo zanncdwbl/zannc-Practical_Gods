@@ -1,3 +1,36 @@
+-- Disable scaling of crit without using AbsoluteStackValues due to my Generalist mod messing around with that
+modutil.mod.Path.Wrap("GetProcessedValue", function(base, valueToRamp, args)
+	if type(valueToRamp) ~= "table" then
+		return valueToRamp
+	end
+	if valueToRamp.BaseMin ~= nil or valueToRamp.BaseValue ~= nil then
+		local value = 0
+		if valueToRamp.BaseValue ~= nil then
+			value = valueToRamp.BaseValue
+		else
+			if args.ForceMin then
+				value = valueToRamp.BaseMin
+			elseif args.ForceMax then
+				value = valueToRamp.BaseMax
+			else
+				value = RandomFloat(valueToRamp.BaseMin, valueToRamp.BaseMax)
+			end
+		end
+
+		if valueToRamp.NoScaling then
+			return ProcessValue(value, valueToRamp)
+		end
+	end
+	return base(valueToRamp, args)
+end)
+
+zanncdwbl_Practical_Gods.CritChanceStatLine = sjson.to_object({
+	Id = "CritChanceStatDisplay1",
+	InheritFrom = "BaseStatLine",
+	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Crit Chance:",
+	Description = "{#UpgradeFormat}{$TooltipData.StatDisplay2}",
+}, zanncdwbl_Practical_Gods.Order)
+
 -- Creating Artemis in LootData, allows for natural spawns etc
 game.LootData.ArtemisUpgrade = {
 	-- Check all of these, unique or always static?

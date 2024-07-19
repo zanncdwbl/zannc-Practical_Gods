@@ -1,1 +1,4 @@
----@meta zannc-config-BoonAdditions
+---@meta zannc-config-Practical_Gods
+return {
+	ArtemisAttackCritScale = true,
+}
