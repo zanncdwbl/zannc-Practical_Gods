@@ -38,29 +38,8 @@ game.TraitData.ArtemisWeaponBoon = {
 				[3] = 1.10,
 			},
 		},
-		-- IDK why I have to do this
-		ValidWeapons = {
-			"WeaponDagger2",
-			"WeaponDagger5",
-			"WeaponTorch",
-			"WeaponLob",
-			"WeaponAxe",
-			"WeaponStaffDash",
-			"WeaponStaffSwing5",
-			"WeaponAxe2",
-			"WeaponLobChargedPulse",
-			"WeaponAxe3",
-			"WeaponLobPulse",
-			"WeaponDagger",
-			"WeaponStaffSwing2",
-			"WeaponDaggerDash",
-			"WeaponAxeDash",
-			"WeaponDaggerDouble",
-			"WeaponDaggerMultiStab",
-			"WeaponStaffSwing3",
-			"WeaponStaffSwing",
-			"WeaponAxeSpin",
-		},
+
+		ValidWeapons = WeaponSets.HeroPrimaryWeapons,
 
 		-- Don't really know if I need this, but it varies between melee/special etc
 		ValidWeaponsLookup = {
@@ -105,7 +84,7 @@ game.TraitData.ArtemisWeaponBoon = {
 		},
 	},
 
-	StatLines = { "AttackDamageStatDisplay1" },
+	StatLines = { "CritChanceStatDisplay1", "AttackDamageStatDisplay1" },
 
 	ExtractValues = { {
 		Key = "ReportedValidWeaponMultiplier",
@@ -132,7 +111,7 @@ zanncdwbl_Practical_Gods.ArtemisWeaponBoon = sjson.to_object({
 	Id = "ArtemisWeaponBoon",
 	InheritFrom = "BaseBoonMultiline",
 	DisplayName = "Deadly Strike",
-	Description = "Your {$Keywords.Attack} is stronger, with a {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage.",
+	Description = "Your {$Keywords.Attack} is stronger, with a chance to deal {$Keywords.Crit} damage.",
 }, zanncdwbl_Practical_Gods.Order)
 
 -- zanncdwbl_Practical_Gods.ArtemisWeaponBoonScaling = sjson.to_object({

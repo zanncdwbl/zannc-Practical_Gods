@@ -3,17 +3,26 @@
 
 local function drawMenu()
 	local value, checked
+	local currentConfig = {
+		ArtemisAttackCritScale = config.ArtemisAttackCritScale,
+		ArtemisSpecialCritScale = config.ArtemisSpecialCritScale,
+	}
 
 	value, checked = rom.ImGui.Checkbox("Artemis Critical Attack Scaling", config.ArtemisAttackCritScale)
 	if checked then
 		config.ArtemisAttackCritScale = value
-		ConfigureArtemisBoon(config.ArtemisAttackCritScale)
 	end
 
 	value, checked = rom.ImGui.Checkbox("Artemis Critical Special Scaling", config.ArtemisSpecialCritScale)
 	if checked then
 		config.ArtemisSpecialCritScale = value
-		ConfigureArtemisBoon(config.ArtemisSpecialCritScale)
+	end
+
+	if config.ArtemisAttackCritScale ~= currentConfig.ArtemisAttackCritScale or config.ArtemisSpecialCritScale ~= currentConfig.ArtemisSpecialCritScale then
+		print("Configuration changed, updating Artemis Boon")
+		currentConfig.ArtemisAttackCritScale = config.ArtemisAttackCritScale
+		currentConfig.ArtemisSpecialCritScale = config.ArtemisSpecialCritScale
+		ConfigureArtemisBoon(config.ArtemisAttackCritScale, config.ArtemisSpecialCritScale)
 	end
 end
 

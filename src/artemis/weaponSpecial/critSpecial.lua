@@ -69,7 +69,7 @@ game.TraitData.ArtemisSpecialBoon = {
 		},
 	},
 
-	StatLines = { "SpecialDamageStatDisplay1" },
+	StatLines = { "CritChanceStatDisplay1", "SpecialDamageStatDisplay1" },
 
 	ExtractValues = {
 		{
@@ -99,7 +99,7 @@ zanncdwbl_Practical_Gods.ArtemisSpecialBoon = sjson.to_object({
 	Id = "ArtemisSpecialBoon",
 	InheritFrom = "BaseBoonMultiline",
 	DisplayName = "Deadly Flourish",
-	Description = "Your {$Keywords.Special} is stronger, with a {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipCritChance:P} {#Prev} chance to deal {$Keywords.Crit} damage.",
+	Description = "Your {$Keywords.Special} is stronger, with a chance to deal {$Keywords.Crit} damage.",
 }, zanncdwbl_Practical_Gods.Order)
 
 -- Adding Boons to Default Artemis
