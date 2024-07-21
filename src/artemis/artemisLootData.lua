@@ -147,10 +147,229 @@ game.LootData.ArtemisUpgrade = {
 	MakeUpTextLines = {},
 	DeathTauntVoiceLines = {},
 	BoughtTextLines = {},
-	GiftGivenVoiceLines = {},
+
+	-- GiftTextLineSets = {
+	-- 	ArtemisGift01 = {
+	-- 		PlayOnce = true,
+	-- 		OnGiftTrack = true,
+	-- 		UnfilledIcon = "EmptyHeartWithGiftIcon",
+	-- 		FilledIcon = "FilledHeartWithGiftIcon",
+	-- 		Cost = {
+	-- 			GiftPoints = 1,
+	-- 		},
+	-- 		PreEventFunctionName = "AngleNPCToHero",
+	-- 		GameStateRequirements = {
+	-- 			{
+	-- 				PathTrue = { "GameState", "UseRecord", "HestiaUpgrade" },
+	-- 			},
+	-- 		},
+
+	-- 		{
+	-- 			Cue = "/VO/Melinoe_1194",
+	-- 			UsePlayerSource = true,
+	-- 			PreLineAnim = "MelTalkExplaining01",
+	-- 			PreLineAnimTarget = "Hero",
+	-- 			PostLineAnim = "MelinoeIdleWeaponless",
+	-- 			PostLineAnimTarget = "Hero",
+	-- 			PostLineFunctionName = "BoonInteractPresentation",
+	-- 			PostLineFunctionArgs = { SkipAnim = true },
+	-- 			PostLineRemoveContextArt = true,
+	-- 			Text = "It's been a pleasure to have worked more closely with you, Sister Artemis. This is hardly worth the gift of impeccable precision, though I wanted you to have it.",
+	-- 		},
+	-- 		{
+	-- 			Cue = "/VO/Artemis_0163",
+	-- 			PortraitExitWait = 1.0,
+	-- 			NarrativeContextArt = "DialogueBackground_Olympus",
+	-- 			Text = "Doing the old traditions now, are we? Well sure, then I accept your offering, Sister Melinoë. And I've an offering for {#Emph}you{#Prev}, in kind!",
+	-- 		},
+	-- 	},
+	-- 	ArtemisGift02 = {
+	-- 		PlayOnce = true,
+	-- 		OnGiftTrack = true,
+	-- 		UnfilledIcon = "EmptyHeartWithGiftIcon",
+	-- 		FilledIcon = "FilledHeartWithGiftIcon",
+	-- 		Cost = {
+	-- 			GiftPoints = 1,
+	-- 		},
+	-- 		PreEventFunctionName = "AngleNPCToHero",
+	-- 		GameStateRequirements = {
+	-- 			{
+	-- 				PathTrue = { "GameState", "UseRecord", "HestiaUpgrade" },
+	-- 			},
+	-- 		},
+	-- 		{
+	-- 			Cue = "/VO/Artemis_0164",
+	-- 			UsePlayerSource = true,
+	-- 			PostLineFunctionName = "BoonInteractPresentation",
+	-- 			PostLineFunctionArgs = { SkipAnim = true },
+	-- 			PostLineRemoveContextArt = true,
+	-- 			NarrativeContextArt = "DialogueBackground_Olympus",
+	-- 			Text = "You do know we have {#Emph}barrels {#Prev}of this stuff up on Olympus, right? Used to, at least. Damn near forgotten what it tastes like, come to think...",
+	-- 		},
+
+	-- 		{
+	-- 			Cue = "/VO/Melinoe_1195",
+	-- 			PreLineAnim = "MelTalkExplaining01",
+	-- 			PreLineAnimTarget = "Hero",
+	-- 			PostLineAnim = "MelinoeIdleWeaponless",
+	-- 			PostLineAnimTarget = "Hero",
+	-- 			PortraitExitWait = 1.0,
+	-- 			Text = "May the good memories come flooding back! Whenever you have the time for it, of course.",
+	-- 		},
+	-- 	},
+
+	-- 	ArtemisGift03 = {
+	-- 		PlayOnce = true,
+	-- 		OnGiftTrack = true,
+	-- 		UnfilledIcon = "EmptyHeartWithGiftIcon",
+	-- 		FilledIcon = "FilledHeartWithGiftIcon",
+	-- 		Cost = {
+	-- 			GiftPoints = 1,
+	-- 		},
+	-- 		PreEventFunctionName = "AngleNPCToHero",
+	-- 		GameStateRequirements = {
+	-- 			{
+	-- 				PathTrue = { "GameState", "UseRecord", "HestiaUpgrade" },
+	-- 			},
+	-- 		},
+	-- 		{
+	-- 			Cue = "/VO/Artemis_0189",
+	-- 			UsePlayerSource = true,
+	-- 			PostLineFunctionName = "BoonInteractPresentation",
+	-- 			PostLineFunctionArgs = { SkipAnim = true },
+	-- 			PostLineRemoveContextArt = true,
+	-- 			NarrativeContextArt = "DialogueBackground_Olympus",
+	-- 			Text = "What's all this extra generosity from you lately? It's putting me on edge. Don't you go acting like this is goodbye...!",
+	-- 		},
+
+	-- 		{
+	-- 			Cue = "/VO/Melinoe_2341",
+	-- 			PreLineAnim = "MelTalkExplaining01",
+	-- 			PreLineAnimTarget = "Hero",
+	-- 			PostLineAnim = "MelinoeIdleWeaponless",
+	-- 			PostLineAnimTarget = "Hero",
+	-- 			PortraitExitWait = 1.0,
+	-- 			Text = "It's merely that the arrow-riddled remnants of my foes give me occasion to reflect! I tell myself never to take my dear friends for granted.",
+	-- 		},
+	-- 	},
+
+	-- 	ArtemisGift04 = {
+	-- 		PlayOnce = true,
+	-- 		OnGiftTrack = true,
+	-- 		UnfilledIcon = "EmptyHeartWithGiftIcon",
+	-- 		FilledIcon = "FilledHeartWithGiftIcon",
+	-- 		Cost = {
+	-- 			GiftPoints = 1,
+	-- 		},
+	-- 		PreEventFunctionName = "AngleNPCToHero",
+	-- 		GameStateRequirements = {
+	-- 			{
+	-- 				PathTrue = { "GameState", "UseRecord", "HestiaUpgrade" },
+	-- 			},
+	-- 		},
+	-- 		{
+	-- 			Cue = "/VO/Artemis_0190",
+	-- 			UsePlayerSource = true,
+	-- 			PostLineFunctionName = "BoonInteractPresentation",
+	-- 			PostLineFunctionArgs = { SkipAnim = true },
+	-- 			PostLineRemoveContextArt = true,
+	-- 			NarrativeContextArt = "DialogueBackground_Olympus",
+	-- 			Text = "I can't exactly drink this on the hunt, you know! But I can squirrel it away for safekeeping. Maybe once all this is settled, we can share a bottle and get properly caught up.",
+	-- 		},
+
+	-- 		{
+	-- 			Cue = "/VO/Melinoe_2342",
+	-- 			PreLineAnim = "MelTalkExplaining01",
+	-- 			PreLineAnimTarget = "Hero",
+	-- 			PostLineAnim = "MelinoeIdleWeaponless",
+	-- 			PostLineAnimTarget = "Hero",
+	-- 			PortraitExitWait = 1.0,
+	-- 			Text = "Or, failing that, we could always keep on teaming against vengeful spirits and the like! Although it's nice to keep the possibility in mind.",
+	-- 		},
+	-- 	},
+
+	-- 	ArtemisGift05 = {
+	-- 		PlayOnce = true,
+	-- 		OnGiftTrack = true,
+	-- 		Cost = {
+	-- 			GiftPoints = 1,
+	-- 		},
+	-- 		PreEventFunctionName = "AngleNPCToHero",
+	-- 		GameStateRequirements = {
+	-- 			{
+	-- 				PathTrue = { "GameState", "UseRecord", "NPC_Artemis_Field_01" },
+	-- 			},
+	-- 		},
+	-- 		{ Cue = "/VO/Artemis_0191", Text = "Hey, thank you! Sure enough, Olympus started running a little low on this stuff. I'll be sure to lord it over the others, long as you don't mind me exploiting your good graces." },
+	-- 		{
+	-- 			Cue = "/VO/Melinoe_3502",
+	-- 			UsePlayerSource = true,
+	-- 			Portrait = "Portrait_Mel_Pleased_01",
+	-- 			PreLineAnim = "MelTalkExplaining01",
+	-- 			PreLineAnimTarget = "Hero",
+	-- 			PostLineAnim = "MelinoeIdleWeaponless",
+	-- 			PostLineAnimTarget = "Hero",
+	-- 			Text = "I don't recall anything about exploiting one another's good graces in the bylaws of the Silver Sisters, so you should be fine! May you enjoy it either way.",
+	-- 		},
+	-- 	},
+
+	-- 	ArtemisGift06 = {
+	-- 		PlayOnce = true,
+	-- 		OnGiftTrack = true,
+	-- 		Cost = {
+	-- 			GiftPoints = 1,
+	-- 		},
+	-- 		PreEventFunctionName = "AngleNPCToHero",
+	-- 		GameStateRequirements = {
+	-- 			{
+	-- 				PathTrue = { "GameState", "UseRecord", "NPC_Artemis_Field_01" },
+	-- 			},
+	-- 		},
+	-- 		{
+	-- 			Cue = "/VO/Artemis_0192",
+	-- 			PreLineWait = 0.35,
+	-- 			Text = "...Hard making friends with goddesses, but I have what {#Emph}I {#Prev}need. We can be on our own without feeling alone, you know? I hope you know. That's how it is for me.",
+	-- 		},
+	-- 		{
+	-- 			Cue = "/VO/Melinoe_3503",
+	-- 			UsePlayerSource = true,
+	-- 			PreLineAnim = "MelTalkBrooding01",
+	-- 			PreLineAnimTarget = "Hero",
+	-- 			PostLineAnim = "MelinoeIdleWeaponless",
+	-- 			PostLineAnimTarget = "Hero",
+	-- 			Text = "I do know, and feel much the same. When we're not watching one another's backs, we have Selene and Headmistress watching over us. Still, it's always good to see you face-to-face.",
+	-- 		},
+	-- 		{ Cue = "/VO/Artemis_0193", Text = "You, too. Most of my family I can do without most of the time. You're an exception! We may not be sisters by blood, but... you'll always be Sister Melinoë to me." },
+	-- 		EndVoiceLines = {
+	-- 			{
+	-- 				PreLineWait = 0.4,
+	-- 				UsePlayerSource = true,
+	-- 				{ Cue = "/VO/Melinoe_3504", Text = "Likewise, Sister Artemis." },
+	-- 			},
+	-- 		},
+	-- 	},
+
+	-- 	-- placeholder
+	-- 	ArtemisGiftTemp = {
+	-- 		PlayOnce = true,
+	-- 		UseableOffSource = true,
+	-- 		OnGiftTrack = true,
+	-- 		UnfilledIcon = "UnavailableHeartIcon",
+	-- 		HintId = "Codex_UnavailableHint",
+	-- 		Cost = {
+	-- 			MysteryResource = 1,
+	-- 		},
+	-- 	},
+	-- },
+	-- GiftGivenVoiceLines = {
+	-- 	BreakIfPlayed = true,
+	-- 	PreLineWait = 1.0,
+	-- 	PlayFromTarget = true,
+
+	-- 	{ Cue = "/VO/Melinoe_1732", Text = "Truly? You're the best." },
+	-- },
 	SwapUpgradePickedVoiceLines = {},
 	RarityUpgradeVoiceLines = {},
-	GiftTextLineSets = {},
 	BlindBoxOpenedVoiceLines = {},
 	RejectionVoiceLines = {},
 }
