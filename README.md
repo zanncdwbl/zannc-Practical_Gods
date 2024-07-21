@@ -5,7 +5,7 @@ Ever felt like Artemis was a bit useless? Wanted to see her drop as a regular go
 
 ## Artemis Boons
 <img src="https://github.com/user-attachments/assets/efad9c89-ef9b-47f4-ad8a-290dbdc6a092" width=80%> <br><br>
-You are able to optionally enable the Critical Hit Scaling through ImGUI or config file, and it also works along side my other mod [Generalist](https://thunderstore.io/c/hades-ii/p/zannc/Generalist/)
+You are able to optionally enable the Critical Hit Scaling through ImGUI or config file, and it also works along side my other mod [Generalist](https://thunderstore.io/c/hades-ii/p/zannc/Generalist/) <br>
 ![Hades2_IQ14MYO7nq](https://github.com/user-attachments/assets/30b9e493-50b4-4d11-ba50-0a6966d284b5)
 
 
