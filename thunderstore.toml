@@ -11,7 +11,7 @@ websiteUrl = "https://github.com/zanncdwbl/zannc-Practical_Gods"
 containsNsfwContent = false
 
 [package.dependencies]
-Hell2Modding-Hell2Modding = "1.0.44"
+Hell2Modding-Hell2Modding = "1.0.45"
 SGG_Modding-ModUtil = "4.0.0"
 SGG_Modding-ENVY = "1.1.0"
 SGG_Modding-Chalk = "2.1.1"
