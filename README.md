@@ -13,4 +13,4 @@ You are able to optionally enable the Critical Hit Scaling through ImGUI or conf
 <img src="https://github.com/user-attachments/assets/2f44c431-dc0c-46aa-9815-33dd4ac49410" width=80%> 
 
 #### This is still in heavy development, so if you have/encounter any issues or have general suggestions for boons or alterations to make to other gods, please post an issue and I'll answer ASAP<br>
-#### Thanks to Jowday for the Icon
+#### Thanks to Jowday for the Icon, and thanks to Volcanicalyx for adding the tilted artemis icon
