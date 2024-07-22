@@ -192,7 +192,7 @@ zanncdwbl_Practical_Gods.ArtemisDashBoon_Text = sjson.to_object({
 }, zanncdwbl_Practical_Gods.Order)
 
 -- Adding Boons to Default Artemis
-table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, "ArtemisDashBoon")
+table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, 3, "ArtemisDashBoon")
 
 -- Insert TraitIndex into BoonInfo or else it won't show up in codex since BoonInfo gets populated before traits are added by mods
 -- Just adds the boon to the codex - aka the (Hidden) "TraitIndex"
