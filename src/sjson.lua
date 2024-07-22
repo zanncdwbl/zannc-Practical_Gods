@@ -28,6 +28,7 @@ sjson.hook(zanncdwbl_Practical_Gods.GUIAnimationsFile, function(data)
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisSpecialBoon)
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisCriticalBoon)
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisArmourBoon)
+	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisDashBoon)
 
 	-- Artemis Icon
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonInfoSymbolArtemisIcon)
@@ -55,6 +56,8 @@ sjson.hook(zanncdwbl_Practical_Gods.TraitTextFile, function(data)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisCriticalBoon_Text)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisArmourBoon)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisArmourBoon_Text)
+	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisDashBoon)
+	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisDashBoon_Text)
 
 	-- Artemis Store Text
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisUpgrade_Store)
