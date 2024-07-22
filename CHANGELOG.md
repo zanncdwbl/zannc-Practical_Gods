@@ -1,6 +1,7 @@
 # Changelog
 
 ## [Unreleased]
+Attack and Special now show up first in Pony Menu
 
 ## [1.0.0] - 2024-07-21
 Initial Release<br>
