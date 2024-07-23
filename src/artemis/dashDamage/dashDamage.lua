@@ -41,21 +41,22 @@ game.TraitData.ArtemisDashBoon = {
 		},
 	},
 
-    OnSprintAction = {
+	OnSprintAction = {
 		-- we need to do this string building or the save gets bricked as soon as you leave the room
-		FunctionName = 'rom.mods.' .. _PLUGIN.guid .. '.not.ArtemisSprintFire',
+		FunctionName = "rom.mods." .. _PLUGIN.guid .. ".not.ArtemisSprintFire",
 		RunOnce = true,
 		Args = {
 			Cooldown = 0.1,
 			StartAngle = 180,
 			Scatter = 180,
-			ProjectileName = "ArtemisSupportingFire",
+			ProjectileName = "ArtemisSupportingFireSprint",
 			ProjectileCap = 3,
 			Radius = 200,
 			Range = 600,
 			DamageMultiplier = { BaseValue = 1 },
+
 			-- below is stuff that is not used just yet
-			ReportValues = { ReportedMultiplier = "DamageMultiplier", },
+			ReportValues = { ReportedMultiplier = "DamageMultiplier" },
 			StartDelay = 0.2,
 			Vfx = "HeraSprintPullFx",
 			EffectName = "DamageShareEffect",
@@ -81,17 +82,16 @@ game.TraitData.ArtemisDashBoon = {
 
 	StatLines = { "DashDamageStatDisplay1" },
 
-	ExtractValues = 
-	{
+	ExtractValues = {
 		{
 			Key = "ReportedMultiplier",
 			ExtractAs = "Damage",
 			Format = "MultiplyByBase",
 			BaseType = "Projectile",
-			BaseName = "ArtemisSupportingFire",
+			BaseName = "ArtemisSupportingFireSprint",
 			BaseProperty = "Damage",
 		},
-	}
+	},
 }
 
 --[[ this isn't working yet. need to double check and make sure the structure is correct
@@ -101,32 +101,34 @@ we also need to add ArtemisSupportingFireSprint to PlayerProjectiles.sjson - i g
 once the sjson is in, we can try replacing ProjectileName and BaseName in the trait
 then i think this will make the damage show up with a unique name
 ]]
-game.ProjectileData.ArtemisSupportingFireSprint = {
-	InheritFrom = { "ArtemisColorProjectile" },
-	DamageTextStartColor = Color.ArtemisDamageLight,
-	DamageTextColor = Color.ArtemisDamage,
-	Sounds =
-	{
-		ImpactSounds =
-		{
-			Invulnerable = "/SFX/Player Sounds/ZagreusShieldRicochet",
-			Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
-			Bone = "/SFX/ArrowMetalBoneSmash",
-			Brick = "/SFX/ArrowMetalStoneClang",
-			Stone = "/SFX/ArrowMetalStoneClang",
-			Organic = "/SFX/GunBulletOrganicImpact",
-			StoneObstacle = "/SFX/ArrowWallHitClankSmall",
-			BrickObstacle = "/SFX/ArrowWallHitClankSmall",
-			MetalObstacle = "/SFX/ArrowWallHitClankSmall",
-			BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
-		},
-	},
-	ProjectileName = "ArtemisSupportingFireSprint"
-}
+-- =========================================================
+--  Commenting this out doesnt seem to do anything on my end
+-- =========================================================
+-- game.ProjectileData.ArtemisSupportingFireSprint = {
+-- 	InheritFrom = { "ArtemisColorProjectile" }, -- This doesn't actually inherit anything for some reason
+-- 	Name = "ArtemisSupportingFireSprint",
+
+-- 	DamageTextStartColor = Color.ArtemisDamageLight,
+-- 	DamageTextColor = Color.ArtemisDamage,
+-- 	Sounds = {
+-- 		ImpactSounds = {
+-- 			Invulnerable = "/SFX/Player Sounds/ZagreusShieldRicochet",
+-- 			Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
+-- 			Bone = "/SFX/ArrowMetalBoneSmash",
+-- 			Brick = "/SFX/ArrowMetalStoneClang",
+-- 			Stone = "/SFX/ArrowMetalStoneClang",
+-- 			Organic = "/SFX/GunBulletOrganicImpact",
+-- 			StoneObstacle = "/SFX/ArrowWallHitClankSmall",
+-- 			BrickObstacle = "/SFX/ArrowWallHitClankSmall",
+-- 			MetalObstacle = "/SFX/ArrowWallHitClankSmall",
+-- 			BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
+-- 		},
+-- 	},
+-- }
 
 -- this janky stuff is because the function needs to be public, but we don't really want it to appear as a public function
 local not_public = {}
-public['not'] = not_public
+public["not"] = not_public
 
 function not_public.ArtemisSprintFire(args)
 	if game.CheckCooldown("ArtemisSprintArrows", args.Cooldown) then
@@ -153,82 +155,6 @@ function not_public.ArtemisSprintFire(args)
 	end
 end
 
--- =========================================================
---  PowersLogic
--- =========================================================
--- Support Fire Logic
--- function CheckSupportingFire(victim, functionArgs, triggerArgs)
--- 	local cooldown = functionArgs.Cooldown or 0.1667
--- 	if CheckCooldown("SupportFire", window) then
--- 		local angle = functionArgs.StartAngle
--- 		if angle and functionArgs.Scatter then
--- 			angle = angle + RandomFloat(-functionArgs.Scatter, functionArgs.Scatter)
--- 		end
-
--- 		CreateProjectileFromUnit({
--- 			Name = functionArgs.ProjectileName,
--- 			Id = CurrentRun.Hero.ObjectId,
--- 			DestinationId = victim.ObjectId,
--- 			Angle = angle + triggerArgs.ImpactAngle,
--- 			DamageMultiplier = functionArgs.DamageMultiplier,
--- 			FizzleOldestProjectileCount = functionArgs.FizzleOldestProjectileCount,
--- 			ProjectileCap = functionArgs.ProjectileCap,
--- 		})
--- 	end
--- end
-
--- -- This is whats related to hera's sprint boon, just so you know what to look for
--- function HeraSprintSuction(functionArgs)
--- 	if CheckCooldown("HeraSprintSuction", functionArgs.Cooldown) then
--- 		local nearestEnemyTargetIds = GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = functionArgs.Radius })
--- 		CreateAnimation({ Name = functionArgs.PullVfx, DestinationId = CurrentRun.Hero.ObjectId, ScaleRadius = functionArgs.Radius })
--- 		for i, id in pairs(nearestEnemyTargetIds) do
--- 			ApplyForce({
--- 				Id = id,
--- 				SelfApplied = true,
--- 				Speed = GetRequiredForceToEnemy(id, CurrentRun.Hero.ObjectId, -functionArgs.DeadZoneRadius, functionArgs.DistanceMultiplier),
--- 				Angle = GetAngleBetween({ Id = id, DestinationId = CurrentRun.Hero.ObjectId }),
--- 			})
--- 			ApplyDamageShare(ActiveEnemies[id], functionArgs)
--- 		end
--- 	end
--- end
-
--- function HeraSprintLink(functionArgs)
--- 	if not CurrentRun.Hero.SprintActive or not SessionMapState.SprintStartTime or (functionArgs.StartDelay and (_worldTimeUnmodified - SessionMapState.SprintStartTime) < functionArgs.StartDelay) then
--- 		return
--- 	end
--- 	if CheckCooldown("HeraSprintSuction", functionArgs.Cooldown) then
--- 		local enemyId = GetClosest({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = functionArgs.Radius })
--- 		CreateAnimation({ Name = functionArgs.Vfx, DestinationId = CurrentRun.Hero.ObjectId })
--- 		if enemyId and ActiveEnemies[enemyId] and not ActiveEnemies[enemyId].IsDead then
--- 			local firstApplication = (ActiveEnemies[enemyId].ActiveEffects and not ActiveEnemies[enemyId].ActiveEffects[functionArgs.EffectName])
--- 			ApplyDamageShare(ActiveEnemies[enemyId], functionArgs)
--- 			if firstApplication and functionArgs.ProjectileName then
--- 				thread(DelayFireSprintLinkProjectile, enemyId, functionArgs)
--- 			end
--- 		end
--- 	end
--- end
-
--- function DelayFireSprintLinkProjectile(enemyId, functionArgs)
--- 	waitUnmodified(0.05)
--- 	if enemyId and ActiveEnemies[enemyId] and not ActiveEnemies[enemyId].IsDead then
--- 		CreateProjectileFromUnit({ Name = functionArgs.ProjectileName, Id = CurrentRun.Hero.ObjectId, DestinationId = enemyId, DamageMultiplier = functionArgs.DamageMultiplier })
--- 		if CheckCooldown("HeraCastPresentation", functionArgs.VfxCooldown) then
--- 			CreateAnimationsBetween({
--- 				Animation = "HeraRope",
--- 				DestinationId = enemyId,
--- 				Id = CurrentRun.Hero.ObjectId,
--- 				Stretch = true,
--- 				UseZLocation = false,
--- 			})
--- 		end
--- 	end
--- end
-
--- ========================================================= Remove this and ^ that when you dont need it anymore
-
 -- Icon Data
 zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisDashBoon = sjson.to_object({
 	Name = "Boon_Artemis_ArtemisDashBoon",
@@ -241,8 +167,7 @@ zanncdwbl_Practical_Gods.ArtemisDashBoon = sjson.to_object({
 	Id = "ArtemisDashBoon",
 	InheritFrom = "BaseBoonMultiline",
 	DisplayName = "Hunter Dash",
-	Description =
-	"Your {$Keywords.Sprint} firesa seeking arrow, and you gain {#UpgradeFormat}10% {#Prev}Chance to deal {$Keywords.Crit} damage.",
+	Description = "Your {$Keywords.Sprint} fires a seeking arrow, and you gain {#UpgradeFormat}10% {#Prev}Chance to deal {$Keywords.Crit} damage.",
 }, zanncdwbl_Practical_Gods.Order)
 
 zanncdwbl_Practical_Gods.ArtemisDashBoon_Text = sjson.to_object({
@@ -251,6 +176,51 @@ zanncdwbl_Practical_Gods.ArtemisDashBoon_Text = sjson.to_object({
 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Homing Arrows Damage",
 	Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}",
 }, zanncdwbl_Practical_Gods.Order)
+
+-- Adding her ProjectileData
+zanncdwbl_Practical_Gods.ArtemisSupportingFireSprint = sjson.to_object({
+	Name = "ArtemisSupportingFireSprint",
+	InheritFrom = "1_BaseNonPhysicalProjectile",
+	Type = "HOMING",
+	HomingAllegiance = "ENEMIES",
+	AdjustRateAcceleration = 900,
+	MaxAdjustRate = 3600,
+	Speed = 1200,
+	Acceleration = 300,
+	Range = 10000.0,
+	Damage = 20,
+	CheckObstacleImpact = false,
+	CheckUnitImpact = true,
+	UnlimitedUnitPenetration = false,
+	DetonateAtVictimLocation = true,
+	UseVulnerability = true,
+	IgnoreCoverageAngles = true,
+	Thing = {
+		Graphic = "ArtemisRangedArrowheadLegendary",
+		OffsetZ = 112,
+		AttachedAnim = "null",
+		Grip = 999999,
+		RotateGeometry = true,
+		Points = {
+			{
+				X = 76,
+				Y = 16,
+			},
+			{
+				X = 76,
+				Y = -16,
+			},
+			{
+				X = -32,
+				Y = -16,
+			},
+			{
+				X = -32,
+				Y = 16,
+			},
+		},
+	},
+}, zanncdwbl_Practical_Gods.ProjectileSupportFireOrder)
 
 -- Adding Boons to Default Artemis
 table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, 3, "ArtemisDashBoon")
@@ -329,3 +299,77 @@ table.insert(game.LinkedTraitData.ArtemisCoreTraits, "ArtemisDashBoon")
 -- 		},
 -- 	},
 -- },
+
+-- =========================================================
+--  PowersLogic
+-- =========================================================
+-- Support Fire Logic
+-- function CheckSupportingFire(victim, functionArgs, triggerArgs)
+-- 	local cooldown = functionArgs.Cooldown or 0.1667
+-- 	if CheckCooldown("SupportFire", window) then
+-- 		local angle = functionArgs.StartAngle
+-- 		if angle and functionArgs.Scatter then
+-- 			angle = angle + RandomFloat(-functionArgs.Scatter, functionArgs.Scatter)
+-- 		end
+
+-- 		CreateProjectileFromUnit({
+-- 			Name = functionArgs.ProjectileName,
+-- 			Id = CurrentRun.Hero.ObjectId,
+-- 			DestinationId = victim.ObjectId,
+-- 			Angle = angle + triggerArgs.ImpactAngle,
+-- 			DamageMultiplier = functionArgs.DamageMultiplier,
+-- 			FizzleOldestProjectileCount = functionArgs.FizzleOldestProjectileCount,
+-- 			ProjectileCap = functionArgs.ProjectileCap,
+-- 		})
+-- 	end
+-- end
+
+-- -- This is whats related to hera's sprint boon, just so you know what to look for
+-- function HeraSprintSuction(functionArgs)
+-- 	if CheckCooldown("HeraSprintSuction", functionArgs.Cooldown) then
+-- 		local nearestEnemyTargetIds = GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = functionArgs.Radius })
+-- 		CreateAnimation({ Name = functionArgs.PullVfx, DestinationId = CurrentRun.Hero.ObjectId, ScaleRadius = functionArgs.Radius })
+-- 		for i, id in pairs(nearestEnemyTargetIds) do
+-- 			ApplyForce({
+-- 				Id = id,
+-- 				SelfApplied = true,
+-- 				Speed = GetRequiredForceToEnemy(id, CurrentRun.Hero.ObjectId, -functionArgs.DeadZoneRadius, functionArgs.DistanceMultiplier),
+-- 				Angle = GetAngleBetween({ Id = id, DestinationId = CurrentRun.Hero.ObjectId }),
+-- 			})
+-- 			ApplyDamageShare(ActiveEnemies[id], functionArgs)
+-- 		end
+-- 	end
+-- end
+
+-- function HeraSprintLink(functionArgs)
+-- 	if not CurrentRun.Hero.SprintActive or not SessionMapState.SprintStartTime or (functionArgs.StartDelay and (_worldTimeUnmodified - SessionMapState.SprintStartTime) < functionArgs.StartDelay) then
+-- 		return
+-- 	end
+-- 	if CheckCooldown("HeraSprintSuction", functionArgs.Cooldown) then
+-- 		local enemyId = GetClosest({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = functionArgs.Radius })
+-- 		CreateAnimation({ Name = functionArgs.Vfx, DestinationId = CurrentRun.Hero.ObjectId })
+-- 		if enemyId and ActiveEnemies[enemyId] and not ActiveEnemies[enemyId].IsDead then
+-- 			local firstApplication = (ActiveEnemies[enemyId].ActiveEffects and not ActiveEnemies[enemyId].ActiveEffects[functionArgs.EffectName])
+-- 			ApplyDamageShare(ActiveEnemies[enemyId], functionArgs)
+-- 			if firstApplication and functionArgs.ProjectileName then
+-- 				thread(DelayFireSprintLinkProjectile, enemyId, functionArgs)
+-- 			end
+-- 		end
+-- 	end
+-- end
+
+-- function DelayFireSprintLinkProjectile(enemyId, functionArgs)
+-- 	waitUnmodified(0.05)
+-- 	if enemyId and ActiveEnemies[enemyId] and not ActiveEnemies[enemyId].IsDead then
+-- 		CreateProjectileFromUnit({ Name = functionArgs.ProjectileName, Id = CurrentRun.Hero.ObjectId, DestinationId = enemyId, DamageMultiplier = functionArgs.DamageMultiplier })
+-- 		if CheckCooldown("HeraCastPresentation", functionArgs.VfxCooldown) then
+-- 			CreateAnimationsBetween({
+-- 				Animation = "HeraRope",
+-- 				DestinationId = enemyId,
+-- 				Id = CurrentRun.Hero.ObjectId,
+-- 				Stretch = true,
+-- 				UseZLocation = false,
+-- 			})
+-- 		end
+-- 	end
+-- end
