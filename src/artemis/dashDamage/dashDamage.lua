@@ -38,7 +38,6 @@ game.TraitData.ArtemisDashBoon = {
 			-- ProjectileCap = 3,
 			Radius = 500,
 			CostPerStrike = 2,
-			RunFunctionNameOnTarget = "rom.mods." .. _PLUGIN.guid .. ".not.ArtemisSpendMana",
 			DamageMultiplier = { BaseValue = 1 },
 			ReportValues = { ReportedMultiplier = "DamageMultiplier" },
 		},
@@ -109,7 +108,7 @@ function not_public.ArtemisSprintFire(weaponData, functionArgs, triggerArgs)
 	if enemyId and game.ActiveEnemies[enemyId] and not game.ActiveEnemies[enemyId].IsDead then
 		local victim = game.ActiveEnemies[enemyId] -- get the actual object for the given id
 
-		if CheckCooldown("ArtemisSprintFire", triggerArgs.Cooldown, true) then
+		if CheckCooldown("ArtemisSprintFire", functionArgs.Cooldown, true) then
 			if game.CurrentRun.Hero.Mana >= manaCost then
 				local angle = randomint(0, 360)
 				if angle and functionArgs.Scatter then
@@ -122,21 +121,13 @@ function not_public.ArtemisSprintFire(weaponData, functionArgs, triggerArgs)
 					DestinationId = victim.ObjectId,
 					Angle = angle,
 					DamageMultiplier = functionArgs.DamageMultiplier,
-					ProjectileCap = randomint(1, 2),
-					RunFunctionNameOnTarget = functionArgs.RunFunctionNameOnTarget,
-					RunFunctionArgsOnTarget = functionArgs, -- Idk what this is for
+					ProjectileCap = 3,
+					Count = randomint(1, 3),
 				})
+				ManaDelta(-manaCost)
 			end
 		end
 	end
-end
-
--- Copy paste from zeus but it just doesnt want to use up mana
-function not_public.ArtemisSpendMana(args)
-	local functionArgs = args.Args or {}
-	local weaponData = GetWeaponData(game.CurrentRun.Hero, "WeaponSprint")
-	local manaCost = GetManaCost(weaponData, true, { ManaCostOverride = functionArgs.CostPerStrike })
-	ManaDelta(-manaCost)
 end
 
 -- Icon Data
