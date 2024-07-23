@@ -44,7 +44,9 @@ game.TraitData.ArtemisDashBoon = {
 	OnSprintAction = {
 		FunctionName = "HeraSprintLink",
 		RunOnce = true,
-		Args = {
+        Args = {
+            Hijack = true,
+			-- below is what we pasted from hera
 			Radius = 200,
 			Range = 600,
 			StartDelay = 0.2,
@@ -52,7 +54,7 @@ game.TraitData.ArtemisDashBoon = {
 			Vfx = "HeraSprintPullFx",
 			EffectName = "DamageShareEffect",
 			NumJumps = 1,
-			ProjectileName = "HeraSprintProjectile",
+			ProjectileName = "ArtemisSupportingFire",
 			VfxCooldown = 0.1, -- For the projectile link damage
 			DamageMultiplier = {
 				BaseValue = 1,
@@ -97,75 +99,75 @@ game.TraitData.ArtemisDashBoon = {
 --  PowersLogic
 -- =========================================================
 -- Support Fire Logic
-function CheckSupportingFire(victim, functionArgs, triggerArgs)
-	local cooldown = functionArgs.Cooldown or 0.1667
-	if CheckCooldown("SupportFire", window) then
-		local angle = functionArgs.StartAngle
-		if angle and functionArgs.Scatter then
-			angle = angle + RandomFloat(-functionArgs.Scatter, functionArgs.Scatter)
-		end
+-- function CheckSupportingFire(victim, functionArgs, triggerArgs)
+-- 	local cooldown = functionArgs.Cooldown or 0.1667
+-- 	if CheckCooldown("SupportFire", window) then
+-- 		local angle = functionArgs.StartAngle
+-- 		if angle and functionArgs.Scatter then
+-- 			angle = angle + RandomFloat(-functionArgs.Scatter, functionArgs.Scatter)
+-- 		end
 
-		CreateProjectileFromUnit({
-			Name = functionArgs.ProjectileName,
-			Id = CurrentRun.Hero.ObjectId,
-			DestinationId = victim.ObjectId,
-			Angle = angle + triggerArgs.ImpactAngle,
-			DamageMultiplier = functionArgs.DamageMultiplier,
-			FizzleOldestProjectileCount = functionArgs.FizzleOldestProjectileCount,
-			ProjectileCap = functionArgs.ProjectileCap,
-		})
-	end
-end
+-- 		CreateProjectileFromUnit({
+-- 			Name = functionArgs.ProjectileName,
+-- 			Id = CurrentRun.Hero.ObjectId,
+-- 			DestinationId = victim.ObjectId,
+-- 			Angle = angle + triggerArgs.ImpactAngle,
+-- 			DamageMultiplier = functionArgs.DamageMultiplier,
+-- 			FizzleOldestProjectileCount = functionArgs.FizzleOldestProjectileCount,
+-- 			ProjectileCap = functionArgs.ProjectileCap,
+-- 		})
+-- 	end
+-- end
 
--- This is whats related to hera's sprint boon, just so you know what to look for
-function HeraSprintSuction(functionArgs)
-	if CheckCooldown("HeraSprintSuction", functionArgs.Cooldown) then
-		local nearestEnemyTargetIds = GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = functionArgs.Radius })
-		CreateAnimation({ Name = functionArgs.PullVfx, DestinationId = CurrentRun.Hero.ObjectId, ScaleRadius = functionArgs.Radius })
-		for i, id in pairs(nearestEnemyTargetIds) do
-			ApplyForce({
-				Id = id,
-				SelfApplied = true,
-				Speed = GetRequiredForceToEnemy(id, CurrentRun.Hero.ObjectId, -functionArgs.DeadZoneRadius, functionArgs.DistanceMultiplier),
-				Angle = GetAngleBetween({ Id = id, DestinationId = CurrentRun.Hero.ObjectId }),
-			})
-			ApplyDamageShare(ActiveEnemies[id], functionArgs)
-		end
-	end
-end
+-- -- This is whats related to hera's sprint boon, just so you know what to look for
+-- function HeraSprintSuction(functionArgs)
+-- 	if CheckCooldown("HeraSprintSuction", functionArgs.Cooldown) then
+-- 		local nearestEnemyTargetIds = GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = functionArgs.Radius })
+-- 		CreateAnimation({ Name = functionArgs.PullVfx, DestinationId = CurrentRun.Hero.ObjectId, ScaleRadius = functionArgs.Radius })
+-- 		for i, id in pairs(nearestEnemyTargetIds) do
+-- 			ApplyForce({
+-- 				Id = id,
+-- 				SelfApplied = true,
+-- 				Speed = GetRequiredForceToEnemy(id, CurrentRun.Hero.ObjectId, -functionArgs.DeadZoneRadius, functionArgs.DistanceMultiplier),
+-- 				Angle = GetAngleBetween({ Id = id, DestinationId = CurrentRun.Hero.ObjectId }),
+-- 			})
+-- 			ApplyDamageShare(ActiveEnemies[id], functionArgs)
+-- 		end
+-- 	end
+-- end
 
-function HeraSprintLink(functionArgs)
-	if not CurrentRun.Hero.SprintActive or not SessionMapState.SprintStartTime or (functionArgs.StartDelay and (_worldTimeUnmodified - SessionMapState.SprintStartTime) < functionArgs.StartDelay) then
-		return
-	end
-	if CheckCooldown("HeraSprintSuction", functionArgs.Cooldown) then
-		local enemyId = GetClosest({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = functionArgs.Radius })
-		CreateAnimation({ Name = functionArgs.Vfx, DestinationId = CurrentRun.Hero.ObjectId })
-		if enemyId and ActiveEnemies[enemyId] and not ActiveEnemies[enemyId].IsDead then
-			local firstApplication = (ActiveEnemies[enemyId].ActiveEffects and not ActiveEnemies[enemyId].ActiveEffects[functionArgs.EffectName])
-			ApplyDamageShare(ActiveEnemies[enemyId], functionArgs)
-			if firstApplication and functionArgs.ProjectileName then
-				thread(DelayFireSprintLinkProjectile, enemyId, functionArgs)
-			end
-		end
-	end
-end
+-- function HeraSprintLink(functionArgs)
+-- 	if not CurrentRun.Hero.SprintActive or not SessionMapState.SprintStartTime or (functionArgs.StartDelay and (_worldTimeUnmodified - SessionMapState.SprintStartTime) < functionArgs.StartDelay) then
+-- 		return
+-- 	end
+-- 	if CheckCooldown("HeraSprintSuction", functionArgs.Cooldown) then
+-- 		local enemyId = GetClosest({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = functionArgs.Radius })
+-- 		CreateAnimation({ Name = functionArgs.Vfx, DestinationId = CurrentRun.Hero.ObjectId })
+-- 		if enemyId and ActiveEnemies[enemyId] and not ActiveEnemies[enemyId].IsDead then
+-- 			local firstApplication = (ActiveEnemies[enemyId].ActiveEffects and not ActiveEnemies[enemyId].ActiveEffects[functionArgs.EffectName])
+-- 			ApplyDamageShare(ActiveEnemies[enemyId], functionArgs)
+-- 			if firstApplication and functionArgs.ProjectileName then
+-- 				thread(DelayFireSprintLinkProjectile, enemyId, functionArgs)
+-- 			end
+-- 		end
+-- 	end
+-- end
 
-function DelayFireSprintLinkProjectile(enemyId, functionArgs)
-	waitUnmodified(0.05)
-	if enemyId and ActiveEnemies[enemyId] and not ActiveEnemies[enemyId].IsDead then
-		CreateProjectileFromUnit({ Name = functionArgs.ProjectileName, Id = CurrentRun.Hero.ObjectId, DestinationId = enemyId, DamageMultiplier = functionArgs.DamageMultiplier })
-		if CheckCooldown("HeraCastPresentation", functionArgs.VfxCooldown) then
-			CreateAnimationsBetween({
-				Animation = "HeraRope",
-				DestinationId = enemyId,
-				Id = CurrentRun.Hero.ObjectId,
-				Stretch = true,
-				UseZLocation = false,
-			})
-		end
-	end
-end
+-- function DelayFireSprintLinkProjectile(enemyId, functionArgs)
+-- 	waitUnmodified(0.05)
+-- 	if enemyId and ActiveEnemies[enemyId] and not ActiveEnemies[enemyId].IsDead then
+-- 		CreateProjectileFromUnit({ Name = functionArgs.ProjectileName, Id = CurrentRun.Hero.ObjectId, DestinationId = enemyId, DamageMultiplier = functionArgs.DamageMultiplier })
+-- 		if CheckCooldown("HeraCastPresentation", functionArgs.VfxCooldown) then
+-- 			CreateAnimationsBetween({
+-- 				Animation = "HeraRope",
+-- 				DestinationId = enemyId,
+-- 				Id = CurrentRun.Hero.ObjectId,
+-- 				Stretch = true,
+-- 				UseZLocation = false,
+-- 			})
+-- 		end
+-- 	end
+-- end
 
 -- ========================================================= Remove this and ^ that when you dont need it anymore
 
