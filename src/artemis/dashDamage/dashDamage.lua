@@ -41,36 +41,26 @@ game.TraitData.ArtemisDashBoon = {
 		},
 	},
 
-	OnSprintAction = {
-		FunctionName = "HeraSprintLink",
+    OnSprintAction = {
+		-- we need to do this string building or the save gets bricked as soon as you leave the room
+		FunctionName = 'rom.mods.' .. _PLUGIN.guid .. '.not.ArtemisSprintFire',
 		RunOnce = true,
 		Args = {
-			Hijack = true,
+			Cooldown = 0.1,
 			StartAngle = 180,
-			Scatter = 20,
+			Scatter = 180,
+			ProjectileName = "ArtemisSupportingFire",
 			ProjectileCap = 3,
-			-- below is what we pasted from hera
 			Radius = 200,
 			Range = 600,
+			DamageMultiplier = { BaseValue = 1 },
+			-- below is stuff that is not used just yet
+			ReportValues = { ReportedMultiplier = "DamageMultiplier", },
 			StartDelay = 0.2,
-			Cooldown = 0.2,
 			Vfx = "HeraSprintPullFx",
 			EffectName = "DamageShareEffect",
 			NumJumps = 1,
-			ProjectileName = "ArtemisSupportingFire",
 			VfxCooldown = 0.1, -- For the projectile link damage
-			DamageMultiplier = {
-				BaseValue = 1,
-				MinMultiplier = 0.1,
-				AbsoluteStackValues = {
-					[1] = 0.50,
-					[2] = 0.25,
-				},
-			},
-			ReportValues = {
-				ReportedJumps = "NumJumps",
-				ReportedMultiplier = "DamageMultiplier",
-			},
 		},
 
 		-- Need to somehow get it to give 10% crit chance for like x seconds when the sprint is finished, and it cant stack over itself
@@ -91,12 +81,77 @@ game.TraitData.ArtemisDashBoon = {
 
 	StatLines = { "DashDamageStatDisplay1" },
 
-	-- ExtractValues = {{
-	--     Key = "CriticalHealthBufferMultiplier",
-	--     ExtractAs = "TooltipDamageBonus",
-	--     Format = "PercentDelta"
-	-- }}
+	ExtractValues = 
+	{
+		{
+			Key = "ReportedMultiplier",
+			ExtractAs = "Damage",
+			Format = "MultiplyByBase",
+			BaseType = "Projectile",
+			BaseName = "ArtemisSupportingFire",
+			BaseProperty = "Damage",
+		},
+	}
 }
+
+--[[ this isn't working yet. need to double check and make sure the structure is correct
+
+we also need to add ArtemisSupportingFireSprint to PlayerProjectiles.sjson - i guess we could start with an exact copy of ArtemisSupportingFire (line 5057)
+
+once the sjson is in, we can try replacing ProjectileName and BaseName in the trait
+then i think this will make the damage show up with a unique name
+]]
+game.ProjectileData.ArtemisSupportingFireSprint = {
+	InheritFrom = { "ArtemisColorProjectile" },
+	DamageTextStartColor = Color.ArtemisDamageLight,
+	DamageTextColor = Color.ArtemisDamage,
+	Sounds =
+	{
+		ImpactSounds =
+		{
+			Invulnerable = "/SFX/Player Sounds/ZagreusShieldRicochet",
+			Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
+			Bone = "/SFX/ArrowMetalBoneSmash",
+			Brick = "/SFX/ArrowMetalStoneClang",
+			Stone = "/SFX/ArrowMetalStoneClang",
+			Organic = "/SFX/GunBulletOrganicImpact",
+			StoneObstacle = "/SFX/ArrowWallHitClankSmall",
+			BrickObstacle = "/SFX/ArrowWallHitClankSmall",
+			MetalObstacle = "/SFX/ArrowWallHitClankSmall",
+			BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
+		},
+	},
+	ProjectileName = "ArtemisSupportingFireSprint"
+}
+
+-- this janky stuff is because the function needs to be public, but we don't really want it to appear as a public function
+local not_public = {}
+public['not'] = not_public
+
+function not_public.ArtemisSprintFire(args)
+	if game.CheckCooldown("ArtemisSprintArrows", args.Cooldown) then
+		-- get closest enemy
+		local enemyId = game.GetClosest({
+			Id = game.CurrentRun.Hero.ObjectId,
+			DestinationName = "EnemyTeam",
+			IgnoreInvulnerable = true,
+			IgnoreHomingIneligible = true,
+			Distance = args.Radius,
+		})
+
+		-- vfx could happen here, but i don't think we need it
+		-- game.CreateAnimation({
+		-- 	Name = functionArgs.Vfx,
+		-- 	DestinationId = game.CurrentRun.Hero.ObjectId,
+		-- })
+
+		-- if it's a valid enemy...
+		if enemyId and game.ActiveEnemies[enemyId] and not game.ActiveEnemies[enemyId].IsDead then
+			local victim = game.ActiveEnemies[enemyId] -- get the actual object for the given id
+			game.CheckSupportingFire(victim, args, { ImpactAngle = 0 })
+		end
+	end
+end
 
 -- =========================================================
 --  PowersLogic
@@ -186,7 +241,8 @@ zanncdwbl_Practical_Gods.ArtemisDashBoon = sjson.to_object({
 	Id = "ArtemisDashBoon",
 	InheritFrom = "BaseBoonMultiline",
 	DisplayName = "Hunter Dash",
-	Description = "Your {$Keywords.Sprint} firesa seeking arrow, and you gain {#UpgradeFormat}10% {#Prev}Chance to deal {$Keywords.Crit} damage.",
+	Description =
+	"Your {$Keywords.Sprint} firesa seeking arrow, and you gain {#UpgradeFormat}10% {#Prev}Chance to deal {$Keywords.Crit} damage.",
 }, zanncdwbl_Practical_Gods.Order)
 
 zanncdwbl_Practical_Gods.ArtemisDashBoon_Text = sjson.to_object({
