@@ -44,8 +44,11 @@ game.TraitData.ArtemisDashBoon = {
 	OnSprintAction = {
 		FunctionName = "HeraSprintLink",
 		RunOnce = true,
-        Args = {
-            Hijack = true,
+		Args = {
+			Hijack = true,
+			StartAngle = 180,
+			Scatter = 20,
+			ProjectileCap = 3,
 			-- below is what we pasted from hera
 			Radius = 200,
 			Range = 600,
