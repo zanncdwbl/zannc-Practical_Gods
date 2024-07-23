@@ -26,52 +26,21 @@ game.TraitData.ArtemisDashBoon = {
 		},
 	},
 
-	PropertyChanges = {
-		{
-			WeaponName = "WeaponSprint",
-			EffectName = "SprintFx",
-			EffectProperty = "BackFx",
-			-- ChangeValue = "HeraSprintFxSpawner",
-		},
-		{
-			WeaponName = "WeaponSprint",
-			EffectName = "SprintFx",
-			EffectProperty = "FrontFx",
-			-- ChangeValue = "MelSprintFxSpawner_Hera",
-		},
-	},
-
-	OnSprintAction = {
+	OnWeaponFiredFunctions = {
+		ValidWeapons = { "WeaponSprint" },
 		-- we need to do this string building or the save gets bricked as soon as you leave the room
 		FunctionName = "rom.mods." .. _PLUGIN.guid .. ".not.ArtemisSprintFire",
-		RunOnce = true,
-		Args = {
-			Cooldown = 0.1,
-			StartAngle = 180,
-			Scatter = 180,
+		FunctionArgs = {
 			ProjectileName = "ArtemisSupportingFireSprint",
-			ProjectileCap = 3,
-			Radius = 200,
-			Range = 600,
+			Cooldown = 0.167,
+			-- StartAngle = 180,
+			Scatter = 180,
+			-- ProjectileCap = 3,
+			Radius = 500,
+			CostPerStrike = 2,
+			RunFunctionNameOnTarget = "rom.mods." .. _PLUGIN.guid .. ".not.ArtemisSpendMana",
 			DamageMultiplier = { BaseValue = 1 },
-			-- below is stuff that is not used just yet
 			ReportValues = { ReportedMultiplier = "DamageMultiplier" },
-			StartDelay = 0.2,
-		},
-
-		-- Need to somehow get it to give 10% crit chance for like x seconds when the sprint is finished, and it cant stack over itself
-	},
-
-	WeaponDataOverride = {
-		WeaponSprint = {
-			Sounds = {
-				ChargeSounds = {
-					{
-						-- Name = "/SFX/Player Sounds/HeraSprintLoop",
-						StoppedBy = { "ChargeCancel" },
-					},
-				},
-			},
 		},
 	},
 
@@ -96,9 +65,6 @@ we also need to add ArtemisSupportingFireSprint to PlayerProjectiles.sjson - i g
 once the sjson is in, we can try replacing ProjectileName and BaseName in the trait
 then i think this will make the damage show up with a unique name
 ]]
--- =========================================================
---  Commenting this out doesnt seem to do anything on my end
--- =========================================================
 game.ProjectileData.ArtemisSupportingFireSprint = {
 	InheritFrom = { "ArtemisColorProjectile" }, -- This doesn't actually inherit anything for some reason
 	Name = "ArtemisSupportingFireSprint",
@@ -125,29 +91,52 @@ game.ProjectileData.ArtemisSupportingFireSprint = {
 local not_public = {}
 public["not"] = not_public
 
-function not_public.ArtemisSprintFire(args)
-	if game.CheckCooldown("ArtemisSprintArrows", args.Cooldown) then
-		-- get closest enemy
-		local enemyId = game.GetClosest({
-			Id = game.CurrentRun.Hero.ObjectId,
-			DestinationName = "EnemyTeam",
-			IgnoreInvulnerable = true,
-			IgnoreHomingIneligible = true,
-			Distance = args.Radius,
-		})
+function not_public.ArtemisSprintFire(weaponData, functionArgs, triggerArgs)
+	local manaCost = 0
+	if functionArgs.CostPerStrike and functionArgs.CostPerStrike > 0 then
+		manaCost = GetManaCost(weaponData, true, { ManaCostOverride = functionArgs.CostPerStrike })
+	end
+	-- get closest enemy
+	local enemyId = game.GetClosest({
+		Id = game.CurrentRun.Hero.ObjectId,
+		DestinationName = "EnemyTeam",
+		IgnoreInvulnerable = true,
+		IgnoreHomingIneligible = true,
+		Distance = functionArgs.Radius,
+	})
 
-		-- vfx could happen here, but i don't think we need it
-		-- game.CreateAnimation({
-		-- 	Name = functionArgs.Vfx,
-		-- 	DestinationId = game.CurrentRun.Hero.ObjectId,
-		-- })
+	-- if it's a valid enemy...
+	if enemyId and game.ActiveEnemies[enemyId] and not game.ActiveEnemies[enemyId].IsDead then
+		local victim = game.ActiveEnemies[enemyId] -- get the actual object for the given id
 
-		-- if it's a valid enemy...
-		if enemyId and game.ActiveEnemies[enemyId] and not game.ActiveEnemies[enemyId].IsDead then
-			local victim = game.ActiveEnemies[enemyId] -- get the actual object for the given id
-			game.CheckSupportingFire(victim, args, { ImpactAngle = 0 })
+		if CheckCooldown("ArtemisSprintFire", triggerArgs.Cooldown, true) then
+			if game.CurrentRun.Hero.Mana >= manaCost then
+				local angle = randomint(0, 360)
+				if angle and functionArgs.Scatter then
+					angle = angle + RandomFloat(-functionArgs.Scatter, functionArgs.Scatter)
+				end
+
+				CreateProjectileFromUnit({
+					Name = functionArgs.ProjectileName,
+					Id = CurrentRun.Hero.ObjectId,
+					DestinationId = victim.ObjectId,
+					Angle = angle,
+					DamageMultiplier = functionArgs.DamageMultiplier,
+					ProjectileCap = randomint(1, 2),
+					RunFunctionNameOnTarget = functionArgs.RunFunctionNameOnTarget,
+					RunFunctionArgsOnTarget = functionArgs, -- Idk what this is for
+				})
+			end
 		end
 	end
+end
+
+-- Copy paste from zeus but it just doesnt want to use up mana
+function not_public.ArtemisSpendMana(args)
+	local functionArgs = args.Args or {}
+	local weaponData = GetWeaponData(game.CurrentRun.Hero, "WeaponSprint")
+	local manaCost = GetManaCost(weaponData, true, { ManaCostOverride = functionArgs.CostPerStrike })
+	ManaDelta(-manaCost)
 end
 
 -- Icon Data

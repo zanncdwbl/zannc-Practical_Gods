@@ -4,16 +4,14 @@ zanncdwbl_Practical_Gods.TraitTextFile = rom.path.combine(rom.paths.Content, "Ga
 zanncdwbl_Practical_Gods.GUIAnimationsFile = rom.path.combine(rom.paths.Content, "Game/Animations/GUIAnimations.sjson")
 zanncdwbl_Practical_Gods.MacroTextFile = rom.path.combine(rom.paths.Content, "Game/Text/en/MacroText.sjson")
 zanncdwbl_Practical_Gods.FxFile = rom.path.combine(rom.paths.Content, "Game/Animations/Fx.sjson")
-zanncdwbl_Practical_Gods.ProjectileDataFile = rom.path.combine(rom.paths.Content,
-	"Game/Projectiles/PlayerProjectiles.sjson")
+zanncdwbl_Practical_Gods.ProjectileDataFile = rom.path.combine(rom.paths.Content, "Game/Projectiles/PlayerProjectiles.sjson")
 
 zanncdwbl_Practical_Gods.Order = { "Id", "InheritFrom", "DisplayName", "Description" }
 zanncdwbl_Practical_Gods.IconOrder = { "Name", "InheritFrom", "FilePath" }
 zanncdwbl_Practical_Gods.MacroOrder = { "Id", "DisplayName" }
 
 -- Artemis Icon File Orders
-zanncdwbl_Practical_Gods.FxMainOrder = { "Name", "InheritFrom", "NumFrames", "FilePath", "OffsetZ", "Scale",
-	"ColorFromOwner", "AngleFromOwner" }
+zanncdwbl_Practical_Gods.FxMainOrder = { "Name", "InheritFrom", "NumFrames", "FilePath", "OffsetZ", "Scale", "ColorFromOwner", "AngleFromOwner" }
 zanncdwbl_Practical_Gods.FxChildOrder = { "Name", "InheritFrom", "ChildAnimation" }
 zanncdwbl_Practical_Gods.FxBoonDropOrder = { "Name", "InheritFrom", "ChildAnimation", "CreateAnimations", "Color" }
 zanncdwbl_Practical_Gods.FxBoonDrop = { "Name", "InheritFrom", "FilePath", "OffsetZ", "Scale" }
