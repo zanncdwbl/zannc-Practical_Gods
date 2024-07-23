@@ -54,14 +54,9 @@ game.TraitData.ArtemisDashBoon = {
 			Radius = 200,
 			Range = 600,
 			DamageMultiplier = { BaseValue = 1 },
-
 			-- below is stuff that is not used just yet
 			ReportValues = { ReportedMultiplier = "DamageMultiplier" },
 			StartDelay = 0.2,
-			Vfx = "HeraSprintPullFx",
-			EffectName = "DamageShareEffect",
-			NumJumps = 1,
-			VfxCooldown = 0.1, -- For the projectile link damage
 		},
 
 		-- Need to somehow get it to give 10% crit chance for like x seconds when the sprint is finished, and it cant stack over itself
@@ -104,27 +99,27 @@ then i think this will make the damage show up with a unique name
 -- =========================================================
 --  Commenting this out doesnt seem to do anything on my end
 -- =========================================================
--- game.ProjectileData.ArtemisSupportingFireSprint = {
--- 	InheritFrom = { "ArtemisColorProjectile" }, -- This doesn't actually inherit anything for some reason
--- 	Name = "ArtemisSupportingFireSprint",
+game.ProjectileData.ArtemisSupportingFireSprint = {
+	InheritFrom = { "ArtemisColorProjectile" }, -- This doesn't actually inherit anything for some reason
+	Name = "ArtemisSupportingFireSprint",
 
--- 	DamageTextStartColor = Color.ArtemisDamageLight,
--- 	DamageTextColor = Color.ArtemisDamage,
--- 	Sounds = {
--- 		ImpactSounds = {
--- 			Invulnerable = "/SFX/Player Sounds/ZagreusShieldRicochet",
--- 			Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
--- 			Bone = "/SFX/ArrowMetalBoneSmash",
--- 			Brick = "/SFX/ArrowMetalStoneClang",
--- 			Stone = "/SFX/ArrowMetalStoneClang",
--- 			Organic = "/SFX/GunBulletOrganicImpact",
--- 			StoneObstacle = "/SFX/ArrowWallHitClankSmall",
--- 			BrickObstacle = "/SFX/ArrowWallHitClankSmall",
--- 			MetalObstacle = "/SFX/ArrowWallHitClankSmall",
--- 			BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
--- 		},
--- 	},
--- }
+	DamageTextStartColor = Color.ArtemisDamageLight,
+	DamageTextColor = Color.ArtemisDamage,
+	Sounds = {
+		ImpactSounds = {
+			Invulnerable = "/SFX/Player Sounds/ZagreusShieldRicochet",
+			Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
+			Bone = "/SFX/ArrowMetalBoneSmash",
+			Brick = "/SFX/ArrowMetalStoneClang",
+			Stone = "/SFX/ArrowMetalStoneClang",
+			Organic = "/SFX/GunBulletOrganicImpact",
+			StoneObstacle = "/SFX/ArrowWallHitClankSmall",
+			BrickObstacle = "/SFX/ArrowWallHitClankSmall",
+			MetalObstacle = "/SFX/ArrowWallHitClankSmall",
+			BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
+		},
+	},
+}
 
 -- this janky stuff is because the function needs to be public, but we don't really want it to appear as a public function
 local not_public = {}
@@ -178,49 +173,49 @@ zanncdwbl_Practical_Gods.ArtemisDashBoon_Text = sjson.to_object({
 }, zanncdwbl_Practical_Gods.Order)
 
 -- Adding her ProjectileData
-zanncdwbl_Practical_Gods.ArtemisSupportingFireSprint = sjson.to_object({
-	Name = "ArtemisSupportingFireSprint",
-	InheritFrom = "1_BaseNonPhysicalProjectile",
-	Type = "HOMING",
-	HomingAllegiance = "ENEMIES",
-	AdjustRateAcceleration = 900,
-	MaxAdjustRate = 3600,
-	Speed = 1200,
-	Acceleration = 300,
-	Range = 10000.0,
-	Damage = 20,
-	CheckObstacleImpact = false,
-	CheckUnitImpact = true,
-	UnlimitedUnitPenetration = false,
-	DetonateAtVictimLocation = true,
-	UseVulnerability = true,
-	IgnoreCoverageAngles = true,
-	Thing = {
-		Graphic = "ArtemisRangedArrowheadLegendary",
-		OffsetZ = 112,
-		AttachedAnim = "null",
-		Grip = 999999,
-		RotateGeometry = true,
-		Points = {
-			{
-				X = 76,
-				Y = 16,
-			},
-			{
-				X = 76,
-				Y = -16,
-			},
-			{
-				X = -32,
-				Y = -16,
-			},
-			{
-				X = -32,
-				Y = 16,
-			},
-		},
-	},
-}, zanncdwbl_Practical_Gods.ProjectileSupportFireOrder)
+-- zanncdwbl_Practical_Gods.ArtemisSupportingFireSprint = sjson.to_object({
+-- 	Name = "ArtemisSupportingFireSprint",
+-- 	InheritFrom = "1_BaseNonPhysicalProjectile",
+-- 	Type = "HOMING",
+-- 	HomingAllegiance = "ENEMIES",
+-- 	AdjustRateAcceleration = 900,
+-- 	MaxAdjustRate = 3600,
+-- 	Speed = 1200,
+-- 	Acceleration = 300,
+-- 	Range = 10000.0,
+-- 	Damage = 20,
+-- 	CheckObstacleImpact = false,
+-- 	CheckUnitImpact = true,
+-- 	UnlimitedUnitPenetration = false,
+-- 	DetonateAtVictimLocation = true,
+-- 	UseVulnerability = true,
+-- 	IgnoreCoverageAngles = true,
+-- 	Thing = {
+-- 		Graphic = "ArtemisRangedArrowheadLegendary",
+-- 		OffsetZ = 112,
+-- 		AttachedAnim = "null",
+-- 		Grip = 999999,
+-- 		RotateGeometry = true,
+-- 		Points = {
+-- 			{
+-- 				X = 76,
+-- 				Y = 16,
+-- 			},
+-- 			{
+-- 				X = 76,
+-- 				Y = -16,
+-- 			},
+-- 			{
+-- 				X = -32,
+-- 				Y = -16,
+-- 			},
+-- 			{
+-- 				X = -32,
+-- 				Y = 16,
+-- 			},
+-- 		},
+-- 	},
+-- }, zanncdwbl_Practical_Gods.ProjectileSupportFireOrder)
 
 -- Adding Boons to Default Artemis
 table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, 3, "ArtemisDashBoon")
