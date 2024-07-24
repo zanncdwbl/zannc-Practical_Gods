@@ -37,6 +37,9 @@ game.TraitData.RushRallyBoon = {
 		Heroic = {
 			Multiplier = 0.6,
 		},
+		Perfect = {
+			Multiplier = 0.8
+		}
 	},
 
 	PropertyChanges = {

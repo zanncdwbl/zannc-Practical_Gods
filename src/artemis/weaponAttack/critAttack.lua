@@ -25,6 +25,9 @@ game.TraitData.ArtemisWeaponBoon = {
 		Heroic = {
 			Multiplier = 2.50,
 		},
+		Perfect = {
+			Multiplier = 3.50
+		}
 	},
 
 	AddOutgoingDamageModifiers = {

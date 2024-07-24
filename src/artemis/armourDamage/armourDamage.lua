@@ -23,6 +23,9 @@ game.TraitData.ArtemisArmourBoon = {
 		Heroic = {
 			Multiplier = 2.5,
 		},
+		Perfect = {
+			Multiplier = 3.5
+		}
 	},
 
 	CriticalHealthBufferMultiplier = {

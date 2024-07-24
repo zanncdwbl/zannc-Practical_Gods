@@ -23,6 +23,9 @@ game.TraitData.MoveSpeedBoon = {
 		Heroic = {
 			Multiplier = 1.25,
 		},
+		Perfect = {
+			Multiplier = 1.42
+		}
 	},
 
 	StatLines = { "BonusSpeedStatDisplay1" },

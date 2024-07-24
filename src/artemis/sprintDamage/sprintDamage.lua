@@ -24,6 +24,9 @@ game.TraitData.ArtemisSprintBoon = {
 		Heroic = {
 			Multiplier = 2.5,
 		},
+		Perfect = {
+			Multiplier = 3.5
+		}
 	},
 
 	OnWeaponFiredFunctions = {
