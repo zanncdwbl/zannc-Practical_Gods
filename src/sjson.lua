@@ -86,20 +86,6 @@ sjson.hook(zanncdwbl_Practical_Gods.TraitTextFile, function(data)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisUpgrade_Store)
 end)
 
-function printTable(t, indent)
-	indent = indent or 0
-	local indentation = string.rep("  ", indent)
-	for key, value in pairs(t) do
-		if type(value) == "table" then
-			print(indentation .. key .. " = {")
-			printTable(value, indent + 1)
-			print(indentation .. "}")
-		else
-			print(indentation .. key .. " = " .. tostring(value))
-		end
-	end
-end
-
 -- Insert for Fx, Just mainly Artemis
 sjson.hook(zanncdwbl_Practical_Gods.FxFile, function(data)
 	-- Everything is just for Artemis Icon and Drops
