@@ -2,12 +2,12 @@
 -- TraitData_Artemis
 --
 -- Creating the boon functions itself
-game.TraitData.ArtemisDashBoon = {
+game.TraitData.ArtemisSprintBoon = {
 	InheritFrom = { "BaseTrait", "EarthBoon" },
 	Elements = { "Earth" }, -- Need to add this even if you inherit
-	Name = "ArtemisDashBoon",
-	BoonInfoTitle = "ArtemisDashBoon",
-	Icon = "Boon_Artemis_ArtemisDashBoon",
+	Name = "ArtemisSprintBoon",
+	BoonInfoTitle = "ArtemisSprintBoon",
+	Icon = "Boon_Artemis_ArtemisSprintBoon",
 	Slot = "Rush",
 	TraitOrderingValueCache = 50,
 	BlockStacking = false,
@@ -43,7 +43,7 @@ game.TraitData.ArtemisDashBoon = {
 		},
 	},
 
-	StatLines = { "DashDamageStatDisplay1" },
+	StatLines = { "SupportFireDamageDisplay1" },
 
 	ExtractValues = {
 		{
@@ -131,26 +131,26 @@ function not_public.ArtemisSprintFire(weaponData, functionArgs, triggerArgs)
 end
 
 -- Icon Data
-zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisDashBoon = sjson.to_object({
-	Name = "Boon_Artemis_ArtemisDashBoon",
+zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisSprintBoon = sjson.to_object({
+	Name = "Boon_Artemis_ArtemisSprintBoon",
 	InheritFrom = "BoonIcon",
 	FilePath = rom.path.combine(_PLUGIN.guid, "GUI\\Screens\\BoonIcons\\Hunter_Dash"),
 }, zanncdwbl_Practical_Gods.IconOrder)
 
 -- Boons Description/Display
-zanncdwbl_Practical_Gods.ArtemisDashBoon = sjson.to_object({
-	Id = "ArtemisDashBoon",
+zanncdwbl_Practical_Gods.ArtemisSprintBoon = sjson.to_object({
+	Id = "ArtemisSprintBoon",
 	InheritFrom = "BaseBoonMultiline",
 	DisplayName = "Hunter Dash",
 	Description = "Your {$Keywords.Sprint} fires a seeking arrow, and you gain {#UpgradeFormat}10% {#Prev}Chance to deal {$Keywords.Crit} damage.",
 }, zanncdwbl_Practical_Gods.Order)
 
-zanncdwbl_Practical_Gods.ArtemisDashBoon_Text = sjson.to_object({
-	Id = "DashDamageStatDisplay1",
-	InheritFrom = "BaseStatLine",
-	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Homing Arrows Damage",
-	Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}",
-}, zanncdwbl_Practical_Gods.Order)
+-- zanncdwbl_Practical_Gods.ArtemisSprintBoon_Text = sjson.to_object({
+-- 	Id = "DashDamageStatDisplay1",
+-- 	InheritFrom = "BaseStatLine",
+-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Seeking Arrows Damage",
+-- 	Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}",
+-- }, zanncdwbl_Practical_Gods.Order)
 
 -- Adding her ProjectileData
 -- zanncdwbl_Practical_Gods.ArtemisSupportingFireSprint = sjson.to_object({
@@ -198,14 +198,14 @@ zanncdwbl_Practical_Gods.ArtemisDashBoon_Text = sjson.to_object({
 -- }, zanncdwbl_Practical_Gods.ProjectileSupportFireOrder)
 
 -- Adding Boons to Default Artemis
-table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, 3, "ArtemisDashBoon")
+table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, 3, "ArtemisSprintBoon")
 
 -- Insert TraitIndex into BoonInfo or else it won't show up in codex since BoonInfo gets populated before traits are added by mods
 -- Just adds the boon to the codex - aka the (Hidden) "TraitIndex"
-game.ScreenData.BoonInfo.TraitDictionary.NPC_Artemis_Field_01["ArtemisDashBoon"] = true
+game.ScreenData.BoonInfo.TraitDictionary.NPC_Artemis_Field_01["ArtemisSprintBoon"] = true
 
 -- Adding Traits to TraitData Table, and adding her as core, aka weapon, special, cast, etc
-table.insert(game.LinkedTraitData.ArtemisCoreTraits, "ArtemisDashBoon")
+table.insert(game.LinkedTraitData.ArtemisCoreTraits, "ArtemisSprintBoon")
 
 -- =========================================================
 -- Hades 1 Artemis boon

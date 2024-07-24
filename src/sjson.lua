@@ -17,25 +17,25 @@ zanncdwbl_Practical_Gods.FxBoonDropOrder = { "Name", "InheritFrom", "ChildAnimat
 zanncdwbl_Practical_Gods.FxBoonDrop = { "Name", "InheritFrom", "FilePath", "OffsetZ", "Scale" }
 
 -- Artemis Dash Order
-zanncdwbl_Practical_Gods.ProjectileSupportFireOrder = {
-	"Name",
-	"InheritFrom",
-	"Type",
-	"HomingAllegiance",
-	"AdjustRateAcceleration",
-	"MaxAdjustRate",
-	"Speed",
-	"Acceleration",
-	"Range",
-	"Damage",
-	"CheckObstacleImpact",
-	"CheckUnitImpact",
-	"UnlimitedUnitPenetration",
-	"DetonateAtVictimLocation",
-	"UseVulnerability",
-	"IgnoreCoverageAngles",
-	"Thing",
-}
+-- zanncdwbl_Practical_Gods.ProjectileSupportFireOrder = {
+-- 	"Name",
+-- 	"InheritFrom",
+-- 	"Type",
+-- 	"HomingAllegiance",
+-- 	"AdjustRateAcceleration",
+-- 	"MaxAdjustRate",
+-- 	"Speed",
+-- 	"Acceleration",
+-- 	"Range",
+-- 	"Damage",
+-- 	"CheckObstacleImpact",
+-- 	"CheckUnitImpact",
+-- 	"UnlimitedUnitPenetration",
+-- 	"DetonateAtVictimLocation",
+-- 	"UseVulnerability",
+-- 	"IgnoreCoverageAngles",
+-- 	"Thing",
+-- }
 
 -- Insert for Icons
 sjson.hook(zanncdwbl_Practical_Gods.GUIAnimationsFile, function(data)
@@ -50,7 +50,7 @@ sjson.hook(zanncdwbl_Practical_Gods.GUIAnimationsFile, function(data)
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisSpecialBoon)
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisCriticalBoon)
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisArmourBoon)
-	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisDashBoon)
+	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Artemis_ArtemisSprintBoon)
 
 	-- Artemis Icon
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonInfoSymbolArtemisIcon)
@@ -78,8 +78,8 @@ sjson.hook(zanncdwbl_Practical_Gods.TraitTextFile, function(data)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisCriticalBoon_Text)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisArmourBoon)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisArmourBoon_Text)
-	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisDashBoon)
-	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisDashBoon_Text)
+	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisSprintBoon)
+	-- table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisSprintBoon_Text)
 
 	-- Artemis Store Text
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisUpgrade_Store)
