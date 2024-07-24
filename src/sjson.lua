@@ -17,25 +17,26 @@ zanncdwbl_Practical_Gods.FxBoonDropOrder = { "Name", "InheritFrom", "ChildAnimat
 zanncdwbl_Practical_Gods.FxBoonDrop = { "Name", "InheritFrom", "FilePath", "OffsetZ", "Scale" }
 
 -- Artemis Dash Order
--- zanncdwbl_Practical_Gods.ProjectileSupportFireOrder = {
--- 	"Name",
--- 	"InheritFrom",
--- 	"Type",
--- 	"HomingAllegiance",
--- 	"AdjustRateAcceleration",
--- 	"MaxAdjustRate",
--- 	"Speed",
--- 	"Acceleration",
--- 	"Range",
--- 	"Damage",
--- 	"CheckObstacleImpact",
--- 	"CheckUnitImpact",
--- 	"UnlimitedUnitPenetration",
--- 	"DetonateAtVictimLocation",
--- 	"UseVulnerability",
--- 	"IgnoreCoverageAngles",
--- 	"Thing",
--- }
+-- I would put stylua ignore to collapse this but we both have different styling ext.
+zanncdwbl_Practical_Gods.ProjectileSupportFireOrder = {
+	"Name",
+	"InheritFrom",
+	"Type",
+	"HomingAllegiance",
+	"AdjustRateAcceleration",
+	"MaxAdjustRate",
+	"Speed",
+	"Acceleration",
+	"Range",
+	"Damage",
+	"CheckObstacleImpact",
+	"CheckUnitImpact",
+	"UnlimitedUnitPenetration",
+	"DetonateAtVictimLocation",
+	"UseVulnerability",
+	"IgnoreCoverageAngles",
+	"Thing",
+}
 
 -- Insert for Icons
 sjson.hook(zanncdwbl_Practical_Gods.GUIAnimationsFile, function(data)
@@ -85,6 +86,20 @@ sjson.hook(zanncdwbl_Practical_Gods.TraitTextFile, function(data)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisUpgrade_Store)
 end)
 
+function printTable(t, indent)
+	indent = indent or 0
+	local indentation = string.rep("  ", indent)
+	for key, value in pairs(t) do
+		if type(value) == "table" then
+			print(indentation .. key .. " = {")
+			printTable(value, indent + 1)
+			print(indentation .. "}")
+		else
+			print(indentation .. key .. " = " .. tostring(value))
+		end
+	end
+end
+
 -- Insert for Fx, Just mainly Artemis
 sjson.hook(zanncdwbl_Practical_Gods.FxFile, function(data)
 	-- Everything is just for Artemis Icon and Drops
@@ -96,6 +111,19 @@ sjson.hook(zanncdwbl_Practical_Gods.FxFile, function(data)
 
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonDropArtemisPreview)
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.BoonDropArtemisUpgradedPreview)
+
+	for _, v in ipairs(data.Animations) do
+		if v.Name == "ArtemisRangedArrowhead1" then
+			v.FilePath = rom.path.combine(_PLUGIN.guid, "Fx\\ArtemisRangedArrow\\ArtemisRangedArrowhead0001")
+		end
+	end
+
+	-- Don't need this, from my quick testing, but maybe my save got unfucked
+	-- for _, v in ipairs(data.Animations) do
+	-- 	if v.Name == "ArtemisRangedArrowheadLegendary" then
+	-- 		v.FilePath = rom.path.combine(_PLUGIN.guid, "Fx\\ArtemisRangedArrow\\ArtemisRangedArrowhead0001")
+	-- 	end
+	-- end
 end)
 
 -- Insert for MacroTextFile
@@ -106,18 +134,5 @@ end)
 
 -- Insert for Artemis Projectiles
 sjson.hook(zanncdwbl_Practical_Gods.ProjectileDataFile, function(data)
-	local order = {}
-	local projectile = {}
-	for _, v in ipairs(data.Projectiles) do
-		if v.Name == "ArtemisSupportingFire" then
-			projectile = game.DeepCopyTable(v)
-			order = sjson.get_order(v)
-		end
-	end
-
-	projectile.Name = "ArtemisSupportingFireSprint"
-	local projectileEntry = sjson.to_object(projectile, order)
-
-	table.insert(data.Projectiles, projectileEntry)
-	--table.insert(data.Projectiles, zanncdwbl_Practical_Gods.ArtemisSupportingFireSprint)
+	table.insert(data.Projectiles, zanncdwbl_Practical_Gods.ArtemisSupportingFireSprint)
 end)

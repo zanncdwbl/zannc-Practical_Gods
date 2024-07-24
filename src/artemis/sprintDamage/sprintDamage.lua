@@ -32,7 +32,7 @@ game.TraitData.ArtemisSprintBoon = {
 		FunctionName = "rom.mods." .. _PLUGIN.guid .. ".not.ArtemisSprintFire",
 		FunctionArgs = {
 			ProjectileName = "ArtemisSupportingFireSprint",
-			Cooldown = 0.167,
+			Cooldown = 0.3,
 			-- StartAngle = 180,
 			Scatter = 180,
 			-- ProjectileCap = 3,
@@ -153,49 +153,49 @@ zanncdwbl_Practical_Gods.ArtemisSprintBoon = sjson.to_object({
 -- }, zanncdwbl_Practical_Gods.Order)
 
 -- Adding her ProjectileData
--- zanncdwbl_Practical_Gods.ArtemisSupportingFireSprint = sjson.to_object({
--- 	Name = "ArtemisSupportingFireSprint",
--- 	InheritFrom = "1_BaseNonPhysicalProjectile",
--- 	Type = "HOMING",
--- 	HomingAllegiance = "ENEMIES",
--- 	AdjustRateAcceleration = 900,
--- 	MaxAdjustRate = 3600,
--- 	Speed = 1200,
--- 	Acceleration = 300,
--- 	Range = 10000.0,
--- 	Damage = 20,
--- 	CheckObstacleImpact = false,
--- 	CheckUnitImpact = true,
--- 	UnlimitedUnitPenetration = false,
--- 	DetonateAtVictimLocation = true,
--- 	UseVulnerability = true,
--- 	IgnoreCoverageAngles = true,
--- 	Thing = {
--- 		Graphic = "ArtemisRangedArrowheadLegendary",
--- 		OffsetZ = 112,
--- 		AttachedAnim = "null",
--- 		Grip = 999999,
--- 		RotateGeometry = true,
--- 		Points = {
--- 			{
--- 				X = 76,
--- 				Y = 16,
--- 			},
--- 			{
--- 				X = 76,
--- 				Y = -16,
--- 			},
--- 			{
--- 				X = -32,
--- 				Y = -16,
--- 			},
--- 			{
--- 				X = -32,
--- 				Y = 16,
--- 			},
--- 		},
--- 	},
--- }, zanncdwbl_Practical_Gods.ProjectileSupportFireOrder)
+zanncdwbl_Practical_Gods.ArtemisSupportingFireSprint = sjson.to_object({
+	Name = "ArtemisSupportingFireSprint",
+	InheritFrom = "1_BaseNonPhysicalProjectile",
+	Type = "HOMING",
+	HomingAllegiance = "ENEMIES",
+	AdjustRateAcceleration = 900,
+	MaxAdjustRate = 3600,
+	Speed = 1200,
+	Acceleration = 300,
+	Range = 1000.0,
+	Damage = 20, -- Damage Increased from 10
+	CheckObstacleImpact = false,
+	CheckUnitImpact = true,
+	UnlimitedUnitPenetration = false,
+	DetonateAtVictimLocation = true,
+	UseVulnerability = true,
+	IgnoreCoverageAngles = true,
+	Thing = {
+		Graphic = "ArtemisRangedArrowheadLegendary",
+		OffsetZ = 112,
+		AttachedAnim = "null",
+		Grip = 999999,
+		RotateGeometry = true,
+		Points = {
+			{
+				X = 76,
+				Y = 16,
+			},
+			{
+				X = 76,
+				Y = -16,
+			},
+			{
+				X = -32,
+				Y = -16,
+			},
+			{
+				X = -32,
+				Y = 16,
+			},
+		},
+	},
+}, zanncdwbl_Practical_Gods.ProjectileSupportFireOrder)
 
 -- Adding Boons to Default Artemis
 table.insert(game.UnitSetData.NPC_Artemis.NPC_Artemis_Field_01.Traits, 3, "ArtemisSprintBoon")
