@@ -80,7 +80,7 @@ sjson.hook(zanncdwbl_Practical_Gods.TraitTextFile, function(data)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisArmourBoon)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisArmourBoon_Text)
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisSprintBoon)
-	-- table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisSprintBoon_Text)
+	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisSprintBoon_Text)
 
 	-- Artemis Store Text
 	table.insert(data.Texts, zanncdwbl_Practical_Gods.ArtemisUpgrade_Store)
@@ -104,12 +104,12 @@ sjson.hook(zanncdwbl_Practical_Gods.FxFile, function(data)
 		end
 	end
 
-	-- Don't need this, from my quick testing, but maybe my save got unfucked
-	-- for _, v in ipairs(data.Animations) do
-	-- 	if v.Name == "ArtemisRangedArrowheadLegendary" then
-	-- 		v.FilePath = rom.path.combine(_PLUGIN.guid, "Fx\\ArtemisRangedArrow\\ArtemisRangedArrowhead0001")
-	-- 	end
-	-- end
+	-- Don't need this, from my quick testing, but maybe my save got unfucked, keep it anyway
+	for _, v in ipairs(data.Animations) do
+		if v.Name == "ArtemisRangedArrowheadLegendary" then
+			v.FilePath = rom.path.combine(_PLUGIN.guid, "Fx\\ArtemisRangedArrow\\ArtemisRangedArrowhead0001")
+		end
+	end
 end)
 
 -- Insert for MacroTextFile

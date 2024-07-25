@@ -30,24 +30,21 @@ game.TraitData.ArtemisSprintBoon = {
 	},
 
 	OnWeaponFiredFunctions = {
-		ValidWeapons = { "WeaponSprint" },
+		ValidWeapons = { "WeaponSprint", "WeaponBlink" },
 		-- we need to do this string building or the save gets bricked as soon as you leave the room
 		FunctionName = "rom.mods." .. _PLUGIN.guid .. ".not.ArtemisSprintFire",
 		FunctionArgs = {
 			ProjectileName = "ArtemisSupportingFireSprint",
 			Cooldown = 0.3,
-			-- StartAngle = 180,
 			Scatter = 180,
-			-- ProjectileCap = 3,
 			Radius = 500,
 			CostPerStrike = 2,
-			-- RunFunctionNameOnTarget = "ZeusSprintSpend", -- Adding this seems to fix torches, but still doesnt call the original function, cause CreateProjectileFromUnit doesnt take it
 			DamageMultiplier = { BaseValue = 1 },
-			ReportValues = { ReportedMultiplier = "DamageMultiplier" },
+			ReportValues = { ReportedMultiplier = "DamageMultiplier", ReportedCost = "CostPerStrike", ReportedCooldown = "Cooldown" },
 		},
 	},
 
-	StatLines = { "SupportFireDamageDisplay1" },
+	StatLines = { "DashDamageStatDisplay1" },
 
 	ExtractValues = {
 		{
@@ -57,6 +54,17 @@ game.TraitData.ArtemisSprintBoon = {
 			BaseType = "Projectile",
 			BaseName = "ArtemisSupportingFireSprint",
 			BaseProperty = "Damage",
+		},
+		{
+			SkipAutoExtract = true,
+			Key = "ReportedCost",
+			ExtractAs = "ManaCost",
+		},
+		{
+			ExtractAs = "Cooldown",
+			Key = "ReportedCooldown",
+			SkipAutoExtract = true,
+			DecimalPlaces = 2,
 		},
 	},
 }
@@ -88,22 +96,59 @@ local not_public = {}
 public["not"] = not_public
 
 function not_public.ArtemisSprintFire(weaponData, functionArgs, triggerArgs)
-	local manaCost = 0
-	if functionArgs.CostPerStrike and functionArgs.CostPerStrike > 0 then
-		manaCost = GetManaCost(weaponData, true, { ManaCostOverride = functionArgs.CostPerStrike })
+	-- Initially to get rid of anything not sprint or dash, aka torches
+	if weaponData.Name ~= "WeaponSprint" and weaponData.Name ~= "WeaponBlink" then
+		return
 	end
-	-- get closest enemy
-	local enemyId = game.GetClosest({
-		Id = game.CurrentRun.Hero.ObjectId,
-		DestinationName = "EnemyTeam",
-		IgnoreInvulnerable = true,
-		IgnoreHomingIneligible = true,
-		Distance = functionArgs.Radius,
-	})
 
-	-- if it's a valid enemy...
-	if enemyId and game.ActiveEnemies[enemyId] and not game.ActiveEnemies[enemyId].IsDead then
-		local victim = game.ActiveEnemies[enemyId] -- get the actual object for the given id
+	-- [[
+	-- Adding Crit, very wrong, might need to do it inside of the actual boon instead, ala AddOutgoingCritModifier in the actual boon
+	-- ]]
+	if weaponData.Name == "WeaponBlink" then
+		local OutgoingCritCooldown = 5
+		for i, v in ipairs(game.CurrentRun.Hero.OutgoingCritModifiers) do
+			if v.Name == "ArtemisSprintCrit" then
+				break
+			else
+				-- I have no idea what temporary does, its mentioned when adding, but its not mentioned as an arg in the actual function, so idk how it works
+				AddOutgoingCritModifier(game.CurrentRun.Hero, { Name = "ArtemisSprintCrit", ValidWeapons = WeaponSets.HeroPrimarySecondaryWeapons, Chance = { BaseValue = 0.10 }, Temporary = true })
+			end
+		end
+
+		-- [[
+		-- Basically, trying to remove it after 5 seconds, but it doesnt work like that, so need a different method
+		-- ]]
+		if CheckCooldown("ArtemisCritCooldown", OutgoingCritCooldown, true) then
+			for i, v in ipairs(game.CurrentRun.Hero.OutgoingCritModifiers) do
+				if v.Name == "ArtemisSprintCrit" then
+					table.remove(game.CurrentRun.Hero.OutgoingCritModifiers, i)
+				end
+			end
+		end
+	end
+
+	-- Then we do the arrows on sprint
+	if weaponData.Name == "WeaponSprint" then
+		local manaCost = 0
+		if functionArgs.CostPerStrike and functionArgs.CostPerStrike > 0 then
+			manaCost = GetManaCost(weaponData, true, { ManaCostOverride = functionArgs.CostPerStrike })
+		end
+
+		-- get closest enemy
+		local enemyId = game.GetClosest({
+			Id = game.CurrentRun.Hero.ObjectId,
+			DestinationName = "EnemyTeam",
+			IgnoreInvulnerable = true,
+			IgnoreHomingIneligible = true,
+			Distance = functionArgs.Radius,
+		})
+
+		-- if it's a valid enemy...
+		if not (enemyId and game.ActiveEnemies[enemyId] and not game.ActiveEnemies[enemyId].IsDead) then
+			return
+		end
+
+		local victim = game.ActiveEnemies[enemyId]
 
 		if CheckCooldown("ArtemisSprintFire", functionArgs.Cooldown, true) then
 			if game.CurrentRun.Hero.Mana >= manaCost then
@@ -120,8 +165,6 @@ function not_public.ArtemisSprintFire(weaponData, functionArgs, triggerArgs)
 					DamageMultiplier = functionArgs.DamageMultiplier,
 					ProjectileCap = 3,
 					Count = randomint(1, 3),
-					-- RunFunctionNameOnTarget = functionArgs.RunFunctionNameOnTarget,
-					-- RunFunctionArgsOnTarget = functionArgs,
 				})
 				ManaDelta(-manaCost)
 			end
@@ -141,7 +184,15 @@ zanncdwbl_Practical_Gods.ArtemisSprintBoon = sjson.to_object({
 	Id = "ArtemisSprintBoon",
 	InheritFrom = "BaseBoonMultiline",
 	DisplayName = "Hunter Dash",
-	Description = "Your {$Keywords.Sprint} fires a seeking arrow, and you gain {#UpgradeFormat}10% {#Prev}Chance to deal {$Keywords.Crit} damage.",
+	Description = "Your {$Keywords.Sprint} fires seeking arrows, each using {#ManaFormat}{$TooltipData.ExtractData.ManaCost}{#Prev}{!Icons.Mana}."
+		.. " Gain a {#UpgradeFormat}10% {#Prev} chance to deal {$Keywords.Crit} damage on your {$Keywords.Attack} and {$Keywords.Special}.",
+}, zanncdwbl_Practical_Gods.Order)
+
+zanncdwbl_Practical_Gods.ArtemisSprintBoon_Text = sjson.to_object({
+	Id = "DashDamageStatDisplay1",
+	InheritFrom = "BaseStatLine",
+	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Arrow Damage:",
+	Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}  {#ItalicFormat}(every {$TooltipData.ExtractData.Cooldown} Sec.)",
 }, zanncdwbl_Practical_Gods.Order)
 
 -- Adding her ProjectileData
