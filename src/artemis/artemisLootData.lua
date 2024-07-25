@@ -101,8 +101,8 @@ game.LootData.ArtemisUpgrade = {
 	PortraitEnterSound = "/EmptyCue", -- PortraitEnterSound: /SFX/ApolloBoonHarpPoof
 	FlavorTextIds = { "ArtemisUpgrade_FlavorText01", "ArtemisUpgrade_FlavorText02", "ArtemisUpgrade_FlavorText03" },
 
-	PriorityUpgrades = { "ArtemisWeaponBoon", "ArtemisSpecialBoon" },
-	WeaponUpgrades = { "ArtemisWeaponBoon", "ArtemisSpecialBoon" },
+	PriorityUpgrades = { "ArtemisWeaponBoon", "ArtemisSpecialBoon", "ArtemisSprintBoon" },
+	WeaponUpgrades = { "ArtemisWeaponBoon", "ArtemisSpecialBoon", "ArtemisSprintBoon" },
 	Traits = { "SupportingFireBoon", "CritBonusBoon", "DashOmegaBuffBoon", "HighHealthCritBoon", "InsideCastCritBoon", "OmegaCastVolleyBoon", "TimedCritVulnerabilityBoon", "ArtemisCriticalBoon", "ArtemisArmourBoon" },
 
 	TraitIndex = {},
@@ -439,6 +439,7 @@ local ArtemisTraitDictionary = {
 	ArtemisSpecialBoon = true,
 	ArtemisCriticalBoon = true,
 	ArtemisArmourBoon = true,
+	ArtemisSprintBoon = true,
 }
 
 game.ScreenData.BoonInfo.TraitDictionary.ArtemisUpgrade = ArtemisTraitDictionary
