@@ -40,7 +40,11 @@ game.TraitData.ArtemisSprintBoon = {
 			Radius = 500,
 			CostPerStrike = 2,
 			DamageMultiplier = { BaseValue = 1 },
-			ReportValues = { ReportedMultiplier = "DamageMultiplier", ReportedCost = "CostPerStrike", ReportedCooldown = "Cooldown" },
+			ReportValues = {
+				ReportedMultiplier = "DamageMultiplier",
+				ReportedCost = "CostPerStrike",
+				ReportedCooldown = "Cooldown",
+			},
 		},
 	},
 
@@ -101,29 +105,38 @@ function not_public.ArtemisSprintFire(weaponData, functionArgs, triggerArgs)
 		return
 	end
 
-	-- [[
-	-- Adding Crit, very wrong, might need to do it inside of the actual boon instead, ala AddOutgoingCritModifier in the actual boon
-	-- ]]
 	if weaponData.Name == "WeaponBlink" then
 		local OutgoingCritCooldown = 5
+		local critvalue = 0.1
+		local modifierAdded = false
+
 		for i, v in ipairs(game.CurrentRun.Hero.OutgoingCritModifiers) do
+			print("v.Name:" .. v.Name)
 			if v.Name == "ArtemisSprintCrit" then
-				break
-			else
-				-- I have no idea what temporary does, its mentioned when adding, but its not mentioned as an arg in the actual function, so idk how it works
-				AddOutgoingCritModifier(game.CurrentRun.Hero, { Name = "ArtemisSprintCrit", ValidWeapons = WeaponSets.HeroPrimarySecondaryWeapons, Chance = { BaseValue = 0.10 }, Temporary = true })
+				if not modifierAdded then
+					table.remove(game.CurrentRun.Hero.OutgoingCritModifiers, i)
+					AddOutgoingCritModifier(game.CurrentRun.Hero, { Name = "ArtemisSprintCrit", ValidWeapons = WeaponSets.HeroPrimarySecondaryWeapons, Chance = critvalue })
+					modifierAdded = true
+					break
+				end
 			end
 		end
 
-		-- [[
-		-- Basically, trying to remove it after 5 seconds, but it doesnt work like that, so need a different method
-		-- ]]
-		if CheckCooldown("ArtemisCritCooldown", OutgoingCritCooldown, true) then
-			for i, v in ipairs(game.CurrentRun.Hero.OutgoingCritModifiers) do
-				if v.Name == "ArtemisSprintCrit" then
-					table.remove(game.CurrentRun.Hero.OutgoingCritModifiers, i)
-				end
+		if not modifierAdded then
+			AddOutgoingCritModifier(game.CurrentRun.Hero, { Name = "ArtemisSprintCrit", ValidWeapons = WeaponSets.HeroPrimarySecondaryWeapons, Chance = critvalue })
+			modifierAdded = true
+		end
+
+		-- Wait 5 seconds, then remove if it exists
+		wait(OutgoingCritCooldown, RoomThreadName)
+
+		for i, v in ipairs(game.CurrentRun.Hero.OutgoingCritModifiers) do
+			print("v.Name 2:" .. v.Name)
+
+			if v.Name == "ArtemisSprintCrit" then
+				table.remove(game.CurrentRun.Hero.OutgoingCritModifiers, i)
 			end
+			modifierAdded = false
 		end
 	end
 
