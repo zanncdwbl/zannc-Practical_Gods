@@ -1,7 +1,11 @@
 # Changelog
 
 ## [Unreleased]
-Attack and Special now show up first in Pony Menu
+Added Dash Boon!<br>  -- INCOMPLETE
+Attack, Special and Dash now show up first in Pony Menu.<br>
+Fixed Issue with Death Warrant scaling incorrectly.<br>
+Updated ReadME.<br> -- INCOMPLETE (no dash boon)
+(Hopefully) Fixed issue with random crash when doing damage. <br>
 
 ## [1.0.0] - 2024-07-21
 Initial Release<br>

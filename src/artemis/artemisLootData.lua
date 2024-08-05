@@ -1,33 +1,9 @@
--- Disable scaling of crit without using AbsoluteStackValues due to my Generalist mod messing around with that
-modutil.mod.Path.Wrap("GetProcessedValue", function(base, valueToRamp, args)
-	if type(valueToRamp) ~= "table" then
-		return valueToRamp
-	end
-	if valueToRamp.BaseMin ~= nil or valueToRamp.BaseValue ~= nil then
-		local value = 0
-		if valueToRamp.BaseValue ~= nil then
-			value = valueToRamp.BaseValue
-		else
-			if args.ForceMin then
-				value = valueToRamp.BaseMin
-			elseif args.ForceMax then
-				value = valueToRamp.BaseMax
-			else
-				value = RandomFloat(valueToRamp.BaseMin, valueToRamp.BaseMax)
-			end
-		end
-
-		if valueToRamp.NoScaling == true then
-			return ProcessValue(value, valueToRamp)
-		end
-	end
-	return base(valueToRamp, args)
-end)
+-- It scales wrong.
+game.TraitData.TimedCritVulnerabilityBoon.BlockStacking = true
 
 -- Creating Artemis in LootData, allows for natural spawns etc
 game.LootData.ArtemisUpgrade = {
 	-- Check all of these, unique or always static?
-
 	NarrativeTextColor = { 32, 32, 30, 255 },
 	NameplateDescriptionColor = { 145, 45, 90, 255 },
 	NameplateSpeakerNameColor = { 24, 24, 24, 255 },

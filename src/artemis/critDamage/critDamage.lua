@@ -24,8 +24,8 @@ game.TraitData.ArtemisCriticalBoon = {
 			Multiplier = 2.5,
 		},
 		Perfect = {
-			Multiplier = 3.5
-		}
+			Multiplier = 3.5,
+		},
 	},
 
 	AddOutgoingDamageModifiers = {
@@ -85,10 +85,8 @@ game.ScreenData.BoonInfo.TraitDictionary.NPC_Artemis_Field_01["ArtemisCriticalBo
 
 -- Multiply crit damage by x boon amount
 modutil.mod.Path.Wrap("DamageEnemy", function(base, victim, triggerArgs)
-	local attacker = triggerArgs.AttackerTable
-
 	if triggerArgs.IsCrit then
-		for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
+		for i, modifierData in pairs(game.CurrentRun.Hero.OutgoingDamageModifiers) do
 			if modifierData.CritDamageBonus then
 				triggerArgs.DamageAmount = triggerArgs.DamageAmount * modifierData.CritDamageBonus
 			end
