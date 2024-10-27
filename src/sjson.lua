@@ -1,7 +1,7 @@
 ---@meta _
 ---@diagnostic disable: lowercase-global
 zanncdwbl_Practical_Gods.TraitTextFile = rom.path.combine(rom.paths.Content, "Game/Text/en/TraitText.en.sjson")
-zanncdwbl_Practical_Gods.GUIAnimationsFile = rom.path.combine(rom.paths.Content, "Game/Animations/GUIAnimations.sjson")
+zanncdwbl_Practical_Gods.GUIScreensVfxFile = rom.path.combine(rom.paths.Content, "Game/Animations/GUI_Screens_VFX.sjson")
 zanncdwbl_Practical_Gods.MacroTextFile = rom.path.combine(rom.paths.Content, "Game/Text/en/MacroText.sjson")
 zanncdwbl_Practical_Gods.FxFile = rom.path.combine(rom.paths.Content, "Game/Animations/Fx.sjson")
 
@@ -16,7 +16,7 @@ zanncdwbl_Practical_Gods.FxBoonDropOrder = { "Name", "InheritFrom", "ChildAnimat
 zanncdwbl_Practical_Gods.FxBoonDrop = { "Name", "InheritFrom", "FilePath", "OffsetZ", "Scale" }
 
 -- Insert for Icons
-sjson.hook(zanncdwbl_Practical_Gods.GUIAnimationsFile, function(data)
+sjson.hook(zanncdwbl_Practical_Gods.GUIScreensVfxFile, function(data)
 	-- Hermes Boons
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Hermes_SpeedDamageBoon)
 	table.insert(data.Animations, zanncdwbl_Practical_Gods.Boon_Hermes_MoveSpeedBoon)
